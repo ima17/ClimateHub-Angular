@@ -10,6 +10,8 @@ import { JoinUSComponent } from './pages/join-us/join-us.component';
 import { ELearningComponent } from './pages/e-learning/e-learning.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { EventsComponent } from './pages/events/events.component';
+import {EventListComponent } from 'src/app/pages/event-list/event-list.component';
+import { EventUpdateComponent} from 'src/app/pages/event-update/event-update.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -22,7 +24,8 @@ const routes: Routes = [
   {path:'Events',component:EventsComponent},
   {path:'JoinUs',component:JoinUSComponent},
   {path:'ELearning',component:ELearningComponent},
-
+  {path:'Events-List-view',component:EventListComponent},
+  {path :'Events-List-view/Events-Update/:id',component:EventUpdateComponent}
   
 
 ];

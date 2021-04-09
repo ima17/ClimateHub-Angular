@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { CalendarOptions, DateSelectArg, EventClickArg, EventApi  } from '@fullcalendar/angular';
+import { EventServiceService } from 'src/app/event-service.service';
+//import { INITIAL_EVENTS, createEventId } from 'browser-event-utils';
+import {Event } from 'src/app/event';
 
 @Component({
   selector: 'app-events',
@@ -6,10 +10,65 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./events.component.scss']
 })
 export class EventsComponent implements OnInit {
+  eventList: any;
+  //eves:[any];
 
-  constructor() { }
+  constructor(private EventService: EventServiceService) { }
 
   ngOnInit(): void {
+  }
+
+  calendarVisible = true;
+  calendarOptions: CalendarOptions = {
+    initialView: 'dayGridMonth',
+
+    dateClick: this.handleDateClick.bind(this), // bind is important!
+    
+    events: [
+      { title: '{{this.currentEvents.title}}', date: '2021-04-01' },
+      { title: 'event 2', date: '2021-04-02' }
+    ],
+
+    //initialEvents: INITIAL_EVENTS,
+    weekends: true,
+    editable: true,
+    selectable: true,
+    selectMirror: true,
+    dayMaxEvents: true,
+    eventsSet: this.handleEvents.bind(this)
+
+    /*
+    select: this.handleDateSelect.bind(this),
+    eventClick: this.handleEventClick.bind(this),
+    you can update a remote database when these fire:
+    eventAdd:
+    eventChange:
+    eventRemove:
+    */
+  };
+  
+
+  currentEvents: EventApi[] = [];
+
+  handleEvents(events: EventApi[]) {
+    //this.currentEvents = events;
+  }
+  
+  toCalendar(){
+    
+    
+    this.EventService.getData().subscribe(res=>{
+      for(let i=0;i<=Object.keys(res).length;i++){
+        this.eventList=res;
+        
+      }
+      
+      
+    });
+  }
+
+  handleDateClick(arg) {
+    alert('date click! ' + arg.dateStr)
   }
 
 }

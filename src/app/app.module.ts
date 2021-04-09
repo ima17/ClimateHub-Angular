@@ -14,6 +14,21 @@ import { ELearningComponent } from './pages/e-learning/e-learning.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { EventsComponent } from './pages/events/events.component';
+import {EventListComponent } from 'src/app/pages/event-list/event-list.component';
+import {FullCalendarModule } from '@fullcalendar/angular';
+import dayGridPlugin from '@fullcalendar/daygrid'; // plugin
+import interactionPlugin from '@fullcalendar/interaction';
+import {HttpClientModule} from '@angular/common/http';
+import {EventServiceService} from 'src/app/event-service.service';
+import { EventUpdateComponent } from './pages/event-update/event-update.component';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
+
+
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
 
 @NgModule({
   declarations: [
@@ -28,13 +43,22 @@ import { EventsComponent } from './pages/events/events.component';
     ELearningComponent,
     NavbarComponent,
     BlogComponent,
-    EventsComponent
+    EventsComponent,
+    EventListComponent,
+    EventUpdateComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FullCalendarModule,
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
-  providers: [],
+  providers: [
+    EventServiceService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
