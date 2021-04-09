@@ -19,6 +19,11 @@ import { UserComponent } from './pages/user/user.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
 import {HttpClientModule} from '@angular/common/http';
+import { UploadProjectsComponent } from './pages/upload-projects/upload-projects.component';
+import { EditUsersComponent } from './pages/edit-users/edit-users.component';
+import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
+import { AdminEventComponent } from './pages/admin-event/admin-event.component';
+import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.component';
 //import
 
 @NgModule({
@@ -37,7 +42,12 @@ import {HttpClientModule} from '@angular/common/http';
     EventsComponent,
     UserComponent,
     AdminComponent,
-    AdminProfileComponent
+    AdminProfileComponent,
+    UploadProjectsComponent,
+    EditUsersComponent,
+    AdminBlogComponent,
+    AdminEventComponent,
+    AdmimNavbarComponent
   ],
   imports: [
     BrowserModule,
