@@ -19,6 +19,7 @@ import { UserComponent } from './pages/user/user.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
 import {HttpClientModule} from '@angular/common/http';
+//import
 
 @NgModule({
   declarations: [
