@@ -10,8 +10,17 @@ import { JoinUSComponent } from './pages/join-us/join-us.component';
 import { ELearningComponent } from './pages/e-learning/e-learning.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { EventsComponent } from './pages/events/events.component';
+
 import {EventListComponent } from 'src/app/pages/event-list/event-list.component';
 import { EventUpdateComponent} from 'src/app/pages/event-update/event-update.component';
+
+import { AdminComponent } from './pages/admin/admin.component';
+import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
+import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
+import { AdminEventComponent } from './pages/admin-event/admin-event.component';
+import { EditUsersComponent } from './pages/edit-users/edit-users.component';
+import { UploadProjectsComponent } from './pages/upload-projects/upload-projects.component';
+
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -24,8 +33,18 @@ const routes: Routes = [
   {path:'Events',component:EventsComponent},
   {path:'JoinUs',component:JoinUSComponent},
   {path:'ELearning',component:ELearningComponent},
+
   {path:'Events-List-view',component:EventListComponent},
   {path :'Events-List-view/Events-Update/:id',component:EventUpdateComponent}
+
+  {path:'admin',component:AdminComponent},
+  {path:'admin-profile',component:AdminProfileComponent},
+  {path:'admin-blog',component:AdminBlogComponent},
+  {path:'admin-event',component:AdminEventComponent},
+  {path:'edit-users',component:EditUsersComponent},
+  {path:'upload-projects',component:UploadProjectsComponent},
+
+
   
 
 ];
