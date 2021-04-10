@@ -127,5 +127,8 @@
       }
     }
   },
-  "defaultProject": "climateHub"
+  "defaultProject": "climateHub",
+  "cli": {
+    "analytics": false
+  }
 }
