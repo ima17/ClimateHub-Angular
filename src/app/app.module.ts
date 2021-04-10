@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,7 +19,6 @@ import {EventListComponent } from 'src/app/pages/event-list/event-list.component
 import {FullCalendarModule } from '@fullcalendar/angular';
 import dayGridPlugin from '@fullcalendar/daygrid'; // plugin
 import interactionPlugin from '@fullcalendar/interaction';
-import {HttpClientModule} from '@angular/common/http';
 import {EventServiceService} from 'src/app/event-service.service';
 import { EventUpdateComponent } from './pages/event-update/event-update.component';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
@@ -41,6 +39,10 @@ import { EditUsersComponent } from './pages/edit-users/edit-users.component';
 import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.component';
+import { EventAddComponent } from './pages/event-add/event-add.component';
+import { EventPollComponent } from './pages/event-poll/event-poll.component';
+import { EventVoteComponent } from './pages/event-vote/event-vote.component';
+import { EventMailComponent } from './pages/event-mail/event-mail.component';
 //import
 
 
@@ -60,7 +62,7 @@ import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.componen
     EventsComponent,
 
     EventListComponent,
-    EventUpdateComponent
+    EventUpdateComponent,
     
 
     UserComponent,
@@ -70,7 +72,11 @@ import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.componen
     EditUsersComponent,
     AdminBlogComponent,
     AdminEventComponent,
-    AdmimNavbarComponent
+    AdmimNavbarComponent,
+    EventAddComponent,
+    EventPollComponent,
+    EventVoteComponent,
+    EventMailComponent
 
   ],
   imports: [
@@ -83,7 +89,7 @@ import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.componen
     ReactiveFormsModule
   ],
   providers: [
-    EventServiceService
+    EventServiceService,
 
     FormsModule,
     HttpClientModule

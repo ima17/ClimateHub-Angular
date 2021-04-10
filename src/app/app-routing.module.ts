@@ -13,6 +13,9 @@ import { EventsComponent } from './pages/events/events.component';
 
 import {EventListComponent } from 'src/app/pages/event-list/event-list.component';
 import { EventUpdateComponent} from 'src/app/pages/event-update/event-update.component';
+import { EventAddComponent } from 'src/app/pages/event-add/event-add.component';
+import {EventPollComponent } from 'src/app/pages/event-poll/event-poll.component';
+import {EventVoteComponent } from 'src/app/pages/event-vote/event-vote.component';
 
 import { AdminComponent } from './pages/admin/admin.component';
 import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
@@ -35,7 +38,10 @@ const routes: Routes = [
   {path:'ELearning',component:ELearningComponent},
 
   {path:'Events-List-view',component:EventListComponent},
-  {path :'Events-List-view/Events-Update/:id',component:EventUpdateComponent}
+  {path :'Events-List-view/Events-Update/:id',component:EventUpdateComponent},
+  {path: 'Event-Add', component:EventAddComponent},
+  {path: 'Event-Vote/Event-Poll/:id',component:EventPollComponent},
+  {path: 'Event-Vote', component:EventVoteComponent},
 
   {path:'admin',component:AdminComponent},
   {path:'admin-profile',component:AdminProfileComponent},

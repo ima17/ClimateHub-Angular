@@ -1,0 +1,29 @@
+<div class="container">
+    <div class="card text-center">
+        <div class="card-header">
+          TOPIC: {{poll.title}}
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">{{poll.description}}</h5>
+            <p class="card-text">
+                Venue: {{poll.venue}}
+            </p>
+            <p class="card-text">
+                FROM: {{poll.sdate}} - TO: {{poll.edate}}
+            </p>
+            <p class="card-text">
+                FOR {{poll.partcipantType}} users.
+            </p>
+            <p class="card-text">
+                Would you like to partcipate for this event..
+            </p>
+          <div class="btn-group">
+          
+          <a href="/Event-Vote " class="btn btn-secondary mr-2">Back</a>
+          <button class="btn btn-success ">YES!</button>
+          </div>
+        </div>
+        
+      </div>
+      
+</div>
