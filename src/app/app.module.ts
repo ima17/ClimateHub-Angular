@@ -45,7 +45,11 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-//import
+import { JarwisService } from './services/jarwis.service';
+import { TokenService } from './services/token.service';
+import { AuthService } from './services/auth.service';
+import { AfterLoginService } from './services/after-login.service';
+import { BeforeLoginService } from './services/before-login.service';
 
 @NgModule({
   declarations: [
@@ -97,7 +101,7 @@ import { MatListModule } from '@angular/material/list';
     MatIconModule,
     MatListModule
   ],
-  providers: [],
+  providers: [JarwisService, TokenService, AuthService, AfterLoginService, BeforeLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

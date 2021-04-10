@@ -26,6 +26,8 @@ import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { EditUsersComponent } from './pages/edit-users/edit-users.component';
 import { UploadProjectsComponent } from './pages/upload-projects/upload-projects.component';
+import { AfterLoginService } from './services/after-login.service';
+import { BeforeLoginService } from './services/before-login.service';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
