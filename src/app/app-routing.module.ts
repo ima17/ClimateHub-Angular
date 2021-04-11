@@ -26,6 +26,9 @@ import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { EditUsersComponent } from './pages/edit-users/edit-users.component';
 import { UploadProjectsComponent } from './pages/upload-projects/upload-projects.component';
+import { ImprintComponent } from './components/footer/imprint/imprint.component';
+import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
+
 import { EventPollComponent} from 'src/app/event-Components/event-poll/event-poll.component';
 import { EventVoteComponent } from 'src/app/event-Components/event-vote/event-vote.component';
 import { EventAddComponent } from 'src/app/event-Components/event-add/event-add.component';
@@ -33,8 +36,10 @@ import { EventEditComponent} from 'src/app/event-Components/event-edit/event-edi
 import { EventMailComponent } from 'src/app/event-Components/event-mail/event-mail.component';
 import {EventListComponent} from 'src/app/event-Components/event-list/event-list.component';
 
+
 import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
+
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -63,6 +68,10 @@ const routes: Routes = [
   {path:'admin-event',component:AdminEventComponent},
   {path:'edit-users',component:EditUsersComponent},
   {path:'upload-projects',component:UploadProjectsComponent},
+  {path:'imprint',component:ImprintComponent},
+  {path:'privacy-policy',component:PrivacyPolicyComponent},
+
+  
   {path:'event-vote',component:EventVoteComponent},
   {path:'event-vote/event-poll/:id',component:EventPollComponent},
   {path:'event-add',component:EventAddComponent},

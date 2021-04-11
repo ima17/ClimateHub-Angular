@@ -39,6 +39,13 @@ import { EditUsersComponent } from './pages/edit-users/edit-users.component';
 import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.component';
+import { ImprintComponent } from './components/footer/imprint/imprint.component';
+import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
+
+
+
+
+//import
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -102,6 +109,11 @@ import { BeforeLoginService } from './services/before-login.service';
     AdminBlogComponent,
     AdminEventComponent,
     AdmimNavbarComponent,
+    ImprintComponent,
+    PrivacyPolicyComponent,
+
+    
+  
     AdminNavComponent,
     EventVoteComponent,
     EventPollComponent,
