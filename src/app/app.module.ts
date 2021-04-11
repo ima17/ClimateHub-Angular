@@ -144,6 +144,7 @@ import { LoginComponent } from './pages/login/login.component';
     FullCalendarModule
   ],
   providers: [JarwisService, TokenService, AuthService, AfterLoginService, BeforeLoginService],
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
