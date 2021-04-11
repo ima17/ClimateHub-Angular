@@ -26,6 +26,8 @@ import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { EditUsersComponent } from './pages/edit-users/edit-users.component';
 import { UploadProjectsComponent } from './pages/upload-projects/upload-projects.component';
+import { ImprintComponent } from './components/footer/imprint/imprint.component';
+import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -54,6 +56,8 @@ const routes: Routes = [
   {path:'admin-event',component:AdminEventComponent},
   {path:'edit-users',component:EditUsersComponent},
   {path:'upload-projects',component:UploadProjectsComponent},
+  {path:'imprint',component:ImprintComponent},
+  {path:'privacy-policy',component:PrivacyPolicyComponent},
 
   
 

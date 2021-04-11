@@ -38,6 +38,12 @@ import { EditUsersComponent } from './pages/edit-users/edit-users.component';
 import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.component';
+import { ImprintComponent } from './components/footer/imprint/imprint.component';
+import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
+
+
+
+
 //import
 
 @NgModule({
@@ -74,7 +80,13 @@ import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.componen
     EditUsersComponent,
     AdminBlogComponent,
     AdminEventComponent,
-    AdmimNavbarComponent
+    AdmimNavbarComponent,
+    ImprintComponent,
+    PrivacyPolicyComponent,
+
+    
+  
+    
   ],
   imports: [
     BrowserModule,
