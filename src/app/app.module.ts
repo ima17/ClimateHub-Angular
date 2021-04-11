@@ -31,7 +31,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { MapImageComponent } from './components/map-image/map-image.component';
 import { UserComponent } from './pages/user/user.component';
-import { AdminComponent } from './pages/admin/admin.component';
+//import { AdminComponent } from './pages/admin/admin.component';
 import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
 import {HttpClientModule} from '@angular/common/http';
 import { UploadProjectsComponent } from './pages/upload-projects/upload-projects.component';
@@ -39,6 +39,13 @@ import { EditUsersComponent } from './pages/edit-users/edit-users.component';
 import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.component';
+import { ImprintComponent } from './components/footer/imprint/imprint.component';
+import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
+
+
+
+
+//import
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -46,6 +53,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+
 import { FullCalendarModule } from '@fullcalendar/angular'; // calendar
 import dayGridPlugin from '@fullcalendar/daygrid'; // plugin
 import interactionPlugin from '@fullcalendar/interaction';
@@ -61,6 +69,13 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   interactionPlugin
 ]);
 
+
+import { JarwisService } from './services/jarwis.service';
+import { TokenService } from './services/token.service';
+import { AuthService } from './services/auth.service';
+import { AfterLoginService } from './services/after-login.service';
+import { BeforeLoginService } from './services/before-login.service';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -90,13 +105,20 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     BreadcrumbComponent,
     MapImageComponent,
     UserComponent,
-    AdminComponent,
+    //AdminComponent,
     AdminProfileComponent,
     UploadProjectsComponent,
     EditUsersComponent,
     AdminBlogComponent,
     AdminEventComponent,
     AdmimNavbarComponent,
+    
+    LoginComponent,
+    ImprintComponent,
+    PrivacyPolicyComponent,
+
+    
+  
     AdminNavComponent,
     EventVoteComponent,
     EventPollComponent,
@@ -121,7 +143,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatListModule,
     FullCalendarModule
   ],
-  providers: [],
+  providers: [JarwisService, TokenService, AuthService, AfterLoginService, BeforeLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

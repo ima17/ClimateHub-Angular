@@ -20,18 +20,27 @@ import { EnvelopeComponent } from './pages/home/juggling-container-links/envelop
 import { ZoningComponent } from './pages/home/juggling-container-links/zoning/zoning.component';
 import { MaterialComponent } from './pages/home/juggling-container-links/material/material.component';
 import { VentilationComponent } from './pages/home/juggling-container-links/ventilation/ventilation.component';
-import { AdminComponent } from './pages/admin/admin.component';
+
 import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
 import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { EditUsersComponent } from './pages/edit-users/edit-users.component';
 import { UploadProjectsComponent } from './pages/upload-projects/upload-projects.component';
+import { ImprintComponent } from './components/footer/imprint/imprint.component';
+import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
+
 import { EventPollComponent} from 'src/app/event-Components/event-poll/event-poll.component';
 import { EventVoteComponent } from 'src/app/event-Components/event-vote/event-vote.component';
 import { EventAddComponent } from 'src/app/event-Components/event-add/event-add.component';
 import { EventEditComponent} from 'src/app/event-Components/event-edit/event-edit.component';
 import { EventMailComponent } from 'src/app/event-Components/event-mail/event-mail.component';
 import {EventListComponent} from 'src/app/event-Components/event-list/event-list.component';
+
+
+import { AfterLoginService } from './services/after-login.service';
+import { BeforeLoginService } from './services/before-login.service';
+import { LoginComponent } from './pages/login/login.component';
+import { AdminNavComponent } from './admin-nav/admin-nav.component';
 
 
 const routes: Routes = [
@@ -55,12 +64,17 @@ const routes: Routes = [
   {path:'ventilation',component:VentilationComponent},
   {path:'envelope',component:EnvelopeComponent},
   {path:'zoning',component:ZoningComponent},
-  {path:'admin',component:AdminComponent},
+  {path:'admin',component:AdminNavComponent},
   {path:'admin-profile',component:AdminProfileComponent},
   {path:'admin-blog',component:AdminBlogComponent},
   {path:'admin-event',component:AdminEventComponent},
   {path:'edit-users',component:EditUsersComponent},
   {path:'upload-projects',component:UploadProjectsComponent},
+  {path:'login',component:LoginComponent},
+  {path:'imprint',component:ImprintComponent},
+  {path:'privacy-policy',component:PrivacyPolicyComponent},
+
+  
   {path:'event-vote',component:EventVoteComponent},
   {path:'event-vote/event-poll/:id',component:EventPollComponent},
   {path:'event-add',component:EventAddComponent},
