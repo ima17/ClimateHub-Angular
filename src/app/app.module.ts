@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
+import { FormBuilder } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
@@ -45,6 +46,35 @@ import { PrivacyPolicyComponent } from './components/footer/privacy-policy/priva
 
 
 //import
+import { AdminNavComponent } from './admin-nav/admin-nav.component';
+import { LayoutModule } from '@angular/cdk/layout';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatIconModule } from '@angular/material/icon';
+import { MatListModule } from '@angular/material/list';
+
+import { FullCalendarModule } from '@fullcalendar/angular'; // calendar
+import dayGridPlugin from '@fullcalendar/daygrid'; // plugin
+import interactionPlugin from '@fullcalendar/interaction';
+import { EventVoteComponent } from './event-Components/event-vote/event-vote.component';
+import { EventPollComponent } from './event-Components/event-poll/event-poll.component';
+import { EventAddComponent } from './event-Components/event-add/event-add.component';
+import { EventEditComponent } from './event-Components/event-edit/event-edit.component';
+import { EventMailComponent } from './event-Components/event-mail/event-mail.component';
+import { EventListComponent } from './event-Components/event-list/event-list.component';
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
+
+
+import { JarwisService } from './services/jarwis.service';
+import { TokenService } from './services/token.service';
+import { AuthService } from './services/auth.service';
+import { AfterLoginService } from './services/after-login.service';
+import { BeforeLoginService } from './services/before-login.service';
 
 @NgModule({
   declarations: [
@@ -86,6 +116,13 @@ import { PrivacyPolicyComponent } from './components/footer/privacy-policy/priva
 
     
   
+    AdminNavComponent,
+    EventVoteComponent,
+    EventPollComponent,
+    EventAddComponent,
+    EventEditComponent,
+    EventMailComponent,
+    EventListComponent,
     
   ],
   imports: [
@@ -93,9 +130,17 @@ import { PrivacyPolicyComponent } from './components/footer/privacy-policy/priva
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
-    HttpClientModule
+    ReactiveFormsModule,
+    HttpClientModule,
+    LayoutModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatSidenavModule,
+    MatIconModule,
+    MatListModule,
+    FullCalendarModule
   ],
-  providers: [],
+  providers: [JarwisService, TokenService, AuthService, AfterLoginService, BeforeLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
