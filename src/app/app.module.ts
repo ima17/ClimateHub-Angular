@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
+import { FormBuilder } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
@@ -38,6 +39,13 @@ import { EditUsersComponent } from './pages/edit-users/edit-users.component';
 import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.component';
+import { ImprintComponent } from './components/footer/imprint/imprint.component';
+import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
+
+
+
+
+//import
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -45,6 +53,23 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
+
+import { FullCalendarModule } from '@fullcalendar/angular'; // calendar
+import dayGridPlugin from '@fullcalendar/daygrid'; // plugin
+import interactionPlugin from '@fullcalendar/interaction';
+import { EventVoteComponent } from './event-Components/event-vote/event-vote.component';
+import { EventPollComponent } from './event-Components/event-poll/event-poll.component';
+import { EventAddComponent } from './event-Components/event-add/event-add.component';
+import { EventEditComponent } from './event-Components/event-edit/event-edit.component';
+import { EventMailComponent } from './event-Components/event-mail/event-mail.component';
+import { EventListComponent } from './event-Components/event-list/event-list.component';
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
+
+
 import { JarwisService } from './services/jarwis.service';
 import { TokenService } from './services/token.service';
 import { AuthService } from './services/auth.service';
@@ -87,21 +112,36 @@ import { LoginComponent } from './pages/login/login.component';
     AdminBlogComponent,
     AdminEventComponent,
     AdmimNavbarComponent,
+    
+    LoginComponent,
+    ImprintComponent,
+    PrivacyPolicyComponent,
+
+    
+  
     AdminNavComponent,
-    LoginComponent
+    EventVoteComponent,
+    EventPollComponent,
+    EventAddComponent,
+    EventEditComponent,
+    EventMailComponent,
+    EventListComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    FullCalendarModule
   ],
   providers: [JarwisService, TokenService, AuthService, AfterLoginService, BeforeLoginService],
   bootstrap: [AppComponent]
