@@ -39,8 +39,8 @@ import {EventListComponent} from 'src/app/event-Components/event-list/event-list
 
 import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
-import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { LoginComponent } from './pages/login/login.component';
+import { AdminNavComponent } from './admin-nav/admin-nav.component';
 
 
 const routes: Routes = [
@@ -70,6 +70,7 @@ const routes: Routes = [
   {path:'admin-event',component:AdminEventComponent},
   {path:'edit-users',component:EditUsersComponent},
   {path:'upload-projects',component:UploadProjectsComponent},
+  {path:'login',component:LoginComponent},
   {path:'imprint',component:ImprintComponent},
   {path:'privacy-policy',component:PrivacyPolicyComponent},
 

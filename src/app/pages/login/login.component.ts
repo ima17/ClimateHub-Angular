@@ -11,10 +11,10 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class LoginComponent implements OnInit {
 
-  public form = {
-    email: null,
-    password: null
-  };
+  public form={
+    email:null,
+    password:null
+  }
 
   public error = null;
 
