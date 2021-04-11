@@ -11,8 +11,18 @@
 
   <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
     <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
-      <li class="nav-item">
-        <a class="nav-link " routerLink="/edit-users">Users</a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" routerLink="/admin" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          User
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/edit-users">Add users</a>
+          <a class="dropdown-item" routerLink="">Edit users</a>
+
+
+        </div>
       </li>
       
       <li class="nav-item dropdown">

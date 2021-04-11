@@ -31,7 +31,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { MapImageComponent } from './components/map-image/map-image.component';
 import { UserComponent } from './pages/user/user.component';
-import { AdminComponent } from './pages/admin/admin.component';
+
 import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
 import {HttpClientModule} from '@angular/common/http';
 import { UploadProjectsComponent } from './pages/upload-projects/upload-projects.component';
@@ -104,7 +104,7 @@ import { BeforeLoginService } from './services/before-login.service';
     BreadcrumbComponent,
     MapImageComponent,
     UserComponent,
-    AdminComponent,
+    AdminNavComponent,
     AdminProfileComponent,
     UploadProjectsComponent,
     EditUsersComponent,
