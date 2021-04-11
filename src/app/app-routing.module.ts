@@ -33,6 +33,8 @@ import { EventEditComponent} from 'src/app/event-Components/event-edit/event-edi
 import { EventMailComponent } from 'src/app/event-Components/event-mail/event-mail.component';
 import {EventListComponent} from 'src/app/event-Components/event-list/event-list.component';
 
+import { AfterLoginService } from './services/after-login.service';
+import { BeforeLoginService } from './services/before-login.service';
 
 const routes: Routes = [
   {path:'',component:HomeComponent},

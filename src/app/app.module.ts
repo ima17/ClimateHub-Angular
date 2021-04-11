@@ -61,6 +61,11 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   interactionPlugin
 ]);
 
+import { JarwisService } from './services/jarwis.service';
+import { TokenService } from './services/token.service';
+import { AuthService } from './services/auth.service';
+import { AfterLoginService } from './services/after-login.service';
+import { BeforeLoginService } from './services/before-login.service';
 
 @NgModule({
   declarations: [
@@ -121,7 +126,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatListModule,
     FullCalendarModule
   ],
-  providers: [],
+  providers: [JarwisService, TokenService, AuthService, AfterLoginService, BeforeLoginService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
