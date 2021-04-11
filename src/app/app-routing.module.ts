@@ -20,7 +20,7 @@ import { EnvelopeComponent } from './pages/home/juggling-container-links/envelop
 import { ZoningComponent } from './pages/home/juggling-container-links/zoning/zoning.component';
 import { MaterialComponent } from './pages/home/juggling-container-links/material/material.component';
 import { VentilationComponent } from './pages/home/juggling-container-links/ventilation/ventilation.component';
-//import { AdminComponent } from './pages/admin/admin.component';
+
 import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
 import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
@@ -40,6 +40,7 @@ import {EventListComponent} from 'src/app/event-Components/event-list/event-list
 import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { LoginComponent } from './pages/login/login.component';
+import { AdminNavComponent } from './admin-nav/admin-nav.component';
 
 
 const routes: Routes = [
@@ -63,7 +64,7 @@ const routes: Routes = [
   {path:'ventilation',component:VentilationComponent},
   {path:'envelope',component:EnvelopeComponent},
   {path:'zoning',component:ZoningComponent},
-  //{path:'admin',component:AdminComponent},
+  {path:'admin',component:AdminNavComponent},
   {path:'admin-profile',component:AdminProfileComponent},
   {path:'admin-blog',component:AdminBlogComponent},
   {path:'admin-event',component:AdminEventComponent},
