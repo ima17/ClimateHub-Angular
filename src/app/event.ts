@@ -1,3 +1,7 @@
+
+
+
+
 import { Time } from "@angular/common";
 import { dateSelectionJoinTransformer } from "@fullcalendar/common";
 
@@ -11,4 +15,8 @@ export class Event {
     recurrence:any;
     recurTime:any;
     admin_id:any;
+    isPoll:any;
+
 }
+
+
