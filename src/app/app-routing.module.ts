@@ -40,6 +40,7 @@ import {EventListComponent} from 'src/app/event-Components/event-list/event-list
 import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
+import { LoginComponent } from './pages/login/login.component';
 
 
 const routes: Routes = [
@@ -77,7 +78,8 @@ const routes: Routes = [
   {path:'event-vote/event-poll/:id',component:EventPollComponent},
   {path:'event-add',component:EventAddComponent},
   {path:'event-list/event-edit/:id',component:EventEditComponent},
-  {path: 'event-list',component:EventListComponent}
+  {path: 'event-list',component:EventListComponent},
+  {path: 'login',component:LoginComponent}
 
 ];
 
