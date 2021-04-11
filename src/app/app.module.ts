@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { FormBuilder } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -46,7 +45,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-
 import { FullCalendarModule } from '@fullcalendar/angular'; // calendar
 import dayGridPlugin from '@fullcalendar/daygrid'; // plugin
 import interactionPlugin from '@fullcalendar/interaction';
@@ -67,7 +65,7 @@ import { JarwisService } from './services/jarwis.service';
 import { TokenService } from './services/token.service';
 import { AuthService } from './services/auth.service';
 import { AfterLoginService } from './services/after-login.service';
-import { BeforeLoginService } from './services/before-login.se
+import { BeforeLoginService } from './services/before-login.service';
 
 @NgModule({
   declarations: [
