@@ -26,6 +26,13 @@ import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { EditUsersComponent } from './pages/edit-users/edit-users.component';
 import { UploadProjectsComponent } from './pages/upload-projects/upload-projects.component';
+import { EventPollComponent} from 'src/app/event-Components/event-poll/event-poll.component';
+import { EventVoteComponent } from 'src/app/event-Components/event-vote/event-vote.component';
+import { EventAddComponent } from 'src/app/event-Components/event-add/event-add.component';
+import { EventEditComponent} from 'src/app/event-Components/event-edit/event-edit.component';
+import { EventMailComponent } from 'src/app/event-Components/event-mail/event-mail.component';
+import {EventListComponent} from 'src/app/event-Components/event-list/event-list.component';
+
 
 const routes: Routes = [
   {path:'',component:HomeComponent},
@@ -54,8 +61,11 @@ const routes: Routes = [
   {path:'admin-event',component:AdminEventComponent},
   {path:'edit-users',component:EditUsersComponent},
   {path:'upload-projects',component:UploadProjectsComponent},
-
-  
+  {path:'event-vote',component:EventVoteComponent},
+  {path:'event-vote/event-poll/:id',component:EventPollComponent},
+  {path:'event-add',component:EventAddComponent},
+  {path:'event-list/event-edit/:id',component:EventEditComponent},
+  {path: 'event-list',component:EventListComponent}
 
 ];
 

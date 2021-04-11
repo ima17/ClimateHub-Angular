@@ -1,8 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule} from '@angular/forms';
+import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
+import { FormBuilder } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
@@ -45,7 +46,21 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-//import
+import { FullCalendarModule } from '@fullcalendar/angular'; // calendar
+import dayGridPlugin from '@fullcalendar/daygrid'; // plugin
+import interactionPlugin from '@fullcalendar/interaction';
+import { EventVoteComponent } from './event-Components/event-vote/event-vote.component';
+import { EventPollComponent } from './event-Components/event-poll/event-poll.component';
+import { EventAddComponent } from './event-Components/event-add/event-add.component';
+import { EventEditComponent } from './event-Components/event-edit/event-edit.component';
+import { EventMailComponent } from './event-Components/event-mail/event-mail.component';
+import { EventListComponent } from './event-Components/event-list/event-list.component';
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
+
 
 @NgModule({
   declarations: [
@@ -82,20 +97,29 @@ import { MatListModule } from '@angular/material/list';
     AdminBlogComponent,
     AdminEventComponent,
     AdmimNavbarComponent,
-    AdminNavComponent
+    AdminNavComponent,
+    EventVoteComponent,
+    EventPollComponent,
+    EventAddComponent,
+    EventEditComponent,
+    EventMailComponent,
+    EventListComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     FormsModule,
+    ReactiveFormsModule,
     HttpClientModule,
     LayoutModule,
     MatToolbarModule,
     MatButtonModule,
     MatSidenavModule,
     MatIconModule,
-    MatListModule
+    MatListModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

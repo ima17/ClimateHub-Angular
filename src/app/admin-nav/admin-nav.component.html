@@ -1,29 +1,48 @@
-<mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
-      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
-      [mode]="(isHandset$ | async) ? 'over' : 'side'"
-      [opened]="(isHandset$ | async) === false">
-    <mat-toolbar>Menu</mat-toolbar>
-    <mat-nav-list>
-      <a mat-list-item  routerLink="/admin-profile">Home</a>
-      <a mat-list-item routerLink="/upload-projects">Upload Projects</a>
-      <a mat-list-item routerLink="/admin-event">Events</a>
-      <a mat-list-item routerLink="/admin-blog">Blog</a>
-      <a mat-list-item routerLink="/edit-users">Edit Users</a>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <mat-toolbar color="primary">
-      <button
-        type="button"
-        aria-label="Toggle sidenav"
-        mat-icon-button
-        (click)="drawer.toggle()"
-        *ngIf="isHandset$ | async">
-        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
-      </button>
-      <span>climateHub</span>
-    </mat-toolbar>
-    <ng-content></ng-content>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
+  <a class="navbar-brand" href="#"><img
+      src="https://app.vanillr.io/templates/frontend/climatehub.vanillr.io/img/ClimateHub-V1.png" width="30" height="30"
+      alt="Logo" class="logo"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+      <li class="nav-item">
+        <a class="nav-link " routerLink="/edit-users">Users</a>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" routerLink="/admin-events" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Events
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/event-add">Add Events</a>
+          <a class="dropdown-item" routerLink="">Edit Events</a>
+
+
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" routerLink="/upload-projects" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Projects
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="">Upload Projects</a>
+          <a class="dropdown-item" routerLink="">Edit Projects</a>
+
+
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin-blog">Blog</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
