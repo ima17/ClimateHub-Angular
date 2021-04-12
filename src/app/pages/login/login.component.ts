@@ -5,24 +5,18 @@ import { JarwisService } from 'src/app/services/jarwis.service';
 import { TokenService } from 'src/app/services/token.service';
 
 @Component({
-  selector: 'app-edit-users',
-  templateUrl: './edit-users.component.html',
-  styleUrls: ['./edit-users.component.scss']
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.scss']
 })
-export class EditUsersComponent implements OnInit {
+export class LoginComponent implements OnInit {
 
   public form={
     email:null,
-    password:null,
-    name:null,
-    institute:null,
-    mobile:null,
-    password_confirmation:null,
-    username:null,
-    profession:null
-  };
+    password:null
+  }
 
-  public error = [];
+  public error = null;
 
   constructor(
     private Jarwis: JarwisService,
@@ -32,7 +26,7 @@ export class EditUsersComponent implements OnInit {
   ) { }
 
   onSubmit(){
-    this.Jarwis.registeruser(this.form).subscribe(
+    this.Jarwis.login(this.form).subscribe(
        data => this.handleResponse(data),
        error => this.handleError(error)
      ); 
@@ -43,7 +37,7 @@ export class EditUsersComponent implements OnInit {
   handleResponse(data){
     this.Token.handle(data.access_token);
     this.Auth.changeAuthStatus(true);
-    this.router.navigateByUrl('/admin-profile');
+    this.router.navigateByUrl('/Projects');
   }
 
   handleError(error){
@@ -53,4 +47,4 @@ export class EditUsersComponent implements OnInit {
   ngOnInit(): void {
   }
 
-}
+} 
