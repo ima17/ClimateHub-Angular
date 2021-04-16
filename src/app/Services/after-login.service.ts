@@ -13,4 +13,4 @@ export class AfterLoginService implements CanActivate{
     return this.Token.loggedIn();
   }
   constructor(private Token: TokenService) { }
-}
+} 
