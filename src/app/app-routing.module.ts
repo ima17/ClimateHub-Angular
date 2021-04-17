@@ -26,7 +26,7 @@ import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { EditUsersComponent } from './pages/edit-users/edit-users.component';
 import { UploadProjectsComponent } from './pages/upload-projects/upload-projects.component';
-import { ImprintComponent } from './components/footer/imprint/imprint.component';
+import { ImprintComponent} from './components/footer/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
 
 import { EventPollComponent} from 'src/app/event-Components/event-poll/event-poll.component';
