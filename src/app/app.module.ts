@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { FormBuilder } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -31,7 +30,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { MapImageComponent } from './components/map-image/map-image.component';
 import { UserComponent } from './pages/user/user.component';
-//import { AdminComponent } from './pages/admin/admin.component';
+//import { AdminComponent } from 'src/app/pages/admin/admin.component';
 import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
 import {HttpClientModule} from '@angular/common/http';
 import { UploadProjectsComponent } from './pages/upload-projects/upload-projects.component';
@@ -41,11 +40,6 @@ import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.component';
 import { ImprintComponent } from './components/footer/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
-
-
-
-
-//import
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
