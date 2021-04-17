@@ -41,6 +41,8 @@ import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { LoginComponent } from './pages/login/login.component';
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
+import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
+import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 
 
 const routes: Routes = [
@@ -80,7 +82,9 @@ const routes: Routes = [
   {path:'event-add',component:EventAddComponent},
   {path:'event-list/event-edit/:id',component:EventEditComponent},
   {path: 'event-list',component:EventListComponent},
-  {path: 'login',component:LoginComponent}
+  {path: 'login',component:LoginComponent},
+  {path: 'request-password',component:RequestResetComponent},
+  {path: 'response-password',component:ResponseResetComponent}
 
 ];
 

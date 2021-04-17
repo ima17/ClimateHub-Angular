@@ -76,6 +76,9 @@ import { AuthService } from './services/auth.service';
 import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { LoginComponent } from './pages/login/login.component';
+import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
+import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
+import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 
 @NgModule({
   declarations: [
@@ -127,6 +130,8 @@ import { LoginComponent } from './pages/login/login.component';
     EventMailComponent,
     EventListComponent,
     LoginComponent,
+    RequestResetComponent,
+    ResponseResetComponent,
     
   ],
   imports: [
@@ -142,9 +147,11 @@ import { LoginComponent } from './pages/login/login.component';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    FullCalendarModule
+    FullCalendarModule,
+    SnotifyModule
   ],
-  providers: [JarwisService, TokenService, AuthService, AfterLoginService, BeforeLoginService],
+  providers: [JarwisService, TokenService, AuthService, AfterLoginService, BeforeLoginService,{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},
+  SnotifyService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
