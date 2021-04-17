@@ -35,7 +35,13 @@
           <a class="nav-link" routerLink="/Blog">Blog</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/ELearning">E-Learning</a>
+          <a class="nav-link" routerLink="/ELearning" *ngIf=loggedIn>E-Learning</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLink="/login" *ngIf=!loggedIn>Login</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#" (click)="logout($event)" *ngIf=loggedIn>Logout</a>
         </li>
         
       </ul>

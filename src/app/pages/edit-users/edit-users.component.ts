@@ -24,6 +24,7 @@ export class EditUsersComponent implements OnInit {
   };
 
   public error = [];
+ 
 
   constructor(
     private Jarwis: JarwisService,

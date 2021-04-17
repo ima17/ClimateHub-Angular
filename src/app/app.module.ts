@@ -40,6 +40,13 @@ import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.component';
 import { ImprintComponent } from './components/footer/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
+//import { AfterLoginService } from './services/after-login.service';
+//import { BeforeLoginService } from './services/before-login.service'; 
+
+
+
+
+//import
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -68,6 +75,7 @@ import { AuthService } from './services/auth.service';
 import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { LoginComponent } from './pages/login/login.component';
+import { MapContainerComponent } from './components/map-container/map-container.component';
 
 @NgModule({
   declarations: [
@@ -118,6 +126,11 @@ import { LoginComponent } from './pages/login/login.component';
     EventEditComponent,
     EventMailComponent,
     EventListComponent,
+<<<<<<< HEAD
+    MapContainerComponent,
+=======
+    LoginComponent,
+>>>>>>> 3736aa9186bbc61e43fa17ba9ceee08c386fd147
     
   ],
   imports: [
