@@ -5,13 +5,16 @@
       <div class="card-header">Login Here</div>
       <div class="card-body">
         <form #registerForm=ngForm (ngSubmit)="onSubmit()">
-  
+
+         
           
           <div class="form-group row">
             <label for="inputName3" class="col-sm-2 col-form-label">Name</label>
             <div class="col-sm-10">
               <input type="text" name="name" class="form-control" id="inputName3" placeholder="Name" [(ngModel)]="form.name" required>
-              
+              <!-- <div class="alert alert-danger" [hidden]="!error.name">
+                {{error.name}}
+              </div> -->
             </div>
           </div>
 
@@ -19,7 +22,9 @@
             <label for="userName3" class="col-sm-2 col-form-label">User name</label>
             <div class="col-sm-10">
               <input type="text" name="username" class="form-control" id="userName3" placeholder="User name" [(ngModel)]="form.username" required>
-              
+              <!-- <div class="alert alert-danger" [hidden]="!error.username">
+                {{error.username}}
+              </div> -->
             </div>
           </div>
 
@@ -27,7 +32,9 @@
             <label for="inputInstitute3" class="col-sm-2 col-form-label">Institution / Organisation</label>
             <div class="col-sm-10">
               <input type="text" name="institute" class="form-control" id="inputInstitute3" placeholder="Academic institute" [(ngModel)]="form.institute" required>
-              
+              <!-- <div class="alert alert-danger" [hidden]="!error.institute">
+                {{error.institute}}
+              </div> -->
             </div>
           </div>
 
@@ -35,7 +42,9 @@
             <label for="inputProfession3" class="col-sm-2 col-form-label">Profession</label>
             <div class="col-sm-10">
               <input type="text" name="profession" class="form-control" id="inputProfession3" placeholder="Profession" [(ngModel)]="form.profession" required>
-              
+              <!-- <div class="alert alert-danger" [hidden]="!error.profession">
+                {{error.profession}}
+              </div> -->
             </div>
           </div>
 
@@ -43,7 +52,9 @@
             <label for="inputEmail3" class="col-sm-2 col-form-label">Email address</label>
             <div class="col-sm-10">
               <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email" [(ngModel)]="form.email" required>
-              
+              <!-- <div class="alert alert-danger" [hidden]="!error.email">
+                {{error.email}}
+              </div> -->
             </div>
           </div>
 
@@ -53,7 +64,9 @@
             <div class="col-sm-10">
               <input type="text" name="mobile" class="form-control" id="inputMobile3" placeholder="Phone number" [(ngModel)]="form.mobile"
                 required>
-                
+                <!-- <div class="alert alert-danger" [hidden]="!error.mobile">
+                  {{error.mobile}}
+                </div>   -->
             </div>
           </div> 
 
@@ -62,7 +75,9 @@
             <div class="col-sm-10">
               <input type="password" name="password" class="form-control" id="inputPasswordConfirmation3" placeholder="Password"
                 [(ngModel)]="form.password" required>
-                
+                <!-- <div class="alert alert-danger" [hidden]="!error.password">
+                  {{error.password}}
+                </div>   -->
             </div>
           </div>
   
@@ -71,15 +86,24 @@
             <div class="col-sm-10">
               <input type="password" name="password_confirmation" class="form-control" id="inputPassword3" placeholder="Confirm Password" [(ngModel)]="form.password_confirmation"
                 required>
+                
             </div>
           </div>
+
+          <!-- <div class="form-group row">
+            <div class="col-sm-10">
+              <input type="hidden" name="usertype" class="form-control" id="inputUsertype3" [(ngModel)]="form.usertype" value="USER"
+                required>
+                
+            </div>
+          </div>  -->
 
           
   
           <div class="form-group row">
             <div class="col-sm-10 offset-2">
   
-              <button type="submit" class="btn btn-primary" [disabled]="!registerForm.valid">Sign in</button>
+              <button type="submit" class="btn btn-primary" >Sign in</button>
   
             </div>
           </div>

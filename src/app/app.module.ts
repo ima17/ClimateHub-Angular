@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
-
 import { AppRoutingModule } from './app-routing.module';
 import { FormBuilder } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -31,7 +30,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 import { MapImageComponent } from './components/map-image/map-image.component';
 import { UserComponent } from './pages/user/user.component';
-//import { AdminComponent } from './pages/admin/admin.component';
+//import { AdminComponent } from 'src/app/pages/admin/admin.component';
 import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
 import {HttpClientModule} from '@angular/common/http';
 import { UploadProjectsComponent } from './pages/upload-projects/upload-projects.component';
@@ -41,6 +40,8 @@ import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.component';
 import { ImprintComponent } from './components/footer/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
+//import { AfterLoginService } from './services/after-login.service';
+//import { BeforeLoginService } from './services/before-login.service'; 
 
 
 
@@ -53,7 +54,6 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-
 import { FullCalendarModule } from '@fullcalendar/angular'; // calendar
 import dayGridPlugin from '@fullcalendar/daygrid'; // plugin
 import interactionPlugin from '@fullcalendar/interaction';
@@ -127,7 +127,11 @@ import { MapContainerComponent } from './components/map-container/map-container.
     EventEditComponent,
     EventMailComponent,
     EventListComponent,
+<<<<<<< HEAD
     MapContainerComponent,
+=======
+    LoginComponent,
+>>>>>>> 3736aa9186bbc61e43fa17ba9ceee08c386fd147
     
   ],
   imports: [

@@ -6,7 +6,8 @@ import { Injectable } from '@angular/core';
 export class TokenService {
 
   private iss = {
-    login: 'http://localhost:8000/login'
+    login: 'http://localhost:8000/login',
+    registeruser: 'http://localhost:8000/registeruser'
   };
 
   constructor() { }
@@ -36,7 +37,7 @@ export class TokenService {
         return Object.values(this.iss).indexOf(payload.iss) > -1 ? true : false;
       }
     }
-   // return false;
+    return false;
   }
 
   payload(token) {
