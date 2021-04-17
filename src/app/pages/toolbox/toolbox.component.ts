@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ProjectDataService } from 'src/app/Services/project-data.service';
 
 @Component({
   selector: 'app-toolbox',
@@ -7,9 +8,18 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ToolboxComponent implements OnInit {
 
-  constructor() { }
+  projects:any;
+
+  constructor(private dataService:ProjectDataService) { }
 
   ngOnInit(): void {
+    this.getProjectsData();
   }
+
+  getProjectsData(){
+    this.dataService.getProjectData().subscribe(res =>{
+      this.projects=res;
+    });
+  };
 
 }

@@ -79,6 +79,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
+import { MapContainerComponent } from './components/map-container/map-container.component';
 
 @NgModule({
   declarations: [
@@ -129,9 +130,11 @@ import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
     EventEditComponent,
     EventMailComponent,
     EventListComponent,
+    MapContainerComponent,
     LoginComponent,
     RequestResetComponent,
     ResponseResetComponent,
+
     
   ],
   imports: [
