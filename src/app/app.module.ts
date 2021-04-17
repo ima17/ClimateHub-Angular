@@ -76,6 +76,7 @@ import { AuthService } from './services/auth.service';
 import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { LoginComponent } from './pages/login/login.component';
+import { MapContainerComponent } from './components/map-container/map-container.component';
 
 @NgModule({
   declarations: [
@@ -126,6 +127,7 @@ import { LoginComponent } from './pages/login/login.component';
     EventEditComponent,
     EventMailComponent,
     EventListComponent,
+    MapContainerComponent,
     
   ],
   imports: [
