@@ -23,7 +23,7 @@ export class EditUsersComponent implements OnInit {
     user_type:null 
   };
 
-  public error = [];
+  public error:any;
  
 
   constructor(
