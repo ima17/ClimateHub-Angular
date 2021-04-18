@@ -17,4 +17,12 @@ export class JarwisService {
   registeruser(data){
     return this.http.post(`${this.baseUrl}/registeruser`, data)
   }
+
+  sendPasswordLink(data){
+    return this.http.post(`${this.baseUrl}/sendPasswordLink`, data)
+  }
+
+  changePassword(data){
+    return this.http.post(`${this.baseUrl}/resetPassword`, data)
+  }
 }
