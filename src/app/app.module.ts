@@ -127,11 +127,8 @@ import { MapContainerComponent } from './components/map-container/map-container.
     EventEditComponent,
     EventMailComponent,
     EventListComponent,
-<<<<<<< HEAD
     MapContainerComponent,
-=======
     LoginComponent,
->>>>>>> 3736aa9186bbc61e43fa17ba9ceee08c386fd147
     
   ],
   imports: [
