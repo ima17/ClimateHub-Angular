@@ -41,6 +41,8 @@ import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { LoginComponent } from './pages/login/login.component';
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
+import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
+import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 
 
 const routes: Routes = [
@@ -70,6 +72,32 @@ const routes: Routes = [
   {path:'admin-event',component:AdminEventComponent},
   {path:'edit-users',component:EditUsersComponent},
   {path:'upload-projects',component:UploadProjectsComponent},
+  {path:'',component:HomeComponent},
+  {path:'Projects',component:ProjectsComponent},
+  {path:'Additives',component:AdditivesComponent},
+  {path:'Editorial',component:EditorialComponent}, 
+  {path:'Network',component:NetworkComponent},
+  {path:'Toolbox',component:ToolboxComponent},
+  {path:'Blog',component:BlogComponent},
+  {path:'Events',component:EventsComponent},
+  {path:'JoinUs',component:JoinUSComponent},
+  {path:'ELearning',component:ELearningComponent,canActivate: [AfterLoginService]},
+  {path:'geography',component:GeographyComponent},
+  {path:'topography',component: TopographyComponent},
+  {path:'ecology',component:EcologyComponent},
+  {path:'technology',component:TechnologyComponent},
+  {path:'volume',component:VolumeComponent},
+  {path:'energy',component:EnergyComponent},
+  {path:'material',component:MaterialComponent},
+  {path:'ventilation',component:VentilationComponent},
+  {path:'envelope',component:EnvelopeComponent},
+  {path:'zoning',component:ZoningComponent},
+  {path:'admin',component:AdminNavComponent,canActivate: [AfterLoginService]},
+  {path:'admin-profile',component:AdminProfileComponent,canActivate: [AfterLoginService]},
+  {path:'admin-blog',component:AdminBlogComponent,canActivate: [AfterLoginService]},
+  {path:'admin-event',component:AdminEventComponent,canActivate: [AfterLoginService]},
+  {path:'edit-users',component:EditUsersComponent,canActivate: [AfterLoginService]},
+  {path:'upload-projects',component:UploadProjectsComponent,canActivate: [AfterLoginService]},
   {path:'login',component:LoginComponent},
   {path:'imprint',component:ImprintComponent},
   {path:'privacy-policy',component:PrivacyPolicyComponent},
@@ -80,7 +108,9 @@ const routes: Routes = [
   {path:'event-add',component:EventAddComponent},
   {path:'event-list/event-edit/:id',component:EventEditComponent},
   {path: 'event-list',component:EventListComponent},
-  {path: 'login',component:LoginComponent}
+  {path: 'login',component:LoginComponent},
+  {path: 'request-password',component:RequestResetComponent},
+  {path: 'response-password',component:ResponseResetComponent}
 
 ];
 
