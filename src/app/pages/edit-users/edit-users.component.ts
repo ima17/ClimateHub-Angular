@@ -23,7 +23,18 @@ export class EditUsersComponent implements OnInit {
     user_type:null 
   };
 
-  public error:any;
+  public error={
+    email:null,
+    password:null,
+    name:null,
+    institute:null,
+    mobile:null,
+    password_confirmation:null,
+    username:null,
+    profession:null,
+    user_type:null
+  }
+  
  
 
   constructor(
