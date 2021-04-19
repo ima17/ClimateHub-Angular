@@ -77,6 +77,7 @@ import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { LoginComponent } from './pages/login/login.component';
 import { MapContainerComponent } from './components/map-container/map-container.component';
+import {BreadcrumbModule} from 'angular-crumbs';
 
 @NgModule({
   declarations: [
@@ -127,18 +128,15 @@ import { MapContainerComponent } from './components/map-container/map-container.
     EventEditComponent,
     EventMailComponent,
     EventListComponent,
-<<<<<<< HEAD
     MapContainerComponent,
-=======
     LoginComponent,
->>>>>>> 3736aa9186bbc61e43fa17ba9ceee08c386fd147
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule,
+    FormsModule, 
     ReactiveFormsModule,
     HttpClientModule,
     LayoutModule,
@@ -147,7 +145,8 @@ import { MapContainerComponent } from './components/map-container/map-container.
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    FullCalendarModule
+    FullCalendarModule,
+    BreadcrumbModule
   ],
   providers: [JarwisService, TokenService, AuthService, AfterLoginService, BeforeLoginService],
   bootstrap: [AppComponent]

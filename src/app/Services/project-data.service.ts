@@ -8,9 +8,14 @@ export class ProjectDataService {
 
   constructor(private httpClient:HttpClient) { }
 
-  getProjectData(){
-    return this.httpClient.get('http://127.0.0.1:8000/api/projects');
+  getPublicProjectData(){
+    return this.httpClient.get('http://127.0.0.1:8000/api/publicProjects');
   }
+
+  getPrivateProjectData(){
+    return this.httpClient.get('http://127.0.0.1:8000/api/privateProjects');
+  }
+  
   
 
 

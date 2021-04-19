@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectDataService } from 'src/app/Services/project-data.service';
+
 
 @Component({
   selector: 'app-additives',
@@ -8,18 +8,13 @@ import { ProjectDataService } from 'src/app/Services/project-data.service';
 })
 export class AdditivesComponent implements OnInit {
 
-  projects:any;
 
-  constructor(private dataService:ProjectDataService) { }
+
+  constructor() { }
 
   ngOnInit(): void {
-    this.getProjectsData();
+    
   }
 
-  getProjectsData(){
-    this.dataService.getProjectData().subscribe(res =>{
-      this.projects=res;
-    });
-  };
-
+  
 }
