@@ -75,8 +75,6 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'imprint',component:ImprintComponent},
   {path:'privacy-policy',component:PrivacyPolicyComponent},
-
-  
   {path:'event-vote',component:EventVoteComponent},
   {path:'event-vote/event-poll/:id',component:EventPollComponent},
   {path:'event-add',component:EventAddComponent},

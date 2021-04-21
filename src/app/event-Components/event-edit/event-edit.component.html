@@ -2,7 +2,7 @@
 <app-breadcrumb></app-breadcrumb>
 <div class="container">
   <h1>Update Events</h1>
-  <form action="" method="post" name="editEvent" (ngSubmit)="updateEvent()">
+  <form action="" method="post" name="editEvent" (ngSubmit)="updateEvent()" [formGroup]="eventEdit">
 
     <div class="card" id="card-title">
       <div class="card-body">
@@ -13,11 +13,9 @@
           <div class="col-9">
             <div class="form-group row">
               <div class="col-sm-12">
-                <input required ngModel name="title" placeholder="event title" type="text" class="form-control"
-                  #title="ngModel" change="log(title)" [(ngModel)]="event.title">
-                <div class="alert alert-danger" *ngIf="title.touched &&!title.valid">
-                  Title is required.
-                </div>
+                <input required  name="title" placeholder="event title" type="text" class="form-control"
+                 formControlName="title" change="log(title)" >
+                
               </div>
             </div>
 
@@ -35,12 +33,10 @@
           <div class="col-9">
             <div class="form-group row">
               <div class="col-sm-12">
-                <input required ngModel name="venue" placeholder="venue" change="log(description)" type="text"
-                  id="venue" #venue="ngModel" class="form-control" [(ngModel)]="event.venue">
+                <input required  name="venue" placeholder="venue" change="log(description)" type="text"
+                  id="venue"  class="form-control" formControlName="venue">
 
-                <div class="alert alert-danger" *ngIf="venue.touched && !venue.valid">
-                  Venue is required
-                </div>
+                
               </div>
             </div>
 
@@ -58,15 +54,12 @@
           <div class="col-9">
             <div class="form-group row">
               <div class="col-sm-12">
-                <textarea required maxlength="190" ngModel name="description" id="description" cols="" rows=""
-                  class="form-control" #description="ngModel" change="log(description)" placeholder="Event Description"
-                  [(ngModel)]="event.description">
+                <textarea required   name="description" id="description" cols="" rows=""
+                  class="form-control" change="log(description)" placeholder="Event Description"
+                  formControlName="description">
 
                 </textarea>
-                <div *ngIf="description.touched &&!description.valid">
-                  <div class="alert alert-danger" *ngIf="description.errors?.required">Description is required</div>
-                  <div class="alert alert-danger" *ngIf="description.errors?.maxlength">maximum 190 characters</div>
-                </div>
+                
               </div>
             </div>
 
@@ -85,7 +78,7 @@
             <div class="form-group row">
               <div class="col-sm-12">
                 <input type="datetime-local" name="from" id="timepicker1" class="form-control"
-                  [(ngModel)]="event.sdate">
+                  formControlName="from">
               </div>
             </div>
 
@@ -103,7 +96,7 @@
           <div class="col-9">
             <div class="form-group row">
               <div class="col-sm-12">
-                <input type="datetime-local" name="to" id="timepicker2" class="form-control" [(ngModel)]="event.edate">
+                <input type="datetime-local" name="to" id="timepicker2" class="form-control"formControlName="to">
               </div>
             </div>
 
@@ -121,7 +114,7 @@
           <div class="col-9">
             <div class="form-group row">
               <div class="col-sm-12">
-                <select class="custom-select" name="recurrence"[(ngModel)]="event.recurrence" >
+                <select class="custom-select" name="recurrence" class="form-control" formControlName="recurrence" >
                   <option value="none">None</option>
                   <option value="Daily">Daily</option>
                   <option value="Weekly">Weekly</option>
@@ -139,12 +132,12 @@
       <div class="card-body">
         <div class="row">
           <div class="col-3">
-            Event Recurrence
+            User Type
           </div>
           <div class="col-9">
             <div class="form-group row">
               <div class="col-sm-12">
-                <select class="custom-select" name="partcipantType" [(ngModel)]="event.partcipantType" >
+                <select class="custom-select" name="partcipantType" class="form-control" formControlName="partcipantType" >
                   <option value="public">Public Users</option>
                   <option value="private">Private Users</option>
                   <option value="partners">Partner Organizations</option>
@@ -167,7 +160,7 @@
           <div class="col-9">
             <div class="form-group row">
               <div class="col-sm-12">
-                <select class="custom-select" name="isPoll"  class="form-control" [(ngModel)]="event.isPoll">
+                <select class="custom-select" name="isPoll"  class="form-control" formControlName="isPoll">
                   <option value="1">Yes</option>
                   <option value="0">No</option>
                 </select>
