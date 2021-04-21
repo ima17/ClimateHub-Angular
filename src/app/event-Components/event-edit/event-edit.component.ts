@@ -69,7 +69,7 @@ export class EventEditComponent implements OnInit {
     this.event.description=this.eventEdit.value.description;
     this.event.sdate=this.eventEdit.value.from;
     this.event.edate=this.eventEdit.value.to;
-    this.event.recurrence=this.eventEdit.value.reccurence;
+    this.event.recurrence=this.eventEdit.value.recurrence;
     this.event.partcipantType=this.eventEdit.value.partcipantType;
     this.event.isPoll=this.eventEdit.value.isPoll;
 

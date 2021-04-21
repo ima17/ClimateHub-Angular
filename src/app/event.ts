@@ -10,7 +10,7 @@ export class Event {
     edate:Date;
     partcipantType:any;
     recurrence:any;
-    recurTime:any;
+    
     admin_id:any;
     isPoll:any;
 

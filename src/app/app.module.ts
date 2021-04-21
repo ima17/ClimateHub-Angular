@@ -40,13 +40,6 @@ import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.component';
 import { ImprintComponent } from './components/footer/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
-//import { AfterLoginService } from './services/after-login.service';
-//import { BeforeLoginService } from './services/before-login.service'; 
-
-
-
-
-//import
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -63,12 +56,6 @@ import { EventAddComponent } from './event-Components/event-add/event-add.compon
 import { EventEditComponent } from './event-Components/event-edit/event-edit.component';
 import { EventMailComponent } from './event-Components/event-mail/event-mail.component';
 import { EventListComponent } from './event-Components/event-list/event-list.component';
-
-FullCalendarModule.registerPlugins([ // register FullCalendar plugins
-  dayGridPlugin,
-  interactionPlugin
-]);
-
 import { JarwisService } from './services/jarwis.service';
 import { TokenService } from './services/token.service';
 import { AuthService } from './services/auth.service';
@@ -80,6 +67,13 @@ import { ResponseResetComponent } from './components/password/response-reset/res
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { MapContainerComponent } from './components/map-container/map-container.component';
 import {BreadcrumbModule} from 'angular-crumbs';
+import { NgxPaginationModule} from 'ngx-pagination';
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,
+  interactionPlugin
+]);
+
 
 @NgModule({
   declarations: [
@@ -152,7 +146,8 @@ import {BreadcrumbModule} from 'angular-crumbs';
     MatListModule,
     FullCalendarModule,
     BreadcrumbModule,
-    SnotifyModule
+    SnotifyModule,
+    NgxPaginationModule
   ],
   providers: [JarwisService, TokenService, AuthService, AfterLoginService, BeforeLoginService,{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},
   SnotifyService],

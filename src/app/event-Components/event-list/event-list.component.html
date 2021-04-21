@@ -10,13 +10,13 @@
             <th scope="col">Venue</th>
             <th scope="col">Start Date</th>
             <th scope="col">End Date</th>
-            <th scope="col">Recurrance </th>
+            <th scope="col">Recurrence </th>
             <th scope="col">User Type </th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor= "let eve of eventList">
+          <tr *ngFor= "let eve of eventList | paginate: {itemsPerPage: 4, currentPage: page}">
             
             <th scope="row">{{eve.title}}</th>
             <td>{{eve.venue}}</td>
@@ -36,5 +36,6 @@
           </tr>
         </tbody>
     </table>
+    <pagination-controls (pageChange)="page=$event" class="float-right"></pagination-controls>
 </div>
 <app-footer></app-footer>

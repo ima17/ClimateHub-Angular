@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {EventServiceService } from 'src/app/services/event-service.service';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 @Component({
   selector: 'app-event-vote',
@@ -9,6 +10,7 @@ import {EventServiceService } from 'src/app/services/event-service.service';
 export class EventVoteComponent implements OnInit {
 
   pollList: any;
+  page:any;
   constructor(private EventService:EventServiceService) { }
 
   ngOnInit(): void {

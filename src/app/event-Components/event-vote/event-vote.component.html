@@ -21,7 +21,7 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let eve of pollList">
+                <tr *ngFor="let eve of pollList | paginate: {itemsPerPage: 4, currentPage: page}">
 
                     <th scope="row">{{eve.title}}</th>
                     <td>{{eve.venue}}</td>
@@ -36,6 +36,8 @@
                 </tr>
             </tbody>
         </table>
+        
     </div>
+    <pagination-controls (pageChange)="page=$event" class="float-right"></pagination-controls>
 </div>
 <app-footer></app-footer>

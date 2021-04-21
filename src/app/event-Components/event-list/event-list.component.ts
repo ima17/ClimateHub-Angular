@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import swal from 'sweetalert2/dist/sweetalert2.js';
 import {EventServiceService } from 'src/app/services/event-service.service';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @Component({
@@ -11,6 +12,7 @@ import {EventServiceService } from 'src/app/services/event-service.service';
 export class EventListComponent implements OnInit {
 
   eventList: any;
+  page:any;
 
   constructor(private EventService: EventServiceService) { }
 
