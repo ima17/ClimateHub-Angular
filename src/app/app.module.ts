@@ -80,6 +80,7 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { MapContainerComponent } from './components/map-container/map-container.component';
+import {BreadcrumbModule} from 'angular-crumbs';
 
 @NgModule({
   declarations: [
@@ -141,7 +142,7 @@ import { MapContainerComponent } from './components/map-container/map-container.
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule,
+    FormsModule, 
     ReactiveFormsModule,
     HttpClientModule,
     LayoutModule,
@@ -151,6 +152,7 @@ import { MapContainerComponent } from './components/map-container/map-container.
     MatIconModule,
     MatListModule,
     FullCalendarModule,
+    BreadcrumbModule,
     SnotifyModule
   ],
   providers: [JarwisService, TokenService, AuthService, AfterLoginService, BeforeLoginService,{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},

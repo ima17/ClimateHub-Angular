@@ -7,17 +7,25 @@ import { ProjectDataService } from 'src/app/Services/project-data.service';
   styleUrls: ['./projects.component.scss']
 })
 export class ProjectsComponent implements OnInit {
-  projects:any;
+  publicprojects:any;
+  privateprojects:any;
 
   constructor(private dataService:ProjectDataService) { }
 
   ngOnInit(): void {
-    this.getProjectsData();
+    this.getPublicProjectsData();
+    this.getPrivateProjectsData();
   }
 
-  getProjectsData(){
-    this.dataService.getProjectData().subscribe(res =>{
-      this.projects=res;
+  getPublicProjectsData(){
+    this.dataService.getPublicProjectData().subscribe(res =>{
+      this.publicprojects=res;
+    });
+  };
+
+  getPrivateProjectsData(){
+    this.dataService.getPrivateProjectData().subscribe(res =>{
+      this.privateprojects=res;
     });
   };
 
