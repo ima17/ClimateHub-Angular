@@ -81,6 +81,7 @@ import { ResponseResetComponent } from './components/password/response-reset/res
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { MapContainerComponent } from './components/map-container/map-container.component';
 import {BreadcrumbModule} from 'angular-crumbs';
+import { DetailsComponent } from './pages/details/details.component';
 
 @NgModule({
   declarations: [
@@ -135,6 +136,7 @@ import {BreadcrumbModule} from 'angular-crumbs';
     LoginComponent,
     RequestResetComponent,
     ResponseResetComponent,
+    DetailsComponent,
 
     
   ],
