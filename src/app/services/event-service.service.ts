@@ -45,4 +45,8 @@ export class EventServiceService {
   getAllPoll(){
     return this.httpClient.get('http://127.0.0.1:8000/api/getPollEvents');
   }
+
+  sendVote(vote){
+    return this.httpClient.post('http://127.0.0.1:8000/api/saveVote',vote);
+  }
 }
