@@ -74,6 +74,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   interactionPlugin
 ]);
 
+import { DetailsComponent } from './pages/details/details.component';
 
 @NgModule({
   declarations: [
@@ -128,6 +129,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     LoginComponent,
     RequestResetComponent,
     ResponseResetComponent,
+    DetailsComponent,
 
     
   ],

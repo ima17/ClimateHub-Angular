@@ -20,6 +20,7 @@ import { EnvelopeComponent } from './pages/home/juggling-container-links/envelop
 import { ZoningComponent } from './pages/home/juggling-container-links/zoning/zoning.component';
 import { MaterialComponent } from './pages/home/juggling-container-links/material/material.component';
 import { VentilationComponent } from './pages/home/juggling-container-links/ventilation/ventilation.component';
+import { DetailsComponent } from './pages/details/details.component';
 
 import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
 import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
@@ -66,6 +67,7 @@ const routes: Routes = [
   {path:'ventilation',component:VentilationComponent,data: { breadcrumb: 'Ventilation'}},
   {path:'envelope',component:EnvelopeComponent,data: { breadcrumb: 'Envelope'}},
   {path:'zoning',component:ZoningComponent,data: { breadcrumb: 'Zoning'}},
+  {path:'details',component:DetailsComponent,data: { breadcrumb: 'Details'}},
   {path:'admin',component:AdminNavComponent},
   {path:'admin-profile',component:AdminProfileComponent},
   {path:'admin-blog',component:AdminBlogComponent},

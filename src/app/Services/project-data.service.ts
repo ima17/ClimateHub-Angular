@@ -16,6 +16,25 @@ export class ProjectDataService {
     return this.httpClient.get('http://127.0.0.1:8000/api/privateProjects');
   }
   
+  getLatestPublicProjectData(){
+    return this.httpClient.get('http://127.0.0.1:8000/api/latestProjects');
+  }
+  
+  getPublicToolBoxData(){
+    return this.httpClient.get('http://127.0.0.1:8000/api/publicToolbox');
+  }
+
+  getPrivateToolBoxData(){
+    return this.httpClient.get('http://127.0.0.1:8000/api/privateToolbox');
+  }
+
+  getPublicAdditivesData(){
+    return this.httpClient.get('http://127.0.0.1:8000/api/publicAdditives');
+  }
+
+  getPrivateAdditivesData(){
+    return this.httpClient.get('http://127.0.0.1:8000/api/privateAdditives');
+  }
   
 
 

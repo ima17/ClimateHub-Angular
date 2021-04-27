@@ -1,11 +1,13 @@
-.navbar{
-   margin-top: 100px;
-   
-    
+.navbar {
+    padding-top: 120px;
+  }
+
+  .breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
 }
 
-.list{
-    margin-left: 10px;
-    text-align: right;
+.text{
+  margin-right: 10px;
+  font-weight: bold;
+  color: grey;
 }
-

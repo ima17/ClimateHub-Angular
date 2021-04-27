@@ -14,35 +14,21 @@
   <div class="container">
     <div class="row">
       <div class="col-lg-5 sm-12">
-        <h1>ClimateHub</h1>
+        <h3>ClimateHub</h3>
         <p>We are proud to present you our climate based projects on this homepage.</p>
       </div>
       <div class="col-lg-7 sm-12">
-        <h1>Latest public projects</h1>
+        <h3>Latest public projects</h3>
         <div class="row">
-          <div class="col-sm" id="post1">
-            Project 1
+          <div class="col-sm" id="post1" *ngFor="let pro of latestpublicprojects">
+            <a href="#">{{pro.project_title}}</a>
           </div>
-          <div class="col-sm" id="post2">
-            Project 2
-          </div>
-          <div class="col-sm" id="post3">
-            Project 3
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm" id="post4">
-            Project 4
-          </div>
-          <div class="col-sm" id="post5">
-            Project 5
-          </div>
-          <div class="col-sm" ></div>
         </div>
       </div>
     </div>
   </div>
-
+ 
+ 
   
   
 

@@ -18,9 +18,21 @@
     margin: 35px;
   }
 
-  .navbar-brand{
+.navbar-brand{
     margin: 35px;
-  }
+}
+
+.nav-item{
+  font-size: 15px !important;
+}
+
+.navbar .navbar-nav > .active > a,
+.navbar .navbar-nav > .active > a:hover,
+.navbar .navbar-nav > .active > a:focus {
+    color: black;
+    background-color: gray;
+    box-shadow: inset 0px 6px 0px #AAA; /* switch to a lighter color for active element */
+}
 
 
  
