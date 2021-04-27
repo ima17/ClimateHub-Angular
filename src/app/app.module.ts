@@ -69,6 +69,7 @@ import { MapContainerComponent } from './components/map-container/map-container.
 import {BreadcrumbModule} from 'angular-crumbs';
 import { NgxPaginationModule} from 'ngx-pagination';
 
+
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin

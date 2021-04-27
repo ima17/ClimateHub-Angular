@@ -15,6 +15,7 @@ export class EventPollComponent implements OnInit {
   eventPoll_id:any;
   eventPoll_data:any;
   eventPoll=new Event;
+  choice:any;
 
   constructor(private route:ActivatedRoute,private EventService:EventServiceService,private formBuilder:FormBuilder) { 
     this.saveVote=this.formBuilder.group({
@@ -39,11 +40,17 @@ export class EventPollComponent implements OnInit {
   }
 
   castVote(){
-    //this.EventService.sendVote(this.eventPoll_id).subscribe(res=>{
-
-    //});
-    console.log("hi");
+    var voteChoice: any = new FormData();
+    voteChoice.append("event_id", this.eventPoll_id);
+    voteChoice.append("isVote", this.saveVote.get('vote').value);
+    voteChoice.append("user_id",1);
+    console.log(this.saveVote.get('vote').value);
     
+    this.EventService.sendVote(voteChoice).subscribe(
+      (response) => console.log(response),
+      
+      (error) => console.log(error)
+    )
   }
 
 }
