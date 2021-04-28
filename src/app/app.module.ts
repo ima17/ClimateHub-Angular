@@ -124,10 +124,14 @@ import { DetailsComponent } from './pages/details/details.component';
     EventMailComponent,
     EventListComponent,
     EditProjectsComponent,
+    UploadProjectsComponent,
     MapContainerComponent,
     RequestResetComponent,
     ResponseResetComponent,
     DetailsComponent,
+  ],
+  
+  imports:[
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

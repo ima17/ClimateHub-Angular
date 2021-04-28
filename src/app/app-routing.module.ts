@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
 import { HomeComponent } from './pages/home/home.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ToolboxComponent } from './pages/toolbox/toolbox.component';
@@ -75,7 +76,8 @@ const routes: Routes = [
   {path:'admin-blog',component:AdminBlogComponent,canActivate: [AfterLoginService]},
   {path:'admin-event',component:AdminEventComponent,canActivate: [AfterLoginService]},
   {path:'edit-users',component:EditUsersComponent,canActivate: [AfterLoginService]},
-  {path:'upload-projects',component:UploadProjectsComponent,canActivate: [AfterLoginService]},
+  //{path:'upload-projects',component:UploadProjectsComponent,canActivate: [AfterLoginService]},
+  {path:'upload-projects',component:UploadProjectsComponent},
   {path:'edit-projects',component:EditProjectsComponent,canActivate: [AfterLoginService]},
   {path:'login',component:LoginComponent},
   {path:'imprint',component:ImprintComponent},
