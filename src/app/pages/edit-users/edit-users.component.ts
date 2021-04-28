@@ -19,10 +19,23 @@ export class EditUsersComponent implements OnInit {
     mobile:null,
     password_confirmation:null,
     username:null,
-    profession:null
+    profession:null,
+    user_type:null 
   };
 
-  public error = [];
+  public error={
+    email:null,
+    password:null,
+    name:null,
+    institute:null,
+    mobile:null,
+    password_confirmation:null,
+    username:null,
+    profession:null,
+    user_type:null
+  }
+  
+ 
 
   constructor(
     private Jarwis: JarwisService,
@@ -32,6 +45,7 @@ export class EditUsersComponent implements OnInit {
   ) { }
 
   onSubmit(){
+    this.form.user_type="USER";
     this.Jarwis.registeruser(this.form).subscribe(
        data => this.handleResponse(data),
        error => this.handleError(error)
@@ -47,7 +61,7 @@ export class EditUsersComponent implements OnInit {
   }
 
   handleError(error){
-    this.error=error.error.error;
+    this.error=error.error.errors;
   }
 
   ngOnInit(): void {

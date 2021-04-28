@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
+
 import { TokenService } from './token.service';
 
 @Injectable()
@@ -12,4 +13,4 @@ export class AfterLoginService implements CanActivate{
     return this.Token.loggedIn();
   }
   constructor(private Token: TokenService) { }
-}
+} 

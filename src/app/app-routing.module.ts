@@ -20,6 +20,7 @@ import { EnvelopeComponent } from './pages/home/juggling-container-links/envelop
 import { ZoningComponent } from './pages/home/juggling-container-links/zoning/zoning.component';
 import { MaterialComponent } from './pages/home/juggling-container-links/material/material.component';
 import { VentilationComponent } from './pages/home/juggling-container-links/ventilation/ventilation.component';
+import { DetailsComponent } from './pages/details/details.component';
 
 import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
 import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
@@ -42,46 +43,52 @@ import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { LoginComponent } from './pages/login/login.component';
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
+import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
+import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 
 
 const routes: Routes = [
-  {path:'',component:HomeComponent},
-  {path:'Projects',component:ProjectsComponent},
-  {path:'Additives',component:AdditivesComponent},
-  {path:'Editorial',component:EditorialComponent},
-  {path:'Network',component:NetworkComponent},
-  {path:'Toolbox',component:ToolboxComponent},
-  {path:'Blog',component:BlogComponent},
-  {path:'Events',component:EventsComponent},
-  {path:'JoinUs',component:JoinUSComponent},
-  {path:'ELearning',component:ELearningComponent},
-  {path:'geography',component:GeographyComponent},
-  {path:'topography',component: TopographyComponent},
-  {path:'ecology',component:EcologyComponent},
-  {path:'technology',component:TechnologyComponent},
-  {path:'volume',component:VolumeComponent},
-  {path:'energy',component:EnergyComponent},
-  {path:'material',component:MaterialComponent},
-  {path:'ventilation',component:VentilationComponent},
-  {path:'envelope',component:EnvelopeComponent},
-  {path:'zoning',component:ZoningComponent},
-  {path:'admin',component:AdminNavComponent},
-  {path:'admin-profile',component:AdminProfileComponent},
-  {path:'admin-blog',component:AdminBlogComponent},
-  {path:'admin-event',component:AdminEventComponent},
-  {path:'edit-users',component:EditUsersComponent},
-  {path:'upload-projects',component:UploadProjectsComponent},
-  {path:'edit-projects',component:EditProjectsComponent},
+  {path:'',component:HomeComponent,data: { breadcrumb: 'Home'}},
+  {path:'Projects',component:ProjectsComponent,data: { breadcrumb: 'Projects'}},
+  {path:'Additives',component:AdditivesComponent,data: { breadcrumb: 'Additives'}},
+  {path:'Editorial',component:EditorialComponent,data: { breadcrumb: 'Editorial'}},
+  {path:'Network',component:NetworkComponent,data: { breadcrumb: 'Network'}},
+  {path:'Toolbox',component:ToolboxComponent,data: { breadcrumb: 'Toolbox'}},
+  {path:'Blog',component:BlogComponent,data: { breadcrumb: 'Blog'}},
+  {path:'Events',component:EventsComponent,data: { breadcrumb: 'Events'}},
+  {path:'JoinUs',component:JoinUSComponent,data: { breadcrumb: 'JoinUs'}},
+  {path:'ELearning',component:ELearningComponent,data: { breadcrumb: 'ELearning'}},
+  {path:'geography',component:GeographyComponent,data: { breadcrumb: 'Geography'}},
+  {path:'topography',component: TopographyComponent,data: { breadcrumb: 'Topography'}},
+  {path:'ecology',component:EcologyComponent,data: { breadcrumb: 'Ecology'}},
+  {path:'technology',component:TechnologyComponent,data: { breadcrumb: 'Technology'}},
+  {path:'volume',component:VolumeComponent,data: { breadcrumb: 'Volume'}},
+  {path:'energy',component:EnergyComponent,data: { breadcrumb: 'Energy'}},
+  {path:'material',component:MaterialComponent,data: { breadcrumb: 'Material'}},
+  {path:'ventilation',component:VentilationComponent,data: { breadcrumb: 'Ventilation'}},
+  {path:'envelope',component:EnvelopeComponent,data: { breadcrumb: 'Envelope'}},
+  {path:'zoning',component:ZoningComponent,data: { breadcrumb: 'Zoning'}},
+  {path:'details',component:DetailsComponent,data: { breadcrumb: 'Details'}},
+  
+  {path:'admin',component:AdminNavComponent,canActivate: [AfterLoginService]},
+  {path:'admin-profile',component:AdminProfileComponent,canActivate: [AfterLoginService]},
+  {path:'admin-blog',component:AdminBlogComponent,canActivate: [AfterLoginService]},
+  {path:'admin-event',component:AdminEventComponent,canActivate: [AfterLoginService]},
+  {path:'edit-users',component:EditUsersComponent,canActivate: [AfterLoginService]},
+  {path:'upload-projects',component:UploadProjectsComponent,canActivate: [AfterLoginService]},
+  {path:'edit-projects',component:EditProjectsComponent,canActivate: [AfterLoginService]},
   {path:'login',component:LoginComponent},
   {path:'imprint',component:ImprintComponent},
   {path:'privacy-policy',component:PrivacyPolicyComponent},
 
-  
   {path:'event-vote',component:EventVoteComponent},
   {path:'event-vote/event-poll/:id',component:EventPollComponent},
   {path:'event-add',component:EventAddComponent},
   {path:'event-list/event-edit/:id',component:EventEditComponent},
-  {path: 'event-list',component:EventListComponent}
+  {path: 'event-list',component:EventListComponent},
+  
+  {path: 'request-password',component:RequestResetComponent},
+  {path: 'response-password',component:ResponseResetComponent}
 
 ];
 

@@ -25,26 +25,27 @@ export class LoginComponent implements OnInit {
     private Auth: AuthService
   ) { }
 
-  onSubmit(){
+  onSubmit() {
     this.Jarwis.login(this.form).subscribe(
        data => this.handleResponse(data),
        error => this.handleError(error)
      ); 
-      
+       
 
   }
 
-  handleResponse(data){
+  handleResponse(data) {
     this.Token.handle(data.access_token);
     this.Auth.changeAuthStatus(true);
-    this.router.navigateByUrl('/Projects');
+    this.router.navigateByUrl('#');
   }
 
-  handleError(error){
-    this.error=error.error.error;
+  handleError(error) {
+    this.error = error.error.error;
   }
+
 
   ngOnInit(): void {
   }
 
-} 
+}
