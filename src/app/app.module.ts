@@ -64,6 +64,7 @@ import { EventEditComponent } from './event-Components/event-edit/event-edit.com
 import { EventMailComponent } from './event-Components/event-mail/event-mail.component';
 import { EventListComponent } from './event-Components/event-list/event-list.component';
 
+
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin
@@ -80,6 +81,8 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { MapContainerComponent } from './components/map-container/map-container.component';
+import { UserEditingComponent } from './pages/user-editing/user-editing.component';
+import { UpdateUsersComponent } from './pages/update-users/update-users.component';
 
 @NgModule({
   declarations: [
@@ -116,6 +119,7 @@ import { MapContainerComponent } from './components/map-container/map-container.
     AdminBlogComponent,
     AdminEventComponent,
     AdmimNavbarComponent,
+   
     
     LoginComponent,
     ImprintComponent,
@@ -134,6 +138,8 @@ import { MapContainerComponent } from './components/map-container/map-container.
     LoginComponent,
     RequestResetComponent,
     ResponseResetComponent,
+    UserEditingComponent,
+    UpdateUsersComponent,
 
     
   ],

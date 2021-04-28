@@ -43,6 +43,8 @@ import { LoginComponent } from './pages/login/login.component';
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
+import { UserEditingComponent } from './pages/user-editing/user-editing.component';
+import { UpdateUsersComponent } from './pages/update-users/update-users.component';
 
 
 const routes: Routes = [
@@ -70,7 +72,7 @@ const routes: Routes = [
   {path:'admin-profile',component:AdminProfileComponent,canActivate: [AfterLoginService]},
   {path:'admin-blog',component:AdminBlogComponent,canActivate: [AfterLoginService]},
   {path:'admin-event',component:AdminEventComponent,canActivate: [AfterLoginService]},
-  {path:'edit-users',component:EditUsersComponent,canActivate: [AfterLoginService]},
+  {path:'add-users',component:EditUsersComponent,canActivate: [AfterLoginService]},
   {path:'upload-projects',component:UploadProjectsComponent,canActivate: [AfterLoginService]},
   {path:'login',component:LoginComponent},
   {path:'imprint',component:ImprintComponent},
@@ -84,7 +86,9 @@ const routes: Routes = [
   {path: 'event-list',component:EventListComponent},
   {path: 'login',component:LoginComponent},
   {path: 'request-password',component:RequestResetComponent},
-  {path: 'response-password',component:ResponseResetComponent}
+  {path: 'response-password',component:ResponseResetComponent},
+  {path: 'user-editing', component:UserEditingComponent,canActivate: [AfterLoginService]},
+  {path:'update-user/:id',component:UpdateUsersComponent} 
 
 ];
 
