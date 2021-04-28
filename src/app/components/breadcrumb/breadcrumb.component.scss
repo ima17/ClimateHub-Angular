@@ -1,10 +1,13 @@
-.breadcrumb{
-    margin-top:100px;
-    height:90px;
-   
-    
+.navbar {
+    padding-top: 120px;
+  }
+
+  .breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
 }
 
-
-
-
+.text{
+  margin-right: 10px;
+  font-weight: bold;
+  color: grey;
+}

@@ -1,13 +1,21 @@
-<nav aria-label="breadcrumb" >
-  
+
+  <nav aria-label="breadcrumb" id="br-nav" class="navbar  navbar-light bg-light shadow-sm border " style="padding-top: 100px;">
+    <breadcrumb #parent class="ml-auto "> 
+      <ol class="breadcrumb bg-light  ">
+        <ng-template ngFor let-route [ngForOf]="parent.breadcrumbs">
+          <li class="text">You are here : </li>
+          <li class="breadcrumb-item">
+            <a routerLink="/">Home</a>
+          </li>
+          <li class="breadcrumb-item active" *ngIf="route.terminal"  aria-current="page">{{ route.displayName }}</li>
+         
+        </ng-template>
+      </ol>
+    </breadcrumb>
+
+  </nav>
+
+
+     
     
-    <ol class="breadcrumb ">
-        <li class="breadcrumb-item">You Are Here</li>
-        <li class="breadcrumb-item"><a href="#">Home</a></li>
-        <li class="breadcrumb-item"><a href="#">Current link</a></li>
-      
-        
-    </ol>
-   
-</nav>
- 
+
