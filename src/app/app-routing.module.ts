@@ -25,7 +25,8 @@ import { AdminProfileComponent } from './pages/admin-profile/admin-profile.compo
 import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { EditUsersComponent } from './pages/edit-users/edit-users.component';
-import { UploadProjectsComponent } from './pages/upload-projects/upload-projects.component';
+import { EditProjectsComponent } from './Projects/edit-projects/edit-projects.component';
+import { UploadProjectsComponent } from './Projects/upload-projects/upload-projects.component';
 import { ImprintComponent } from './components/footer/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
 
@@ -70,6 +71,7 @@ const routes: Routes = [
   {path:'admin-event',component:AdminEventComponent},
   {path:'edit-users',component:EditUsersComponent},
   {path:'upload-projects',component:UploadProjectsComponent},
+  {path:'edit-projects',component:EditProjectsComponent},
   {path:'login',component:LoginComponent},
   {path:'imprint',component:ImprintComponent},
   {path:'privacy-policy',component:PrivacyPolicyComponent},
@@ -88,3 +90,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+

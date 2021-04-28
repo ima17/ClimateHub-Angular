@@ -34,7 +34,6 @@ import { UserComponent } from './pages/user/user.component';
 //import { AdminComponent } from './pages/admin/admin.component';
 import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
 import {HttpClientModule} from '@angular/common/http';
-import { UploadProjectsComponent } from './pages/upload-projects/upload-projects.component';
 import { EditUsersComponent } from './pages/edit-users/edit-users.component';
 import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
@@ -76,6 +75,8 @@ import { AuthService } from './services/auth.service';
 import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { LoginComponent } from './pages/login/login.component';
+import { EditProjectsComponent } from './Projects/edit-projects/edit-projects.component';
+import { UploadProjectsComponent } from './Projects/upload-projects/upload-projects.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,6 @@ import { LoginComponent } from './pages/login/login.component';
     UserComponent,
     //AdminComponent,
     AdminProfileComponent,
-    UploadProjectsComponent,
     EditUsersComponent,
     AdminBlogComponent,
     AdminEventComponent,
@@ -126,6 +126,8 @@ import { LoginComponent } from './pages/login/login.component';
     EventEditComponent,
     EventMailComponent,
     EventListComponent,
+    UploadProjectsComponent,
+    EditProjectsComponent,
     
   ],
   imports: [
