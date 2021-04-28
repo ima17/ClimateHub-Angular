@@ -39,8 +39,10 @@ import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.component';
 import { ImprintComponent } from './components/footer/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
+
 //import { AfterLoginService } from './services/after-login.service';
 //import { BeforeLoginService } from './services/before-login.service'; 
+
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -57,6 +59,7 @@ import { EventAddComponent } from './event-Components/event-add/event-add.compon
 import { EventEditComponent } from './event-Components/event-edit/event-edit.component';
 import { EventMailComponent } from './event-Components/event-mail/event-mail.component';
 import { EventListComponent } from './event-Components/event-list/event-list.component';
+
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
@@ -76,6 +79,8 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
 import { MapContainerComponent } from './components/map-container/map-container.component';
+import { UserEditingComponent } from './pages/user-editing/user-editing.component';
+import { UpdateUsersComponent } from './pages/update-users/update-users.component';
 import {BreadcrumbModule} from 'angular-crumbs';
 import { DetailsComponent } from './pages/details/details.component';
 
@@ -128,6 +133,8 @@ import { DetailsComponent } from './pages/details/details.component';
     MapContainerComponent,
     RequestResetComponent,
     ResponseResetComponent,
+    UserEditingComponent,
+    UpdateUsersComponent,
     DetailsComponent,
   ],
   
