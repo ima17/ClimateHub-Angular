@@ -70,7 +70,7 @@ const routes: Routes = [
   {path:'envelope',component:EnvelopeComponent,data: { breadcrumb: 'Envelope'}},
   {path:'zoning',component:ZoningComponent,data: { breadcrumb: 'Zoning'}},
   {path:'details',component:DetailsComponent,data: { breadcrumb: 'Details'}},
-  {path:'admin',component:AdminNavComponent},
+  {path:'admin',component:AdminNavComponent,canActivate: [AfterLoginService]},
   {path:'admin-profile',component:AdminProfileComponent},
   {path:'admin-blog',component:AdminBlogComponent},
   {path:'admin-event',component:AdminEventComponent},
