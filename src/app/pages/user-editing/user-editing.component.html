@@ -1,0 +1,44 @@
+<app-admin-nav></app-admin-nav>
+<div class="container">
+    <hr>
+    <div class="row">
+        <div class="col mt-5 mb-5">
+            <div class="col-md-8 mx-auto">
+                <table class="table table-striped">
+                    <thead>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">User_Type</th>
+                        <th scope="col">User_Name</th>
+                        <th scope="col">Mobile</th>
+                        <th scope="col">Institute</th>
+                        <th scope="col">Bio</th>
+                        <th scope="col">Profession</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let use of users">
+                            <th scope="row">{{use.id}}</th>
+                            <td>{{use.name}}</td>
+                            <td>{{use.email}}</td>
+                            <td>{{use.user_type}}</td>
+                            <td>{{use.username}}</td>
+                            <td>{{use.mobile}}</td>
+                            <td>{{use.institute}}</td>
+                            <td>{{use.bio}}</td>
+                            <td>{{use.profession}}</td>
+                            <td>
+                                <button class="btn btn-danger btn-sm" (click)="deleteData(use.id)" >Delete</button>
+                                
+                            </td>
+                            
+                        </tr> 
+                    </tbody>
+                  </table>
+                
+            </div>
+        </div>
+    </div>
+</div> 
