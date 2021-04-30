@@ -3,6 +3,7 @@ import { EventServiceService } from 'src/app/services/event-service.service';
 import {ActivatedRoute} from '@angular/router';
 import { FormBuilder, FormGroup , ReactiveFormsModule, FormsModule, FormControl, Validators} from '@angular/forms';
 import {Event} from 'src/app/event';
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 
 
 @Component({
@@ -43,13 +44,23 @@ export class EventPollComponent implements OnInit {
     var voteChoice: any = new FormData();
     voteChoice.append("event_id", this.eventPoll_id);
     voteChoice.append("isVote", this.saveVote.get('vote').value);
-    voteChoice.append("user_id",1);
+    voteChoice.append("user_id",2);
     console.log(this.saveVote.get('vote').value);
     
     this.EventService.sendVote(voteChoice).subscribe(
-      (response) => console.log(response),
+      (response) => //console.log(response),
+      Swal.fire({
+        title:'Great',
+        text:'You voted',
+        icon:'success'
+      }),
       
-      (error) => console.log(error)
+      (error) => //console.log(error)
+      Swal.fire({
+        title:'Sorry',
+        text:'Something went wrong',
+        icon:'error'
+      }),
     )
   }
 

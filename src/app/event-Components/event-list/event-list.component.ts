@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import swal from 'sweetalert2/dist/sweetalert2.js';
+// import swal from 'sweetalert2/dist/sweetalert2.js';
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 import {EventServiceService } from 'src/app/services/event-service.service';
 import {NgxPaginationModule} from 'ngx-pagination';
 
@@ -27,7 +28,7 @@ export class EventListComponent implements OnInit {
   }
 
   deleteEvent(id){
-    swal.fire({
+      Swal.fire({
       title: 'Do you want to delete this event?',
       text: "You won't be able to revert this!",
       icon: 'warning',
@@ -41,7 +42,7 @@ export class EventListComponent implements OnInit {
           this.getEventData();
           
         });
-        swal.fire(
+        Swal.fire(
           'Deleted!',
           'The event is deleted.',
           'success'

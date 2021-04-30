@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EventServiceService } from 'src/app/services/event-service.service';
 import {HttpClient} from '@angular/common/http';
-import swal from 'sweetalert2/dist/sweetalert2.js';
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 
 @Component({
   selector: 'app-event-mail',
@@ -17,7 +17,7 @@ export class EventMailComponent implements OnInit {
 
   sendMail(){
     this.EventService.sendNotification().subscribe(data=>{
-      swal.fire({
+      Swal.fire({
         title:'Great...!',
         text:data['message'],
         icon:'success'

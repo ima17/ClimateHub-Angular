@@ -69,13 +69,14 @@ import { MapContainerComponent } from './components/map-container/map-container.
 import {BreadcrumbModule} from 'angular-crumbs';
 import { NgxPaginationModule} from 'ngx-pagination';
 
+import { DetailsComponent } from './pages/details/details.component';
+
+
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
   interactionPlugin
 ]);
-
-import { DetailsComponent } from './pages/details/details.component';
 
 @NgModule({
   declarations: [

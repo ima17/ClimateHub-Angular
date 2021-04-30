@@ -27,7 +27,7 @@
           <div class="form-check form-check-inline" class="form-group">
 
             <input class="form-check-input" type="radio" name="vote" id="yes" value="1" class='formControl'
-              formControlName="vote">
+              formControlName="vote" required>
             <label class="form-check-label mx-1" for="yes">YES</label>
 
           </div>
@@ -36,7 +36,7 @@
           <div class="btn-group">
 
             <a href="/event-vote " class="btn btn-secondary mr-2">Back</a>
-            <button class="btn btn-success" type="submit">Vote</button>
+            <button class="btn btn-success" type="submit" [disabled]="!saveVote.valid">Vote</button>
 
           </div>
         
@@ -46,4 +46,4 @@
   </div>
 
 </div>
-<app-footer></app-footer>
+ <app-footer></app-footer> 

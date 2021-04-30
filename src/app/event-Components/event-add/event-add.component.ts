@@ -6,8 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {HttpParams, HttpClient } from '@angular/common/http';
 import {dateLessThan} from 'src/app/validation/date.validation';
-import swal from 'sweetalert2/dist/sweetalert2.js';
-
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 
 @Component({
   selector: 'app-event-add',
@@ -68,7 +67,7 @@ export class EventAddComponent implements OnInit {
 }
 sendMail(){
   this.EventService.sendNotification().subscribe(data=>{
-    swal.fire({
+    Swal.fire({
       title:'Great...!',
       text:data['message'],
       icon:'success'
@@ -86,7 +85,7 @@ getUserType(){
 functionOrder(){
   this.insertData();
   //this.createPoll();
-  //this.sendMail();
+  this.sendMail();
 }
 
 createPoll(){
