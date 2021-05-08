@@ -50,4 +50,8 @@ export class EventServiceService {
   sendVote(vote){
     return this.httpClient.post('http://127.0.0.1:8000/api/saveVote',vote);
   }
+
+  voteResult(event_id){
+    return this.httpClient.get('http://127.0.0.1:8000/api/voteResult/'+event_id);
+  }
 }

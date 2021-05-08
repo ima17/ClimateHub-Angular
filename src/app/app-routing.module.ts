@@ -46,6 +46,7 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { UserEditingComponent } from './pages/user-editing/user-editing.component';
 import { UpdateUsersComponent } from './pages/update-users/update-users.component';
+import { VoteResultComponent} from 'src/app/event-Components/vote-result/vote-result.component';
 
 
 const routes: Routes = [
@@ -110,6 +111,7 @@ const routes: Routes = [
   {path:'event-add',component:EventAddComponent},
   {path:'event-list/event-edit/:id',component:EventEditComponent},
   {path: 'event-list',component:EventListComponent},
+  {path: 'event-list/vote-result', component:VoteResultComponent},
   {path: 'login',component:LoginComponent},
   {path: 'request-password',component:RequestResetComponent},
   {path: 'response-password',component:ResponseResetComponent},

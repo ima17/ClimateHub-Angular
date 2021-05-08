@@ -86,6 +86,7 @@ import {BreadcrumbModule} from 'angular-crumbs';
 import { NgxPaginationModule} from 'ngx-pagination';
 
 import { DetailsComponent } from './pages/details/details.component';
+import { VoteResultComponent } from './event-Components/vote-result/vote-result.component';
 
 
 
@@ -151,7 +152,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     UserEditingComponent,
     UpdateUsersComponent,
     DetailsComponent,
-
+    VoteResultComponent
     
   ],
   imports: [

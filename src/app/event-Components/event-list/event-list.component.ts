@@ -13,6 +13,7 @@ import {NgxPaginationModule} from 'ngx-pagination';
 export class EventListComponent implements OnInit {
 
   eventList: any;
+  polling:any;
   page:any;
 
   constructor(private EventService: EventServiceService) { }
@@ -49,5 +50,16 @@ export class EventListComponent implements OnInit {
         )
       }
     })
+  }
+
+  viewResult(event_id){
+    this.EventService.getEventById(event_id).subscribe(response=>{
+      this.eventList=response;
+    })
+    this.EventService.voteResult(event_id).subscribe(res=>{
+      this.polling=res;
+      alert('event name:'+ this.eventList.title +'\nvotes:'+this.polling.user_id);
+    })
+    
   }
 }

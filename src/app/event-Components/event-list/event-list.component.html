@@ -25,17 +25,27 @@
             <td>{{eve.recurrence}}</td>
             <td>{{eve.partcipantType}}</td>
             <td><button 
-                  class="btn btn-danger btn-sm"
+                  class="btn btn-sm"
+                  id="delete"
                   (click)="deleteEvent(eve.id)" >Delete</button> 
                 <button 
-                  class="btn btn-warning btn-sm mx-2"
+                  class="btn btn-sm mx-2"
+                  id="edit"
                   routerLink="event-edit/{{eve.id}}">
                   Edit
                 </button>
+                <button 
+                  class="btn btn-sm btn-primary mx-2"
+                  id="results"
+                  *ngIf="eve.isPoll"
+                  (click)="viewResult(eve.id)">
+                  poll result</button>
             </td>
+            
           </tr>
         </tbody>
     </table>
+    <app-vote-result class="float-left"></app-vote-result>
     <pagination-controls (pageChange)="page=$event" class="float-right"></pagination-controls>
 </div>
 <app-footer></app-footer>
