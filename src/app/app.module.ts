@@ -83,6 +83,7 @@ import { MapContainerComponent } from './components/map-container/map-container.
 import {BreadcrumbModule} from 'angular-crumbs';
 import { DetailsComponent } from './pages/details/details.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -137,6 +138,7 @@ import { DetailsComponent } from './pages/details/details.component';
     RequestResetComponent,
     ResponseResetComponent,
     DetailsComponent,
+
 
     
   ],
