@@ -2,8 +2,13 @@
 <app-breadcrumb></app-breadcrumb>
 <div class="container">
     <h1>Join Us</h1>
+<<<<<<< HEAD
     <form>
     <div class="card shadow-sm" id="card-1">
+=======
+    <form (ngSubmit)="insertData()">
+    <div class="card" id="card-1">
+>>>>>>> 0d488c4981c88236b726186c51ee4f0e19444a3f
         <div class="card-body">
             <div class="row">
                 <div class="col-3">
@@ -12,7 +17,7 @@
                 <div class="col-9">
                     <div class="form-group row">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="inputName" placeholder="Your Name" required="">
+                            <input type="text" class="form-control"  name="name" placeholder="Your Name" [(ngModel)]="joinUs.name">
                         </div>
                     </div>
                       
@@ -29,9 +34,26 @@
                 <div class="col-9">
                     <div class="form-group row">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="inputInstitute" placeholder="Your academic institution" required="">
+                            <input type="text" class="form-control" name="institute" placeholder="Your academic institution" [(ngModel)]="joinUs.institute">
                         </div>
                     </div>
+                </div>
+              </div>
+        </div>
+      </div>
+      <div class="card" id="card-1">
+        <div class="card-body">
+            <div class="row">
+                <div class="col-3">
+                    Your Profession
+                </div>
+                <div class="col-9">
+                    <div class="form-group row">
+                        <div class="col-sm-12">
+                            <input type="text" class="form-control" name="profession" placeholder="Your Profession" [(ngModel)]="joinUs.profession">
+                        </div>
+                    </div>
+                      
                 </div>
               </div>
         </div>
@@ -45,7 +67,7 @@
                 <div class="col-9">
                     <div class="form-group row">
                         <div class="col-sm-12">
-                            <input type="email" class="form-control" id="inputEmail" placeholder="Your academic email address" required="">
+                            <input type="email" class="form-control" name="email" placeholder="Your academic email address" [(ngModel)]="joinUs.email">
                         </div>
                     </div>
                 </div>
@@ -61,12 +83,14 @@
                 <div class="col-9">
                     <div class="form-group row">
                         <div class="col-sm-12">
-                            <input type="text" class="form-control" id="inputPhoneNumber" placeholder="Your phone number (optional)">
+                            <input type="text" class="form-control" name="mobile" placeholder="Your phone number (optional)" [(ngModel)]="joinUs.mobile">
                         </div>
                     </div>
                 </div>
               </div>
         </div>
+        
+        
       </div>
       <div class="card" id="card-5">
         <div class="card-body">
@@ -75,10 +99,11 @@
                     Your message *
                 </div>
                 <div class="col-9">
-                    <textarea type="text" class="form-control" id="inputMessage" rows="5" name="your-message-27013" placeholder="Your message" required=""></textarea>
+                    <textarea type="text" class="form-control"  rows="5" name="message" placeholder="Your message" [(ngModel)]="joinUs.message"></textarea>
                 </div>
               </div>
         </div>
+        
       </div>
       <div class="card" id="card-6">
         <div class="card-body">
@@ -86,7 +111,7 @@
                 <div class="col-3">
                 </div>
                 <div class="col-9">
-                    <button type="button" class="btn btn-primary">Send</button>
+                    <button class="btn btn-primary">Send</button>
                 </div>
               </div>
         </div>
