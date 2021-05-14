@@ -111,7 +111,7 @@ const routes: Routes = [
   {path:'event-add',component:EventAddComponent},
   {path:'event-list/event-edit/:id',component:EventEditComponent},
   {path: 'event-list',component:EventListComponent},
-  {path: 'event-list/vote-result', component:VoteResultComponent},
+  {path: 'event-list/vote-result/:id', component:VoteResultComponent},
   {path: 'login',component:LoginComponent},
   {path: 'request-password',component:RequestResetComponent},
   {path: 'response-password',component:ResponseResetComponent},

@@ -1,23 +1,32 @@
-<app-navbar></app-navbar>
-<app-breadcrumb></app-breadcrumb>
-<div class="container " style="width: 50%; height: 100%; align-content: center;">
-    <div class=row>
-        <div class="col">
-            <!-- <button type="button" class="btn btn-light mx-2 float-right" routerLink="/Events">Event Calendar</button> -->
-            <button type="button" class="btn btn-light float-left" routerLink="/event-vote">View Poll</button>
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.js'></script>
+    <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css" />
+</head>
+
+<body>
+    <div id='calendar'></div>
+
+    <app-navbar></app-navbar>
+    <app-breadcrumb></app-breadcrumb>
+    <div class="container " style="width: 50%; height: 100%; align-content: center;">
+        <div class=row>
+            <div class="col">
+                <!-- <button type="button" class="btn btn-light mx-2 float-right" routerLink="/Events">Event Calendar</button> -->
+                <button type="button" class="btn btn-light float-left" routerLink="/event-vote">View Poll</button>
+            </div>
+        </div>
+        <div class=row>
+            <div class="col">
+                <full-calendar  id="calendar" event="events">
+
+                </full-calendar>
+            </div>
         </div>
     </div>
-    <div class=row>
-        <div class="col">
-            <full-calendar [options]= "calendarOptions" >
-            
-            
-
-            </full-calendar>
-        </div>
-    </div>
-</div>
 
 
 
-<app-footer></app-footer>
+    <app-footer></app-footer>
+</body>

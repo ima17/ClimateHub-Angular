@@ -62,14 +62,6 @@ import { EventAddComponent } from './event-Components/event-add/event-add.compon
 import { EventEditComponent } from './event-Components/event-edit/event-edit.component';
 import { EventMailComponent } from './event-Components/event-mail/event-mail.component';
 import { EventListComponent } from './event-Components/event-list/event-list.component';
-
-
-FullCalendarModule.registerPlugins([ // register FullCalendar plugins
-  dayGridPlugin,
-  interactionPlugin
-]);
-
-
 import { JarwisService } from './services/jarwis.service';
 import { TokenService } from './services/token.service';
 import { AuthService } from './services/auth.service';
@@ -84,15 +76,15 @@ import { UserEditingComponent } from './pages/user-editing/user-editing.componen
 import { UpdateUsersComponent } from './pages/update-users/update-users.component';
 import {BreadcrumbModule} from 'angular-crumbs';
 import { NgxPaginationModule} from 'ngx-pagination';
-
 import { DetailsComponent } from './pages/details/details.component';
 import { VoteResultComponent } from './event-Components/vote-result/vote-result.component';
+import * as $ from 'jquery';
 
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,
-  interactionPlugin
+  
 ]);
 
 @NgModule({
