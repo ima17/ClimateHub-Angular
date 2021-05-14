@@ -6,11 +6,35 @@
       <div class="card-body">
         <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
   
-            <div class="form-group">
+              <div class="form-group">
                 <label for="exampleFormControlInput1">Project Title:</label>
-                <input type="text" formControlName="project_title" class="form-control" id="exampleFormControlInput1"  placeholder="Project Title" [ngClass]="{ 'is-invalid': submitted && f.project_title.errors }">
-                <div *ngIf="submitted && f.project_title.errors" class="invalid-feedback">
+                <input type="text" formControlName="project_title" class="form-control" id="exampleFormControlInput1"  placeholder="Add project title" [ngClass]="{ 'is-invalid': submitted && f.project_title.errors }">
+                <div *ngIf="submitted && f.project_title.touched && f.project_title.errors" class="invalid-feedback">
                     <div *ngIf="f.project_title.errors.required">Project Title is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Author Name:</label>
+                <input type="text" formControlName="author" class="form-control" id="exampleFormControlInput1"  placeholder="Add author name" [ngClass]="{ 'is-invalid': submitted && f.author.errors }">
+                <div *ngIf="submitted && f.author.touched && f.author.errors" class="invalid-feedback">
+                    <div *ngIf="f.author.errors.required">Author Name is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Organisation:</label>
+                <input type="text" formControlName="organisation" class="form-control" id="exampleFormControlInput1"  placeholder="Add your organisation" [ngClass]="{ 'is-invalid': submitted && f.organisation.errors }">
+                <div *ngIf="submitted && f.organisation.touched && f.organisation.errors" class="invalid-feedback">
+                    <div *ngIf="f.organisation.errors.required">Organisation is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Abstract:</label>
+                <textarea formControlName="abstract" class="form-control" id="exampleFormControlInput1"  placeholder="Add a short description about your project..." rows ="5" [ngClass]="{ 'is-invalid': submitted && f.abstract.errors }"></textarea>
+                <div *ngIf="submitted && f.abstract.touched && f.abstract.errors" class="invalid-feedback">
+                    <div *ngIf="f.abstract.errors.required">Project Title is required</div>
                 </div>
               </div>
 
@@ -44,12 +68,11 @@
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Cimate Zone:</label>
                 <select formControlName="climate_zone" class="form-control" id="exampleFormControlSelect1" [ngClass]="{ 'is-invalid': submitted && f.climate_zone.errors }">
-                    <option value="spd">Short Project Descriptiont</option>
-                    <option value="ssp">Side Share Presentation</option>
-                    <option value="fpp">Full Presentation Panels</option>
-                    <option value="rp">Research Paper</option>
-                    <option value="sr">Student Research</option>
-                    <option value="sfs">Short Fact Sheet</option>
+                    <option value="tropical">Tropical</option>
+                    <option value="arid">Arid</option>
+                    <option value="temperate">Temperate</option>
+                    <option value="cold">Cold</option>
+                    <option value="polar">Polar / Alpine</option>
                 </select>
                 <div *ngIf="submitted && f.climate_zone.errors" class="invalid-feedback">
                     <div *ngIf="f.climate_zone.errors.required">Cimate Zone is required</div>
@@ -72,6 +95,37 @@
                 </select>
                 <div *ngIf="submitted && f.world_region.errors" class="invalid-feedback">
                     <div *ngIf="f.world_region.errors.required">World Region is required</div>
+                </div>
+              </div>
+
+              <div>
+                <agm-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+                  <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"
+                      (dragEnd)="markerDragEnd($event)" (mouseOver)="onMouseOver(infoWindow,gm)"
+                      (mouseOut)="onMouseOut(infoWindow, $event)">
+                      <agm-info-window [isOpen]="false" #infoWindow>
+                          <a class="btn btn-attention pull-right">
+                              Press the Red Location Pin, then move the Pin to your location。
+                              <i class="fa fa-angle-double-right"></i>
+                          </a>
+                      </agm-info-window>
+                  </agm-marker>
+                </agm-map>               
+              </div>
+              
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Longitude:</label>
+                <input [(ngModel)]="longitude" type="text" formControlName="longitude" class="form-control" id="exampleFormControlInput1"  placeholder="Add longitude" [ngClass]="{ 'is-invalid': submitted && f.longitude.errors }">
+                <div *ngIf="submitted && f.longitude.touched && f.longitude.errors" class="invalid-feedback">
+                    <div *ngIf="f.longitude.errors.required">Longitude is required</div>
+                </div>
+              </div>
+            
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Latitude:</label>
+                <input [(ngModel)]="latitude" type="text" formControlName="latitude" class="form-control" id="exampleFormControlInput1"  placeholder="Add latitude" [ngClass]="{ 'is-invalid': submitted && f.latitude.errors }">
+                <div *ngIf="submitted && f.latitude.touched && f.latitude.errors" class="invalid-feedback">
+                    <div *ngIf="f.latitude.errors.required">Latitude is required</div>
                 </div>
               </div>
 
@@ -117,15 +171,18 @@
 
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Energy Strategy:</label>
-                    <input name="ES" value="A" type="radio" id="enStrategy">Active<br>
-                    <input name="ES" value="P" type="radio"  id="enStrategy">Passive
+                <div>
+                    <input name="energy_strategy" formControlName="energy_strategy" value="Active" type="radio" id="Active">
+                    <label for="Active">Active</label>
+                </div>
+                <div>
+                  <input name="energy_strategy" formControlName="energy_strategy" value="Passive" type="radio" id="Passive">
+                  <label for="Passive">Passive</label>
+                </div>
+                <div *ngIf="submitted && f.energy_strategy.touched && f.energy_strategy.invalid" class="invalid-feedback">
+                  <div *ngIf="f.energy_strategy.errors.required">Energy Strategy is required</div>
+                </div>
               </div>
-
-              <!-- <div class="form-group form-check">
-                <input type="checkbox" formControlName="acceptTerms" id="acceptTerms" class="form-check-input" [ngClass]="{ 'is-invalid': submitted && f.acceptTerms.errors }" />
-                <label for="acceptTerms" class="form-check-label">Accept Terms & Conditions</label>
-                <div *ngIf="submitted && f.acceptTerms.errors" class="invalid-feedback">Accept Ts & Cs is required</div>
-            </div> -->
 
               <div class="form-group">
                 <label for="exampleFormControlSelect1">Building Scale:</label>
@@ -170,17 +227,41 @@
               </div>
 
               <div class="form-group">
-                <label for="exampleFormControlSelect1">Access:</label>
-                    <input name="Acc" value="Y" type="radio"  id="access">Open Access<br>
-                    <input name="Acc" value="N" type="radio"  id="access">Private Protected
+                <label for="exampleFormControlSelect1">Project File:</label>
+                  <input type="file" (change)="projectFileChange($event)" placeholder="Upload file" accept=".pdf">
+                  <div *ngIf="f.project_file.touched && f.project_file.invalid" class="invalid-feedback">
+                    <div *ngIf="f.project_file.errors.required">Project file is required</div>
+                  </div>
               </div>
 
-          
-          <div class="form-group row">
-            <div class="col-sm-10 offset-2">
-              <button type="submit" class="btn btn-primary">Upload</button>
-            </div>
-          </div>
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Project View Image:</label>
+                  <input type="file" (change)="imgFileChange($event)" placeholder="Upload file" accept=".jpg, .png, .jpeg">
+                  <div *ngIf="f.img_file.touched && f.img_file.invalid" class="invalid-feedback">
+                    <div *ngIf="f.img_file.errors.required">Project view image is required</div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Access:</label>
+                    <div>
+                      <input name="accessible" formControlName="accessible" value="open" type="radio" id="open">
+                      <label for="open"> Open Access </label>
+                  </div>
+                  <div>
+                    <input name="accessible" formControlName="accessible" value="private" type="radio" id="private">
+                    <label for="private"> Private Protected </label>
+                  </div>
+                  <div *ngIf="submitted && f.accessible.touched && f.accessible.invalid" class="invalid-feedback">
+                    <div *ngIf="f.accessible.errors.required">Access method is required</div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <div class="col-sm-10 offset-2">
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                  </div>
+              </div>
 
         </form>
 
@@ -188,3 +269,4 @@
     </div>
   </div>
 
+  

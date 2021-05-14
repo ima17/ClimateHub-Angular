@@ -2,7 +2,9 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { FormBuilder } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
+
+//import { FormBuilder } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
@@ -146,7 +148,12 @@ import { DetailsComponent } from './pages/details/details.component';
     MatListModule,
     FullCalendarModule,
     BreadcrumbModule,
-    SnotifyModule
+    SnotifyModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB_k9WCecdc-7-yKirN0X01WpqN67RdB68'
+    })
+    //FormBuilder
+
   ],
 
   providers: [JarwisService, TokenService, AuthService, AfterLoginService, BeforeLoginService,{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},
