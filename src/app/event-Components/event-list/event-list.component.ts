@@ -25,6 +25,7 @@ export class EventListComponent implements OnInit {
   getEventData(){
     this.EventService.getData().subscribe(res=>{
       this.eventList=res;
+      
     });
   }
 
@@ -52,14 +53,5 @@ export class EventListComponent implements OnInit {
     })
   }
 
-  viewResult(event_id){
-    this.EventService.getEventById(event_id).subscribe(response=>{
-      this.eventList=response;
-    })
-    this.EventService.voteResult(event_id).subscribe(res=>{
-      this.polling=res;
-      alert('event name:'+ this.eventList.title +'\nvotes:'+this.polling.user_id);
-    })
-    
-  }
+  
 }

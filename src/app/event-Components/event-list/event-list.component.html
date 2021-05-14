@@ -38,14 +38,14 @@
                   class="btn btn-sm btn-primary mx-2"
                   id="results"
                   *ngIf="eve.isPoll"
-                  (click)="viewResult(eve.id)">
+                  routerLink="vote-result/{{eve.id}}">
                   poll result</button>
+                  
             </td>
             
           </tr>
         </tbody>
     </table>
-    <app-vote-result class="float-left"></app-vote-result>
     <pagination-controls (pageChange)="page=$event" class="float-right"></pagination-controls>
 </div>
-<app-footer></app-footer>
+<!-- <app-footer></app-footer> -->

@@ -28,7 +28,8 @@ export class EventAddComponent implements OnInit {
       to: ['', [Validators.required]],
       recurrence: ['', [Validators.required]],
       partcipantType: ['', [Validators.required]],
-      isPoll: ['']
+      isPoll: [''],
+      admin_id:['']//*********** */
 
     },
       {validators:dateLessThan('from','to')},
@@ -54,10 +55,10 @@ export class EventAddComponent implements OnInit {
     formData.append("recurrence", this.eventAdd.get('recurrence').value);
     formData.append("partcipantType", this.eventAdd.get('partcipantType').value);
     formData.append("isPoll", this.eventAdd.get('isPoll').value);
-
+    formData.append("admin_id", this.eventAdd.get('admin_id').value);//**************************** */
 
     this.EventService.insertData(formData).subscribe(
-      (response) => console.log(response),
+      //(response) => console.log(response),
       
       (error) => console.log(error)
     )

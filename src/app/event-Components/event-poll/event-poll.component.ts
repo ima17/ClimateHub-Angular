@@ -58,7 +58,7 @@ export class EventPollComponent implements OnInit {
       (error) => //console.log(error)
       Swal.fire({
         title:'Sorry',
-        text:'Something went wrong',
+        text:'error',
         icon:'error'
       }),
     )

@@ -211,10 +211,11 @@
       <div class="card-body">
           <div class="row">
               <div class="col-3">
+                <input type="text" name="admin" class="formControl" formControlName="admin_id" value="1">
               </div>
               <div class="col-9">
                 <!-- <app-event-mail></app-event-mail> -->
-                <button class="btn btn-primary" (click)= "sendMail()">Send Mail</button>
+                <!-- <button class="btn btn-primary" (click)= "sendMail()">Send Mail</button> -->
                 <button class="btn btn-primary mr-2" type="submit" [disabled]="!eventAdd.valid" (click)= "functionOrder()" >
                   Submit
                 </button>

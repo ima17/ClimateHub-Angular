@@ -1,0 +1,15 @@
+<app-admin-nav></app-admin-nav>
+<app-breadcrumb></app-breadcrumb>
+  <div class="card text-center">
+    <div class="card-header">
+      Poll result
+    </div>
+    <div class="card-body">
+      <h2 class="card-title" >{{eventDetail?.title}}</h2>
+      <p class="card-text">{{polling.no_of_votes}}</p>
+      <a href="/event-list" class="btn btn-primary" >Back</a>
+    </div>
+    <div class="card-footer text-muted">
+      Poll closing at: {{eventDetail?.sdate}}
+    </div>
+  </div>
