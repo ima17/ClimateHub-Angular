@@ -86,6 +86,7 @@ import { UpdateUsersComponent } from './pages/update-users/update-users.componen
 import {BreadcrumbModule} from 'angular-crumbs';
 import { DetailsComponent } from './pages/details/details.component';
 
+
 @NgModule({
   declarations: [
     AppComponent,
