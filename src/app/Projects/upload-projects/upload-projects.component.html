@@ -1,0 +1,272 @@
+
+
+<div class="mt-4 col-8 offset-2">
+    <div class="card">
+      <div class="card-header">Upload your project here...</div>
+      <div class="card-body">
+        <form [formGroup]="uploadForm" (ngSubmit)="onSubmit()">
+  
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Project Title:</label>
+                <input type="text" formControlName="project_title" class="form-control" id="exampleFormControlInput1"  placeholder="Add project title" [ngClass]="{ 'is-invalid': submitted && f.project_title.errors }">
+                <div *ngIf="submitted && f.project_title.touched && f.project_title.errors" class="invalid-feedback">
+                    <div *ngIf="f.project_title.errors.required">Project Title is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Author Name:</label>
+                <input type="text" formControlName="author" class="form-control" id="exampleFormControlInput1"  placeholder="Add author name" [ngClass]="{ 'is-invalid': submitted && f.author.errors }">
+                <div *ngIf="submitted && f.author.touched && f.author.errors" class="invalid-feedback">
+                    <div *ngIf="f.author.errors.required">Author Name is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Organisation:</label>
+                <input type="text" formControlName="organisation" class="form-control" id="exampleFormControlInput1"  placeholder="Add your organisation" [ngClass]="{ 'is-invalid': submitted && f.organisation.errors }">
+                <div *ngIf="submitted && f.organisation.touched && f.organisation.errors" class="invalid-feedback">
+                    <div *ngIf="f.organisation.errors.required">Organisation is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Abstract:</label>
+                <textarea formControlName="abstract" class="form-control" id="exampleFormControlInput1"  placeholder="Add a short description about your project..." rows ="5" [ngClass]="{ 'is-invalid': submitted && f.abstract.errors }"></textarea>
+                <div *ngIf="submitted && f.abstract.touched && f.abstract.errors" class="invalid-feedback">
+                    <div *ngIf="f.abstract.errors.required">Project Title is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Category:</label>
+                <select formControlName="category" class="form-control" id="exampleFormControlSelect1" [ngClass]="{ 'is-invalid': submitted && f.category.errors }">
+                  <option>Example Project</option>
+                  <option>Toolbox Project</option>
+                  <option>Additives</option>
+                </select>
+                <div *ngIf="submitted && f.category.errors" class="invalid-feedback">
+                    <div *ngIf="f.category.errors.required">Category is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Type of Document:</label>
+                <select formControlName="type_of_doc" class="form-control" id="exampleFormControlSelect1" [ngClass]="{ 'is-invalid': submitted && f.type_of_doc.errors }">
+                    <option value="spd">Short Project Descriptiont</option>
+                    <option value="ssp">Side Share Presentation</option>
+                    <option value="fpp">Full Presentation Panels</option>
+                    <option value="rp">Research Paper</option>
+                    <option value="sr">Student Research</option>
+                    <option value="sfs">Short Fact Sheet</option>
+                </select>
+                <div *ngIf="submitted && f.type_of_doc.errors" class="invalid-feedback">
+                    <div *ngIf="f.type_of_doc.errors.required">Type of Document is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Cimate Zone:</label>
+                <select formControlName="climate_zone" class="form-control" id="exampleFormControlSelect1" [ngClass]="{ 'is-invalid': submitted && f.climate_zone.errors }">
+                    <option value="tropical">Tropical</option>
+                    <option value="arid">Arid</option>
+                    <option value="temperate">Temperate</option>
+                    <option value="cold">Cold</option>
+                    <option value="polar">Polar / Alpine</option>
+                </select>
+                <div *ngIf="submitted && f.climate_zone.errors" class="invalid-feedback">
+                    <div *ngIf="f.climate_zone.errors.required">Cimate Zone is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">World Region:</label>
+                <select formControlName="world_region" class="form-control" id="exampleFormControlSelect1" [ngClass]="{ 'is-invalid': submitted && f.world_region.errors }">
+                    <option value="nasia">North Asia</option>
+                    <option value="casia">Central Asia</option>
+                    <option value="sasia">South Asia</option>
+                    <option value="aus/zea">Australia / New Zealand</option>
+                    <option value="arab">Arabia</option>
+                    <option value="euro">Europe</option>
+                    <option value="afric">Africa</option>
+                    <option value="nam">North America</option>
+                    <option value="sam">South America</option>
+                    <option value="pole">North / South Pole</option>
+                </select>
+                <div *ngIf="submitted && f.world_region.errors" class="invalid-feedback">
+                    <div *ngIf="f.world_region.errors.required">World Region is required</div>
+                </div>
+              </div>
+
+              <div>
+                <agm-map #gm [latitude]="lat" [longitude]="lng" [zoom]="zoom">
+                  <agm-marker [latitude]="lat" [longitude]="lng" [markerDraggable]="true"
+                      (dragEnd)="markerDragEnd($event)" (mouseOver)="onMouseOver(infoWindow,gm)"
+                      (mouseOut)="onMouseOut(infoWindow, $event)">
+                      <agm-info-window [isOpen]="false" #infoWindow>
+                          <a class="btn btn-attention pull-right">
+                              Press the Red Location Pin, then move the Pin to your location。
+                              <i class="fa fa-angle-double-right"></i>
+                          </a>
+                      </agm-info-window>
+                  </agm-marker>
+                </agm-map>               
+              </div>
+              
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Longitude:</label>
+                <input [(ngModel)]="longitude" type="text" formControlName="longitude" class="form-control" id="exampleFormControlInput1"  placeholder="Add longitude" [ngClass]="{ 'is-invalid': submitted && f.longitude.errors }">
+                <div *ngIf="submitted && f.longitude.touched && f.longitude.errors" class="invalid-feedback">
+                    <div *ngIf="f.longitude.errors.required">Longitude is required</div>
+                </div>
+              </div>
+            
+              <div class="form-group">
+                <label for="exampleFormControlInput1">Latitude:</label>
+                <input [(ngModel)]="latitude" type="text" formControlName="latitude" class="form-control" id="exampleFormControlInput1"  placeholder="Add latitude" [ngClass]="{ 'is-invalid': submitted && f.latitude.errors }">
+                <div *ngIf="submitted && f.latitude.touched && f.latitude.errors" class="invalid-feedback">
+                    <div *ngIf="f.latitude.errors.required">Latitude is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Parameter:</label>
+                <select formControlName="parameters" class="form-control" id="exampleFormControlSelect1" [ngClass]="{ 'is-invalid': submitted && f.parameters.errors }">
+                    <option value="ven">Ventilation</option>
+                    <option value="shade">Shadeing</option>
+                    <option value="mass">Thermal Mass</option>
+                    <option value="env">Building Envelope</option>
+                    <option value="vol">Bullding Volume</option>
+                    <option value="paln">Plan Form</option>
+                    <option value="sec">Sectional Form</option>
+                    <option value="cul">Culture</option>
+                    <option value="veg">Vegetation</option>
+                    <option value="util">Utilities</option>
+                    <option value="sitetopo">Site Topography</option>
+                </select>
+                <div *ngIf="submitted && f.parameters.errors" class="invalid-feedback">
+                    <div *ngIf="f.parameters.errors.required">Parameter is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Material:</label>
+                <select formControlName="material" class="form-control" id="exampleFormControlSelect1" [ngClass]="{ 'is-invalid': submitted && f.material.errors }">
+                    <option value="ven">Ventilation</option>
+                    <option value="wood">Wood</option>
+                    <option value="bam">Bamboo</option>
+                    <option value="clay">Clay</option>
+                    <option value="brick">Brick</option>
+                    <option value="stone">Stone</option>
+                    <option value="steel">Steel</option>
+                    <option value="glass">Glass</option>
+                    <option value="con">Concrete</option>
+                    <option value="fab">Fabric</option>
+                    <option value="recycled">Recycled</option>
+                </select>
+                <div *ngIf="submitted && f.material.errors" class="invalid-feedback">
+                    <div *ngIf="f.material.errors.required">Material is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Energy Strategy:</label>
+                <div>
+                    <input name="energy_strategy" formControlName="energy_strategy" value="Active" type="radio" id="Active">
+                    <label for="Active">Active</label>
+                </div>
+                <div>
+                  <input name="energy_strategy" formControlName="energy_strategy" value="Passive" type="radio" id="Passive">
+                  <label for="Passive">Passive</label>
+                </div>
+                <div *ngIf="submitted && f.energy_strategy.touched && f.energy_strategy.invalid" class="invalid-feedback">
+                  <div *ngIf="f.energy_strategy.errors.required">Energy Strategy is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Building Scale:</label>
+                <select formControlName="bulding_scale" class="form-control" id="exampleFormControlSelect1" [ngClass]="{ 'is-invalid': submitted && f.bulding_scale.errors }">
+                    <option>Urban Scale</option>
+                    <option>Individual Bulding Scale</option>
+                </select>
+                <div *ngIf="submitted && f.bulding_scale.errors" class="invalid-feedback">
+                  <div *ngIf="f.bulding_scale.errors.required">Building Scale is required</div>
+              </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Mode of Information:</label>
+                <select formControlName="mode_of_info" class="form-control" id="exampleFormControlSelect1" [ngClass]="{ 'is-invalid': submitted && f.mode_of_info.errors }">
+                    <option value="contemp">Contempary Examples</option>
+                    <option value="traditional">Traditional Examples</option>
+                    <option value="tute">Tutorial Link</option>
+                    <option value="facti">Fact Sheet</option>
+                    <option value="ppt">Presentation</option>
+                    <option value="research">Research Paper</option>
+                    <option value="stupro">Student Projects</option>
+                </select>
+                <div *ngIf="submitted && f.mode_of_info.errors" class="invalid-feedback">
+                    <div *ngIf="f.mode_of_info.errors.required">Mode of Information is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Topic:</label>
+                <select formControlName="topic" class="form-control" id="exampleFormControlSelect1" [ngClass]="{ 'is-invalid': submitted && f.topic.errors }">
+                    <option value="flowana">Flow Analysis</option>
+                    <option value="sunco">Sun Course</option>
+                    <option value="tempprof">Temperature Profile</option>
+                    <option value="climateinfo">Climate Information</option>
+                    <option value="bim">BIM</option>
+                    <option value="facmgmt">Facility Management Operation</option>
+                </select>
+                <div *ngIf="submitted && f.topic.errors" class="invalid-feedback">
+                    <div *ngIf="f.topic.errors.required">Topic is required</div>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Project File:</label>
+                  <input type="file" (change)="projectFileChange($event)" placeholder="Upload file" accept=".pdf">
+                  <div *ngIf="f.project_file.touched && f.project_file.invalid" class="invalid-feedback">
+                    <div *ngIf="f.project_file.errors.required">Project file is required</div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Project View Image:</label>
+                  <input type="file" (change)="imgFileChange($event)" placeholder="Upload file" accept=".jpg, .png, .jpeg">
+                  <div *ngIf="f.img_file.touched && f.img_file.invalid" class="invalid-feedback">
+                    <div *ngIf="f.img_file.errors.required">Project view image is required</div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                <label for="exampleFormControlSelect1">Access:</label>
+                    <div>
+                      <input name="accessible" formControlName="accessible" value="open" type="radio" id="open">
+                      <label for="open"> Open Access </label>
+                  </div>
+                  <div>
+                    <input name="accessible" formControlName="accessible" value="private" type="radio" id="private">
+                    <label for="private"> Private Protected </label>
+                  </div>
+                  <div *ngIf="submitted && f.accessible.touched && f.accessible.invalid" class="invalid-feedback">
+                    <div *ngIf="f.accessible.errors.required">Access method is required</div>
+                  </div>
+              </div>
+
+              <div class="form-group">
+                  <div class="col-sm-10 offset-2">
+                    <button type="submit" class="btn btn-primary">Upload</button>
+                  </div>
+              </div>
+
+        </form>
+
+      </div>
+    </div>
+  </div>
+
+  
