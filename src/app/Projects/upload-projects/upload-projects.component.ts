@@ -1,17 +1,20 @@
-import { ProjectService } from './../../Services/project.service';
+import { ProjectService } from 'src/app/Services/project.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
+import { Project } from 'src/app/project';
+
 //import { MouseEvent, MapsAPILoader } from '@agm/core';
-// import { LatLngLiteral } from '@agm/core';
-import {
-  MapsAPILoader
-} from '@agm/core';
+//import { LatLngLiteral } from '@agm/core';
+import { MapsAPILoader } from '@agm/core';
+
 @Component({
   selector: 'app-upload-projects',
   templateUrl: './upload-projects.component.html',
   styleUrls: ['./upload-projects.component.scss']
 })
 export class UploadProjectsComponent implements OnInit {
+
+  project = new Project();
 
   uploadForm: FormGroup;
   submitted = false;
@@ -35,6 +38,8 @@ export class UploadProjectsComponent implements OnInit {
   ]
 
   constructor(private formBuilder: FormBuilder, private projectService:ProjectService) { }
+
+
 
   ngOnInit() {
     this.uploadForm = this.formBuilder.group({
@@ -63,7 +68,7 @@ export class UploadProjectsComponent implements OnInit {
 
   get f() {return this.uploadForm.controls;}
 
-  onSubmit(){
+  uploadProject(){
     this.submitted = true;
 
     // stop here if form is invalid
@@ -72,7 +77,8 @@ export class UploadProjectsComponent implements OnInit {
   // }
 
     // console.log(this.uploadForm)
-    let formData:FormData = new FormData();
+    //let formData:FormData = new FormData();
+    var formData: any = new FormData();
     formData.append('project_title', this.uploadForm.get('project_title').value);
     formData.append('author', this.uploadForm.get('author').value);
     formData.append('organisation', this.uploadForm.get('organisation').value);
@@ -89,18 +95,22 @@ export class UploadProjectsComponent implements OnInit {
     formData.append('world_region', this.uploadForm.get('world_region').value);
     formData.append('longitude', this.uploadForm.get('longitude').value);
     formData.append('latitude', this.uploadForm.get('latitude').value);
-    formData.append('project_file', this.project_file, this.project_file.name);
-    formData.append('img_file', this.img_file, this.img_file.name);
+    // formData.append('project_file', this.project_file, this.project_file.name);
+    // formData.append('img_file', this.img_file, this.img_file.name);
     formData.append('accessible', this.uploadForm.get('accessible').value);
-formData.forEach((data:any)=>{
-  console.log(data)
-})
+
+  formData.forEach((data:any)=>{
+    console.log(data)
+  })
+
   this.projectService.uploadProject(formData).subscribe((res:any)=>{
     console.log(res)
   })
     // display form values on success
     // alert('SUCCESS!! :)\n\n' + JSON.stringify(this.uploadForm.value, null, 4));
+    // console.log(formData)
 }
+
 onReset() {
   this.submitted = false;
   this.uploadForm.reset();
@@ -124,6 +134,7 @@ markerDragEnd($event: google.maps.MouseEvent | any){
   this.latitude=$event.coords.lat;
   this.longitude=$event.coords.lng;
 }
+
 onMouseOut(aa, $event){
 
 }

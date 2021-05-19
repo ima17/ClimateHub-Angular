@@ -28,6 +28,7 @@ import { AdminProfileComponent } from './pages/admin-profile/admin-profile.compo
 import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { EditUsersComponent } from './pages/edit-users/edit-users.component';
+import { ProjectListComponent } from './Projects/project-list/project-list.component';
 import { EditProjectsComponent } from './Projects/edit-projects/edit-projects.component';
 import { UploadProjectsComponent } from './Projects/upload-projects/upload-projects.component';
 import { ImprintComponent } from './components/footer/imprint/imprint.component';
@@ -79,7 +80,7 @@ const routes: Routes = [
   {path:'admin-blog',component:AdminBlogComponent},
   {path:'admin-event',component:AdminEventComponent},
   {path:'edit-users',component:EditUsersComponent},
-  {path:'upload-projects',component:UploadProjectsComponent},
+ // {path:'upload-projects',component:UploadProjectsComponent},
   
 //   {path:'',component:HomeComponent},
 //   {path:'Projects',component:ProjectsComponent},
@@ -107,9 +108,14 @@ const routes: Routes = [
   {path:'admin-blog',component:AdminBlogComponent,canActivate: [AfterLoginService]},
   {path:'admin-event',component:AdminEventComponent,canActivate: [AfterLoginService]},
   {path:'edit-users',component:EditUsersComponent,canActivate: [AfterLoginService]},
+  
   //{path:'upload-projects',component:UploadProjectsComponent,canActivate: [AfterLoginService]},
   {path:'upload-projects',component:UploadProjectsComponent},
-  {path:'edit-projects',component:EditProjectsComponent,canActivate: [AfterLoginService]},
+  //{path:'edit-projects',component:EditProjectsComponent,canActivate: [AfterLoginService]},
+  {path:'edit-projects/:id',component:EditProjectsComponent},
+  //{path:'project-list',component:ProjectListComponent,canActivate: [AfterLoginService]},
+  {path:'project-list',component:ProjectListComponent},
+
 
   {path:'add-users',component:EditUsersComponent,canActivate: [AfterLoginService]},
   

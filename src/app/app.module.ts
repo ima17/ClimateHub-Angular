@@ -1,8 +1,12 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AgmCoreModule } from '@agm/core';
+import { MDBBootstrapModule } from 'angular-bootstrap-md'; 
+import { HttpClientModule } from '@angular/common/http';
+
 
 //import { FormBuilder } from '@angular/forms';
 import { AppComponent } from './app.component';
@@ -34,7 +38,6 @@ import { MapImageComponent } from './components/map-image/map-image.component';
 import { UserComponent } from './pages/user/user.component';
 //import { AdminComponent } from 'src/app/pages/admin/admin.component';
 import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
-import {HttpClientModule} from '@angular/common/http';
 import { EditUsersComponent } from './pages/edit-users/edit-users.component';
 import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
@@ -75,8 +78,11 @@ import { AuthService } from './services/auth.service';
 import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { LoginComponent } from './pages/login/login.component';
+
 import { EditProjectsComponent } from './Projects/edit-projects/edit-projects.component';
+import { ProjectListComponent } from './Projects/project-list/project-list.component';
 import { UploadProjectsComponent } from './Projects/upload-projects/upload-projects.component';
+
 import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
@@ -131,6 +137,7 @@ import { DetailsComponent } from './pages/details/details.component';
     EventMailComponent,
     EventListComponent,
     EditProjectsComponent,
+    ProjectListComponent,
     UploadProjectsComponent,
     MapContainerComponent,
     RequestResetComponent,
@@ -138,6 +145,7 @@ import { DetailsComponent } from './pages/details/details.component';
     UserEditingComponent,
     UpdateUsersComponent,
     DetailsComponent,
+    
   ],
   
   imports:[
@@ -158,7 +166,8 @@ import { DetailsComponent } from './pages/details/details.component';
     SnotifyModule,
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyB_k9WCecdc-7-yKirN0X01WpqN67RdB68'
-    })
+    }),
+    MDBBootstrapModule.forRoot(),
     //FormBuilder
 
   ],
