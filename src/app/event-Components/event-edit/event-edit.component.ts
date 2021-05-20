@@ -20,6 +20,8 @@ export class EventEditComponent implements OnInit {
   id:any;
   data:any;
   event=new Event;
+  isPollValid:Boolean;
+
 
   constructor(private route:ActivatedRoute, private Eventservice:EventServiceService, private formBuilder:FormBuilder) {
     this.eventEdit = this.formBuilder.group({
@@ -92,6 +94,15 @@ export class EventEditComponent implements OnInit {
         })
       })
       
+  }
+
+  selectInput(user){
+    let selected = this.eventEdit.value.partcipantType;
+      if (selected == "public") {
+        this.isPollValid = false;
+      } else {
+        this.isPollValid = true;
+      }
   }
 
 

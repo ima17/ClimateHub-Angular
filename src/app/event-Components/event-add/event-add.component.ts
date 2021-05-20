@@ -18,6 +18,8 @@ export class EventAddComponent implements OnInit {
   eventAdd: FormGroup;
   loading=false;
   success=false;
+  isPollValid:Boolean;
+
 
   constructor(private EventService: EventServiceService, private formBuilder:FormBuilder) {
     this.eventAdd = this.formBuilder.group({
@@ -29,8 +31,7 @@ export class EventAddComponent implements OnInit {
       recurrence: ['', [Validators.required]],
       partcipantType: ['', [Validators.required]],
       isPoll: [''],
-      admin_id:['']//*********** */
-
+      admin_id:['']
     },
       {validators:dateLessThan('from','to')},
       
@@ -55,7 +56,7 @@ export class EventAddComponent implements OnInit {
     formData.append("recurrence", this.eventAdd.get('recurrence').value);
     formData.append("partcipantType", this.eventAdd.get('partcipantType').value);
     formData.append("isPoll", this.eventAdd.get('isPoll').value);
-    formData.append("admin_id", this.eventAdd.get('admin_id').value);//**************************** */
+    formData.append("admin_id", 1);
 
     this.EventService.insertData(formData).subscribe(
       (response) => //console.log(response),
@@ -78,15 +79,14 @@ export class EventAddComponent implements OnInit {
   
  
 }
-// sendMail(){
-//   this.EventService.sendNotification().subscribe(data=>{
-//     Swal.fire({
-//       title:'Great...!',
-//       text:data['message'],
-//       icon:'success'
-//     });
-//   }),error=>console.error(error);
-// }
+selectInput(user){
+  let selected = user.target.value;
+    if (selected == "public") {
+      this.isPollValid = false;
+    } else {
+      this.isPollValid = true;
+    }
+}
 
 getUserType(){
   this.EventService.getUserType(this.Event.partcipantType).subscribe(res=>{

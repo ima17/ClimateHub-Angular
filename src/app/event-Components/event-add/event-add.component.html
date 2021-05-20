@@ -169,7 +169,7 @@
           <div class="col-9">
             <div class="form-group row">
               <div class="col-sm-12">
-                <select class="custom-select" name="partcipantType"  class="form-control" formControlName="partcipantType">
+                <select class="custom-select" name="partcipantType"  class="form-control" formControlName="partcipantType" (change)="selectInput($event)">
                   <option value="public">Public Users</option>
                   <option value="private">Private Users</option>
                   <option value="partners">Partner Organizations</option>
@@ -186,9 +186,9 @@
       </div>
     </div>
 
-    <div class="card" id="card-poll">
+    <div class="card" id="card-poll" *ngIf="isPollValid">
       <div class="card-body">
-        <div class="row">
+        <div class="row" >
           <div class="col-3">
             Do you want to create poll for this Event? 
           </div>
@@ -211,11 +211,10 @@
       <div class="card-body">
           <div class="row">
               <div class="col-3">
-                <input type="text" name="admin" class="formControl" formControlName="admin_id" value="1">
+                <!-- <input type="text" name="admin" class="formControl" formControlName="admin_id" value="1" > -->
               </div>
               <div class="col-9">
-                <!-- <app-event-mail></app-event-mail> -->
-                <!-- <button class="btn btn-primary" (click)= "sendMail()">Send Mail</button> -->
+                
                 <button class="btn btn-primary mr-2" type="submit" [disabled]="!eventAdd.valid" (click)= "functionOrder()" >
                   Submit
                 </button>
