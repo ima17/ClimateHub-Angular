@@ -1,8 +1,5 @@
-.navbar {
-    padding-top: 120px;
-  }
 
-  .breadcrumb-item + .breadcrumb-item::before {
+.breadcrumb-item + .breadcrumb-item::before {
     content: ">";
 }
 

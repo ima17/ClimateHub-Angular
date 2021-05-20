@@ -1,5 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+
+
 import { HomeComponent } from './pages/home/home.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { ToolboxComponent } from './pages/toolbox/toolbox.component';
@@ -26,8 +28,10 @@ import { AdminProfileComponent } from './pages/admin-profile/admin-profile.compo
 import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
 import { EditUsersComponent } from './pages/edit-users/edit-users.component';
-import { UploadProjectsComponent } from './pages/upload-projects/upload-projects.component';
-import { ImprintComponent} from './components/footer/imprint/imprint.component';
+import { ProjectListComponent } from './Projects/project-list/project-list.component';
+import { EditProjectsComponent } from './Projects/edit-projects/edit-projects.component';
+import { UploadProjectsComponent } from './Projects/upload-projects/upload-projects.component';
+import { ImprintComponent } from './components/footer/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
 
 import { EventPollComponent} from 'src/app/event-Components/event-poll/event-poll.component';
@@ -106,13 +110,12 @@ const routes: Routes = [
   {path:'imprint',component:ImprintComponent},
   {path:'privacy-policy',component:PrivacyPolicyComponent},
 
-  
   {path:'event-vote',component:EventVoteComponent},
   {path:'event-vote/event-poll/:id',component:EventPollComponent},
   {path:'event-add',component:EventAddComponent},
   {path:'event-list/event-edit/:id',component:EventEditComponent},
   {path: 'event-list',component:EventListComponent},
-  {path: 'login',component:LoginComponent},
+  
   {path: 'request-password',component:RequestResetComponent},
   {path: 'response-password',component:ResponseResetComponent},
   {path: 'user-editing', component:UserEditingComponent,canActivate: [AfterLoginService]},
@@ -125,3 +128,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule { }
+
