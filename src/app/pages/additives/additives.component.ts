@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ProjectDataService } from 'src/app/Services/project-data.service';
+import { AuthService } from 'src/app/services/auth.service';
+import { TokenService } from 'src/app/services/token.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -10,15 +13,22 @@ import { ProjectDataService } from 'src/app/Services/project-data.service';
 export class AdditivesComponent implements OnInit {
   publicAdditives:any;
   privateAdditives:any;
+  public loggedIn :boolean;
 
 
 
 
-  constructor(private dataService:ProjectDataService) { }
+  constructor(
+    private dataService:ProjectDataService,
+    private Auth: AuthService,
+    private router: Router,
+    private Token: TokenService
+    ) { }
 
   ngOnInit(): void {
     this.getPublicAdditivesData();
     this.getPrivateAdditivesData();
+    this.Auth.authStatus.subscribe(value => this.loggedIn = value);
     
   }
 
@@ -33,6 +43,14 @@ export class AdditivesComponent implements OnInit {
       this. privateAdditives=res;
     });
   };
+
+  logout(event: MouseEvent){
+    event.preventDefault();
+    this.Token.remove();
+    this.Auth.changeAuthStatus(false);
+    this.router.navigateByUrl('/additives');
+}
+
 
   
 }

@@ -92,6 +92,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
   dayGridPlugin,interactionPlugin
   
 ]);
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 
 @NgModule({
@@ -145,9 +146,13 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     UserEditingComponent,
     UpdateUsersComponent,
     DetailsComponent,
+
     VoteResultComponent,
-    UserListComponent
+    UserListComponent,
+
+    SearchFilterPipe,
     
+
   ],
   
   imports:[
