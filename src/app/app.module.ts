@@ -1,8 +1,14 @@
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-import { FormBuilder } from '@angular/forms';
+//import { AgmCoreModule } from '@agm/core';
+//import { MDBBootstrapModule } from 'angular-bootstrap-md'; 
+import { HttpClientModule } from '@angular/common/http';
+
+
+//import { FormBuilder } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ProjectsComponent } from './pages/projects/projects.component';
@@ -32,8 +38,6 @@ import { MapImageComponent } from './components/map-image/map-image.component';
 import { UserComponent } from './pages/user/user.component';
 //import { AdminComponent } from 'src/app/pages/admin/admin.component';
 import { AdminProfileComponent } from './pages/admin-profile/admin-profile.component';
-import {HttpClientModule} from '@angular/common/http';
-import { UploadProjectsComponent } from './pages/upload-projects/upload-projects.component';
 import { EditUsersComponent } from './pages/edit-users/edit-users.component';
 import { AdminBlogComponent } from './pages/admin-blog/admin-blog.component';
 import { AdminEventComponent } from './pages/admin-event/admin-event.component';
@@ -41,11 +45,9 @@ import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.componen
 import { ImprintComponent } from './components/footer/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
 
+//import { AfterLoginService } from './services/after-login.service';
+//import { BeforeLoginService } from './services/before-login.service'; 
 
-
-
-
-//import
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -54,7 +56,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { FullCalendarModule } from '@fullcalendar/angular'; // calendar
-import dayGridPlugin from '@fullcalendar/daygrid'; // plugin
+import  dayGridPlugin from '@fullcalendar/daygrid'; // plugin
 import interactionPlugin from '@fullcalendar/interaction';
 import { EventPollComponent } from './event-Components/event-poll/event-poll.component';
 import { EventAddComponent } from './event-Components/event-add/event-add.component';
@@ -66,6 +68,11 @@ import { AuthService } from './services/auth.service';
 import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
 import { LoginComponent } from './pages/login/login.component';
+
+import { EditProjectsComponent } from './Projects/edit-projects/edit-projects.component';
+import { ProjectListComponent } from './Projects/project-list/project-list.component';
+import { UploadProjectsComponent } from './Projects/upload-projects/upload-projects.component';
+
 import { RequestResetComponent } from './components/password/request-reset/request-reset.component';
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { SnotifyModule, SnotifyService, ToastDefaults } from 'ng-snotify';
@@ -117,26 +124,22 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     UserComponent,
     //AdminComponent,
     AdminProfileComponent,
-    UploadProjectsComponent,
     EditUsersComponent,
     AdminBlogComponent,
     AdminEventComponent,
     AdmimNavbarComponent,
-   
-    
     LoginComponent,
     ImprintComponent,
     PrivacyPolicyComponent,
-
-    
-  
     AdminNavComponent,
     EventPollComponent,
     EventAddComponent,
     EventEditComponent,
     EventListComponent,
+    EditProjectsComponent,
+    ProjectListComponent,
+    UploadProjectsComponent,
     MapContainerComponent,
-    LoginComponent,
     RequestResetComponent,
     ResponseResetComponent,
     UserEditingComponent,
@@ -146,7 +149,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     UserListComponent
     
   ],
-  imports: [
+  
+  imports:[
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -163,7 +167,14 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     BreadcrumbModule,
     SnotifyModule,
     NgxPaginationModule,
+    // AgmCoreModule.forRoot({
+    //   apiKey: 'AIzaSyB_k9WCecdc-7-yKirN0X01WpqN67RdB68'
+    // }),
+    // MDBBootstrapModule.forRoot(),
+    // //FormBuilder
+
   ],
+
   providers: [JarwisService, TokenService, AuthService, AfterLoginService, BeforeLoginService,{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},
   SnotifyService],
   bootstrap: [AppComponent]

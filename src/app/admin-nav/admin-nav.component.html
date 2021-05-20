@@ -56,3 +56,62 @@
     </div>
   </nav>
 </div>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top ">
+  <a class="navbar-brand" href="/admin"><img
+      src="https://app.vanillr.io/templates/frontend/climatehub.vanillr.io/img/ClimateHub-V1.png" width="30" height="30"
+      alt="Logo" class="logo"></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+    aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+    <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle"  id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Users
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/add-users">Add users</a>
+          <a class="dropdown-item" routerLink="/user-editing">Delete Users</a>
+
+
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" routerLink="/admin-events" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Events
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/event-add">Add Events</a>
+          <a class="dropdown-item" routerLink="">Edit Events</a>
+
+
+        </div>
+      </li>
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" routerLink="" id="navbarDropdown" role="button"
+          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Projects
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" routerLink="/upload-projects">Upload Projects</a>
+          <a class="dropdown-item" routerLink="/edit-projects">Edit Projects</a>
+
+
+        </div>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" routerLink="/admin-blog">Blog</a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
