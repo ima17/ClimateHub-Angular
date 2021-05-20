@@ -7,6 +7,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import {dateLessThan} from 'src/app/validation/date.validation';
 import swal from 'sweetalert2/dist/sweetalert2.js';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import * as moment from 'moment';
 
 @Component({
   selector: 'app-event-edit',
@@ -54,8 +55,8 @@ export class EventEditComponent implements OnInit {
       title:eventDetail.title,
       description:eventDetail.description,
       venue:eventDetail.venue,
-      from:eventDetail.sdate,
-      to:eventDetail.edate,
+      from:moment(new Date(eventDetail.sdate)).format('YYYY-MM-DDTHH:mm'),//moment(new Date()).format('YYYY-MM-DDTHH:mm')
+      to:moment(new Date(eventDetail.edate)).format('YYYY-MM-DDTHH:mm'),
       recurrence:eventDetail.recurrence,
       partcipantType:eventDetail.partcipantType,
       isPoll:eventDetail.isPoll
@@ -73,15 +74,24 @@ export class EventEditComponent implements OnInit {
     this.event.partcipantType=this.eventEdit.value.partcipantType;
     this.event.isPoll=this.eventEdit.value.isPoll;
 
-    this.Eventservice.updateEvent(this.id,this.event).subscribe(res=>
+    this.Eventservice.updateEvent(this.id,this.event).subscribe
+      (res=>
       { 
-        
         swal.fire({
           title:'',
           text:res['message'],
           icon:'success'
         });
-      });
+      }),
+      (error=>{
+        swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Something went wrong!',
+          
+        })
+      })
+      
   }
 
 

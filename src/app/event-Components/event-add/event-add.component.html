@@ -1,7 +1,7 @@
 <app-admin-nav></app-admin-nav>
 <app-breadcrumb></app-breadcrumb>
 <div class="container">
-  <h1>Create Events</h1>
+  <h1 class="main-title">Create Events</h1>
   <form action="" method="post" name="saveEvent" [formGroup]="eventAdd"  [hidden]="success">
     <!-- (ngSubmit)="functionOrder()" -->
     <div class="card" id="card-title">
@@ -144,7 +144,7 @@
             <div class="form-group row">
               <div class="col-sm-12">
                 <select class="custom-select" name="recurrence"  class="form-control" formControlName="recurrence">
-                  <option value="none">None</option>
+                  <option value="None">None</option>
                   <option value="Daily">Daily</option>
                   <option value="Weekly">Weekly</option>
                   <option value="Monthly">Monthly</option>

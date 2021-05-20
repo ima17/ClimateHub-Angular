@@ -31,12 +31,10 @@ import { ImprintComponent} from './components/footer/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
 
 import { EventPollComponent} from 'src/app/event-Components/event-poll/event-poll.component';
-import { EventVoteComponent } from 'src/app/event-Components/event-vote/event-vote.component';
 import { EventAddComponent } from 'src/app/event-Components/event-add/event-add.component';
 import { EventEditComponent} from 'src/app/event-Components/event-edit/event-edit.component';
-import { EventMailComponent } from 'src/app/event-Components/event-mail/event-mail.component';
 import {EventListComponent} from 'src/app/event-Components/event-list/event-list.component';
-
+import {UserListComponent} from 'src/app/event-Components/user-list/user-list.component';
 
 import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
@@ -106,9 +104,9 @@ const routes: Routes = [
   {path:'login',component:LoginComponent},
   {path:'imprint',component:ImprintComponent},
   {path:'privacy-policy',component:PrivacyPolicyComponent},
-  {path:'event-vote',component:EventVoteComponent},
-  {path:'event-vote/event-poll/:id',component:EventPollComponent},
+  {path:'event-user-list/event-poll/:id',component:EventPollComponent},
   {path:'event-add',component:EventAddComponent},
+  {path:'event-user-list', component: UserListComponent},
   {path:'event-list/event-edit/:id',component:EventEditComponent},
   {path: 'event-list',component:EventListComponent},
   {path: 'event-list/vote-result/:id', component:VoteResultComponent},

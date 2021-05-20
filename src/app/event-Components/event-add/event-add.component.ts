@@ -58,23 +58,35 @@ export class EventAddComponent implements OnInit {
     formData.append("admin_id", this.eventAdd.get('admin_id').value);//**************************** */
 
     this.EventService.insertData(formData).subscribe(
-      //(response) => console.log(response),
+      (response) => //console.log(response),
+      Swal.fire({
+        icon: 'success',
+        title: 'Great...',
+        text: 'Event saved successfully',
+        // footer: '<a href>Why do I have this issue?</a>'
+      }),
       
-      (error) => console.log(error)
+      (error) => //console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        
+      })
     )
   
   
  
 }
-sendMail(){
-  this.EventService.sendNotification().subscribe(data=>{
-    Swal.fire({
-      title:'Great...!',
-      text:data['message'],
-      icon:'success'
-    });
-  }),error=>console.error(error);
-}
+// sendMail(){
+//   this.EventService.sendNotification().subscribe(data=>{
+//     Swal.fire({
+//       title:'Great...!',
+//       text:data['message'],
+//       icon:'success'
+//     });
+//   }),error=>console.error(error);
+// }
 
 getUserType(){
   this.EventService.getUserType(this.Event.partcipantType).subscribe(res=>{
@@ -86,7 +98,7 @@ getUserType(){
 functionOrder(){
   this.insertData();
   //this.createPoll();
-  this.sendMail();
+  //this.sendMail();
 }
 
 createPoll(){

@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {EventServiceService} from 'src/app/services/event-service.service';
 import {ActivatedRoute} from '@angular/router';
+import swal from 'sweetalert2/dist/sweetalert2.js';
 
 
 @Component({

@@ -1,7 +1,7 @@
 <app-admin-nav></app-admin-nav>
 <app-breadcrumb></app-breadcrumb>
 <div class="container">
-  <h1>Update Events</h1>
+  <h1 class="main-title">Update Events</h1>
   <form action="" method="post" name="editEvent" (ngSubmit)="updateEvent()" [formGroup]="eventEdit">
 
     <div class="card" id="card-title">
@@ -78,7 +78,16 @@
             <div class="form-group row">
               <div class="col-sm-12">
                 <input type="datetime-local" name="from" id="timepicker1" class="form-control"
-                  formControlName="from">
+                  formControlName="from" dateValidator>
+                  <span class="error" *ngIf="eventEdit.get('from').errors?.dateLessThan">
+                    The date you have entered is Invalid.
+                  </span>
+                  <span class="error" *ngIf="eventEdit.get('from').errors?.pastDate">
+                    The date you have entered is Invalid.
+                  </span>
+                  <span class="error" *ngIf="eventEdit.get('from').errors?.required && eventEdit.get('from').touched" >
+                    Start time is required.
+                  </span>
               </div>
             </div>
 
@@ -96,7 +105,10 @@
           <div class="col-9">
             <div class="form-group row">
               <div class="col-sm-12">
-                <input type="datetime-local" name="to" id="timepicker2" class="form-control"formControlName="to">
+                <input type="datetime-local" name="to" id="timepicker2" class="form-control"formControlName="to" dateValidator>
+                <span class="error" *ngIf="eventEdit.get('to').errors?.required && eventEdit.get('to').touched" >
+                  End time is required.
+                </span>
               </div>
             </div>
 

@@ -56,11 +56,9 @@ import { MatListModule } from '@angular/material/list';
 import { FullCalendarModule } from '@fullcalendar/angular'; // calendar
 import dayGridPlugin from '@fullcalendar/daygrid'; // plugin
 import interactionPlugin from '@fullcalendar/interaction';
-import { EventVoteComponent } from './event-Components/event-vote/event-vote.component';
 import { EventPollComponent } from './event-Components/event-poll/event-poll.component';
 import { EventAddComponent } from './event-Components/event-add/event-add.component';
 import { EventEditComponent } from './event-Components/event-edit/event-edit.component';
-import { EventMailComponent } from './event-Components/event-mail/event-mail.component';
 import { EventListComponent } from './event-Components/event-list/event-list.component';
 import { JarwisService } from './services/jarwis.service';
 import { TokenService } from './services/token.service';
@@ -79,11 +77,12 @@ import { NgxPaginationModule} from 'ngx-pagination';
 import { DetailsComponent } from './pages/details/details.component';
 import { VoteResultComponent } from './event-Components/vote-result/vote-result.component';
 import * as $ from 'jquery';
+import { UserListComponent } from 'src/app/event-Components/user-list/user-list.component';
 
 
 
 FullCalendarModule.registerPlugins([ // register FullCalendar plugins
-  dayGridPlugin,
+  dayGridPlugin,interactionPlugin
   
 ]);
 
@@ -132,11 +131,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     
   
     AdminNavComponent,
-    EventVoteComponent,
     EventPollComponent,
     EventAddComponent,
     EventEditComponent,
-    EventMailComponent,
     EventListComponent,
     MapContainerComponent,
     LoginComponent,
@@ -145,7 +142,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     UserEditingComponent,
     UpdateUsersComponent,
     DetailsComponent,
-    VoteResultComponent
+    VoteResultComponent,
+    UserListComponent
     
   ],
   imports: [
@@ -164,7 +162,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     FullCalendarModule,
     BreadcrumbModule,
     SnotifyModule,
-    NgxPaginationModule
+    NgxPaginationModule,
   ],
   providers: [JarwisService, TokenService, AuthService, AfterLoginService, BeforeLoginService,{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},
   SnotifyService],
