@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import swal from 'sweetalert2/dist/sweetalert2.js';
+// import swal from 'sweetalert2/dist/sweetalert2.js';
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 import {EventServiceService } from 'src/app/services/event-service.service';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 
 @Component({
@@ -11,6 +13,8 @@ import {EventServiceService } from 'src/app/services/event-service.service';
 export class EventListComponent implements OnInit {
 
   eventList: any;
+  polling:any;
+  page:any;
 
   constructor(private EventService: EventServiceService) { }
 
@@ -21,11 +25,12 @@ export class EventListComponent implements OnInit {
   getEventData(){
     this.EventService.getData().subscribe(res=>{
       this.eventList=res;
+      
     });
   }
 
   deleteEvent(id){
-    swal.fire({
+      Swal.fire({
       title: 'Do you want to delete this event?',
       text: "You won't be able to revert this!",
       icon: 'warning',
@@ -39,7 +44,7 @@ export class EventListComponent implements OnInit {
           this.getEventData();
           
         });
-        swal.fire(
+        Swal.fire(
           'Deleted!',
           'The event is deleted.',
           'success'
@@ -47,4 +52,6 @@ export class EventListComponent implements OnInit {
       }
     })
   }
+
+  
 }

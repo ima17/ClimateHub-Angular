@@ -1,38 +1,40 @@
-
+<app-admin-nav></app-admin-nav>
+<app-breadcrumb></app-breadcrumb>
 <div class="container">
-    <h2>Events</h2>
-    <table class="table">
-        <thead>
-          <tr>
-            
-            <th scope="col">Event Name</th>
-            <th scope="col">Venue</th>
-            <th scope="col">Start Date</th>
-            <th scope="col">End Date</th>
-            <th scope="col">Recurrance </th>
-            <th scope="col">User Type </th>
-            <th scope="col">Action</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor= "let eve of eventList">
-            
-            <th scope="row">{{eve.title}}</th>
-            <td>{{eve.venue}}</td>
-            <td>{{eve.sdate}}</td>
-            <td>{{eve.edate}}</td>
-            <td>{{eve.recurrence}}</td>
-            <td>{{eve.partcipantType}}</td>
-            <td><button 
-                  class="btn btn-danger btn-sm"
+  <h1 class="main-title">Events</h1>
+  <ul *ngFor= "let eve of eventList | paginate: {itemsPerPage: 4, currentPage: page}">
+    <li>
+      <div class="card border border-info rounded">
+        <div class="card-body  shadow  ">
+            <h2>{{eve.title}}</h2>
+            <p><b>Venue : </b>{{eve.venue}}</p>
+            <p><b>Starting Time : </b>{{eve.sdate}}</p>
+            <p><b>Finishing Time : </b>{{eve.edate}}</p>
+            <p><b>Event Recurrence :</b>{{eve.recurrence}}</p>
+            <p><b>Participant Type :</b>{{eve.partcipantType}}</p>
+            <p><button 
+                  class="btn mx-2 btn-outline-info"
+                  id="delete"
                   (click)="deleteEvent(eve.id)" >Delete</button> 
                 <button 
-                  class="btn btn-warning btn-sm mx-2"
+                  class="btn mx-2 btn-outline-info"
+                  id="edit"
                   routerLink="event-edit/{{eve.id}}">
                   Edit
                 </button>
-            </td>
-          </tr>
-        </tbody>
-    </table>
+                <button 
+                  class="btn btn-outline-info mx-2"
+                  id="results"
+                  *ngIf="eve.isPoll"
+                  routerLink="vote-result/{{eve.id}}">
+                  poll result</button>
+                  
+              </p>
+        </div>
+      </div>
+    </li>
+  </ul>
+  
+  <pagination-controls (pageChange)="page=$event" class="float-right"></pagination-controls>
 </div>
+<app-footer></app-footer>
