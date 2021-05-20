@@ -40,6 +40,17 @@ export class TokenService {
     return false;
   }
 
+  getRole() {
+    const token = this.get();
+    if (token) {
+      const payload = this.payload(token);
+      if (payload) {
+        return payload.role as string;
+      }
+    }
+    return null;
+  }
+
   payload(token) {
     const payload = token.split('.')[1];
     return this.decode(payload);

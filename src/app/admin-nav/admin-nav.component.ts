@@ -30,7 +30,7 @@ export class AdminNavComponent {
     event.preventDefault();
     this.Token.remove();
     this.Auth.changeAuthStatus(false);
-    this.router.navigateByUrl('/admin');
+    this.router.navigateByUrl('#');
   }
 
 }
