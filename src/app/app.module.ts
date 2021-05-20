@@ -85,6 +85,7 @@ import { UserEditingComponent } from './pages/user-editing/user-editing.componen
 import { UpdateUsersComponent } from './pages/update-users/update-users.component';
 import {BreadcrumbModule} from 'angular-crumbs';
 import { DetailsComponent } from './pages/details/details.component';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 
 @NgModule({
@@ -139,6 +140,7 @@ import { DetailsComponent } from './pages/details/details.component';
     UserEditingComponent,
     UpdateUsersComponent,
     DetailsComponent,
+    SearchFilterPipe,
   ],
   
   imports:[
