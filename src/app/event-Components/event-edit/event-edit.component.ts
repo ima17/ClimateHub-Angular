@@ -44,6 +44,7 @@ export class EventEditComponent implements OnInit {
     //console.log(this.route.snapshot.params.id);
     this.id=this.route.snapshot.params.id;
     this.getData();
+    // this.selectInput();
   }
 
   getData(){
@@ -96,14 +97,14 @@ export class EventEditComponent implements OnInit {
       
   }
 
-  selectInput(user){
-    let selected = this.eventEdit.value.partcipantType;
-      if (selected == "public") {
-        this.isPollValid = false;
-      } else {
-        this.isPollValid = true;
-      }
-  }
+  // selectInput(){
+  //   let selected = this.eventEdit.value.partcipantType;
+  //     if (selected == "Public Users") {
+  //       this.isPollValid = false;
+  //     } else {
+  //       this.isPollValid = true;
+  //     }
+  // }
 
 
 }

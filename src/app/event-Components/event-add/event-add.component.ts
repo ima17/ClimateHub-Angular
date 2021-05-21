@@ -79,14 +79,14 @@ export class EventAddComponent implements OnInit {
   
  
 }
-selectInput(user){
-  let selected = user.target.value;
-    if (selected == "public") {
-      this.isPollValid = false;
-    } else {
-      this.isPollValid = true;
-    }
-}
+// selectInput(user){
+//   let selected = user.target.value;
+//     if (selected == "USERS") {
+//       this.isPollValid = false;
+//     } else {
+//       this.isPollValid = true;
+//     }
+// }
 
 getUserType(){
   this.EventService.getUserType(this.Event.partcipantType).subscribe(res=>{
