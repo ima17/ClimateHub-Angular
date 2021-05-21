@@ -45,6 +45,7 @@ import { AdmimNavbarComponent } from './pages/admim-navbar/admim-navbar.componen
 import { ImprintComponent } from './components/footer/imprint/imprint.component';
 import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
 
+
 //import { AfterLoginService } from './services/after-login.service';
 //import { BeforeLoginService } from './services/before-login.service'; 
 
@@ -91,7 +92,8 @@ import { UserEditingComponent } from './pages/user-editing/user-editing.componen
 import { UpdateUsersComponent } from './pages/update-users/update-users.component';
 import {BreadcrumbModule} from 'angular-crumbs';
 import { DetailsComponent } from './pages/details/details.component';
-import { SearchFilterPipe } from './pipes/search-filter.pipe';
+
+
 
 
 @NgModule({
@@ -147,11 +149,9 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     UserEditingComponent,
     UpdateUsersComponent,
     DetailsComponent,
-<<<<<<< HEAD
-    SearchFilterPipe,
-=======
+ 
+   
     
->>>>>>> 587cc1d9db5924d5260e3a002ec37263bdff67f3
   ],
   
   imports:[

@@ -14,6 +14,7 @@ export class ProjectsComponent implements OnInit {
   privateprojects:any;
   public loggedIn :boolean;
   
+  
 
   constructor(
     private dataService:ProjectDataService,
