@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AgmCoreModule } from '@agm/core';
-import { MDBBootstrapModule } from 'angular-bootstrap-md'; 
+//import { MDBBootstrapModule } from 'angular-bootstrap-md'; 
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -59,20 +59,10 @@ import { MatListModule } from '@angular/material/list';
 import { FullCalendarModule } from '@fullcalendar/angular'; // calendar
 import  dayGridPlugin from '@fullcalendar/daygrid'; // plugin
 import interactionPlugin from '@fullcalendar/interaction';
-import { EventVoteComponent } from './event-Components/event-vote/event-vote.component';
 import { EventPollComponent } from './event-Components/event-poll/event-poll.component';
 import { EventAddComponent } from './event-Components/event-add/event-add.component';
 import { EventEditComponent } from './event-Components/event-edit/event-edit.component';
-import { EventMailComponent } from './event-Components/event-mail/event-mail.component';
 import { EventListComponent } from './event-Components/event-list/event-list.component';
-
-
-FullCalendarModule.registerPlugins([ // register FullCalendar plugins
-  dayGridPlugin,
-  interactionPlugin
-]);
-
-
 import { JarwisService } from './services/jarwis.service';
 import { TokenService } from './services/token.service';
 import { AuthService } from './services/auth.service';
@@ -91,8 +81,20 @@ import { MapContainerComponent } from './components/map-container/map-container.
 import { UserEditingComponent } from './pages/user-editing/user-editing.component';
 import { UpdateUsersComponent } from './pages/update-users/update-users.component';
 import {BreadcrumbModule} from 'angular-crumbs';
+import { NgxPaginationModule} from 'ngx-pagination';
 import { DetailsComponent } from './pages/details/details.component';
 
+
+import { VoteResultComponent } from './event-Components/vote-result/vote-result.component';
+import * as $ from 'jquery';
+import { UserListComponent } from 'src/app/event-Components/user-list/user-list.component';
+
+
+
+FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+  dayGridPlugin,interactionPlugin
+  
+]);
 
 
 
@@ -134,11 +136,9 @@ import { DetailsComponent } from './pages/details/details.component';
     ImprintComponent,
     PrivacyPolicyComponent,
     AdminNavComponent,
-    EventVoteComponent,
     EventPollComponent,
     EventAddComponent,
     EventEditComponent,
-    EventMailComponent,
     EventListComponent,
     EditProjectsComponent,
     ProjectListComponent,
@@ -152,6 +152,13 @@ import { DetailsComponent } from './pages/details/details.component';
  
    
     
+
+    VoteResultComponent,
+    UserListComponent,
+
+    
+    
+
   ],
   
   imports:[
@@ -170,11 +177,12 @@ import { DetailsComponent } from './pages/details/details.component';
     FullCalendarModule,
     BreadcrumbModule,
     SnotifyModule,
+    NgxPaginationModule,
     AgmCoreModule.forRoot({
-      apiKey: 'AIzaSyB_k9WCecdc-7-yKirN0X01WpqN67RdB68'
-    }),
-    MDBBootstrapModule.forRoot(),
-    //FormBuilder
+    apiKey: 'AIzaSyB_k9WCecdc-7-yKirN0X01WpqN67RdB68'
+     }),
+    // MDBBootstrapModule.forRoot(),
+    // //FormBuilder
 
   ],
 

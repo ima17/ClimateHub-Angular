@@ -1,14 +1,62 @@
-<app-navbar></app-navbar>
-<app-breadcrumb></app-breadcrumb>
-<div class="container" style="width: 50%; height: 100%; align-content: center;">
+<head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://momentjs.com/downloads/moment.min.js"></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.js'></script>
+    <link rel='stylesheet' href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.1.0/fullcalendar.min.css" />
+    <script>
+        $(document).ready(function() {
+            $('#calendar').fullCalendar({
+                defaultDate: '2014-09-12',
+                editable: true,
+                eventLimit: true, // allow "more" link when too many events
+            });
+        });
+    </script>
+</head>
 
 
-    <full-calendar [options]="calendarOptions">
+    <app-navbar></app-navbar>
+    <app-breadcrumb></app-breadcrumb>
+    <div class="container " style="width: 50%; height: 100%; align-content: center;">
+        
+        
+        <div class="row row-1">
+            <div class="col-6">
+                <h1 class="main-title">Event Calendar</h1>
+                
+            </div>
+            <div class="col-6">
+                <!-- <button type="button" class="btn btn-outline-info float-right  " routerLink="/event-vote">VOTE FOR EVENTS >></button> -->
+            </div>
+        </div>
+        <div class="tab-content">
+            <div class="tab-pane show active " id="one">
+                <full-calendar
+                id="fullcalendar"
+                #fullcalendar
+                plugins="calendarPlugins"
+                editable="true"
+                eventTextColour=#fff
 
-    </full-calendar>
-    
-</div>
+                defaultView="'dayGridMonth'"
+                header="{
+                    left:'prev,next today',
+                    center:'title',
+                    right:''
+                }"
+                [dir]="'ltr'"
+                
+                >
+
+                </full-calendar>
+            </div>
+            
+        </div>
+        <div><p ><em>
+            Want to know more about Events. Visit <a href="/event-user-list">Event List</a>
+        </em></p></div>
+    </div>
+<br>
 
 
-<!--code end-->
-<app-footer></app-footer>
+    <app-footer></app-footer>

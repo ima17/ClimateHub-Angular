@@ -2,13 +2,14 @@ import { Injectable } from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import { Event } from 'src/app/event';
 
+
 @Injectable({
   providedIn: 'root'
 })
 export class EventServiceService {
 
   constructor(private httpClient: HttpClient) { }
-  // tslint:disable-next-line: typedef
+  //tslint:disable-next-line: typedef
 
   getData(){
     return this.httpClient.get('http://127.0.0.1:8000/api/events');
@@ -44,5 +45,13 @@ export class EventServiceService {
 
   getAllPoll(){
     return this.httpClient.get('http://127.0.0.1:8000/api/getPollEvents');
+  }
+
+  sendVote(vote){
+    return this.httpClient.post('http://127.0.0.1:8000/api/saveVote',vote);
+  }
+
+  voteResult(event_id){
+    return this.httpClient.get('http://127.0.0.1:8000/api/voteResult/'+event_id);
   }
 }

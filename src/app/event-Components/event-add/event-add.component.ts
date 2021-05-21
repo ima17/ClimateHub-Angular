@@ -6,8 +6,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import {HttpParams, HttpClient } from '@angular/common/http';
 import {dateLessThan} from 'src/app/validation/date.validation';
-import swal from 'sweetalert2/dist/sweetalert2.js';
-
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 
 @Component({
   selector: 'app-event-add',
@@ -19,6 +18,8 @@ export class EventAddComponent implements OnInit {
   eventAdd: FormGroup;
   loading=false;
   success=false;
+  isPollValid:Boolean;
+
 
   constructor(private EventService: EventServiceService, private formBuilder:FormBuilder) {
     this.eventAdd = this.formBuilder.group({
@@ -29,8 +30,8 @@ export class EventAddComponent implements OnInit {
       to: ['', [Validators.required]],
       recurrence: ['', [Validators.required]],
       partcipantType: ['', [Validators.required]],
-      isPoll: ['']
-
+      isPoll: [''],
+      admin_id:['']
     },
       {validators:dateLessThan('from','to')},
       
@@ -55,25 +56,36 @@ export class EventAddComponent implements OnInit {
     formData.append("recurrence", this.eventAdd.get('recurrence').value);
     formData.append("partcipantType", this.eventAdd.get('partcipantType').value);
     formData.append("isPoll", this.eventAdd.get('isPoll').value);
-
+    formData.append("admin_id", 1);
 
     this.EventService.insertData(formData).subscribe(
-      (response) => console.log(response),
+      (response) => //console.log(response),
+      Swal.fire({
+        icon: 'success',
+        title: 'Great...',
+        text: 'Event saved successfully',
+        // footer: '<a href>Why do I have this issue?</a>'
+      }),
       
-      (error) => console.log(error)
+      (error) => //console.log(error)
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: 'Something went wrong!',
+        
+      })
     )
   
   
  
 }
-sendMail(){
-  this.EventService.sendNotification().subscribe(data=>{
-    swal.fire({
-      title:'Great...!',
-      text:data['message'],
-      icon:'success'
-    });
-  }),error=>console.error(error);
+selectInput(user){
+  let selected = user.target.value;
+    if (selected == "public") {
+      this.isPollValid = false;
+    } else {
+      this.isPollValid = true;
+    }
 }
 
 getUserType(){

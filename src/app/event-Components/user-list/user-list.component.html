@@ -1,0 +1,36 @@
+<app-navbar></app-navbar>
+<app-breadcrumb></app-breadcrumb>
+
+<div class="container">
+    <div class="row row-1">
+        <div class="col">
+            <h1 class="main-title">Events</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <ul *ngFor = "let e of events| paginate: {itemsPerPage: 4, currentPage: page}">
+                <li>
+                    <div class="card border border-info rounded">
+                        <div class="card-body  shadow  ">
+                            <h2>{{e.title}}</h2>
+                            <p>({{e.description}})</p>
+                            <p><b>Venue: </b>{{e.venue}}</p>
+                            <p><b>Start at: </b>Start at: {{e.sdate}}</p>
+                            <p><b>Finish at: </b>{{e.edate}}</p>
+                            <p><b>Event Recuurence:</b> {{e.recurrence}}</p>
+                            <button class="btn btn-outline-info" *ngIf="e.isPoll" data-toggle="tooltip" data-placement="bottom" title="Hit a like for this event..!" routerLink="event-poll/{{e.id}}">Vote</button>
+                            
+                        </div>
+                    </div>
+                </li>
+            </ul>
+            <pagination-controls (pageChange)="page=$event" class="float-right"></pagination-controls>
+
+
+
+        </div>
+    </div>
+</div>
+<app-footer></app-footer>
