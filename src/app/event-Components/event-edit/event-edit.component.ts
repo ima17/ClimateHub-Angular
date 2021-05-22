@@ -30,7 +30,7 @@ export class EventEditComponent implements OnInit {
       venue: ['', [Validators.required]],
       from: ['', [Validators.required]],
       to: ['', [Validators.required]],
-      recurrence: ['', [Validators.required]],
+      // recurrence: [''],
       partcipantType: ['', [Validators.required]],
       isPoll: ['']
 
@@ -60,7 +60,7 @@ export class EventEditComponent implements OnInit {
       venue:eventDetail.venue,
       from:moment(new Date(eventDetail.sdate)).format('YYYY-MM-DDTHH:mm'),//moment(new Date()).format('YYYY-MM-DDTHH:mm')
       to:moment(new Date(eventDetail.edate)).format('YYYY-MM-DDTHH:mm'),
-      recurrence:eventDetail.recurrence,
+      // recurrence:eventDetail.recurrence,
       partcipantType:eventDetail.partcipantType,
       isPoll:eventDetail.isPoll
     })
@@ -73,7 +73,7 @@ export class EventEditComponent implements OnInit {
     this.event.description=this.eventEdit.value.description;
     this.event.sdate=this.eventEdit.value.from;
     this.event.edate=this.eventEdit.value.to;
-    this.event.recurrence=this.eventEdit.value.recurrence;
+    // this.event.recurrence=this.eventEdit.value.recurrence;
     this.event.partcipantType=this.eventEdit.value.partcipantType;
     this.event.isPoll=this.eventEdit.value.isPoll;
 
