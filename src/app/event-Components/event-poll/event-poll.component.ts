@@ -58,7 +58,7 @@ export class EventPollComponent implements OnInit {
       (error) => //console.log(error)
       Swal.fire({
         title:'Sorry',
-        text:'error',
+        text:'It seems you have already voted for this event',
         icon:'error'
       }),
     )
