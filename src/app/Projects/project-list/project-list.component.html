@@ -1,11 +1,11 @@
-<div class="mt-4 col-8 offset-2">
-    <div class="card">
-      <div class="card-header"><b>Project List</b></div>
-      <div class="card-body">
-  
-    <div class="container">
+<app-admin-nav></app-admin-nav>
+<app-breadcrumb></app-breadcrumb>
+
+<div class="container">
+  <h1 class="main-title">Projects Summary</h1>
+<!-- 
       <div class="row">
-        <div class="col-12">
+        <div class="col-12">  -->
           <table class="table table-bordered">
             
             <thead>
@@ -30,32 +30,18 @@
                 <td>{{p.category}}</td>
                 <td>{{p.accessible}}</td>
                 <td>
-                  <button type="button" class="btn btn-primary" (click)="getProjectById(p.id)"><i class="far fa-eye"></i></button>
+                  <button type="button" class="btn btn-primary" routerLink="details/{{p.id}}"><i class="far fa-eye"></i></button>
                   <button type="button" class="btn btn-success" routerLink="edit-projects/{{p.id}}"><i class="fas fa-edit"></i></button>
                   <button type="button" class="btn btn-danger" (click)="deleteProject(p.id)"><i class="far fa-trash-alt"></i></button>
                 </td>
               </tr>
 
-              <tr>
-                <th scope="row">2</th>
-                <td>Kandalama Hotel</td>
-                <td>Hiruni</td>
-                <td>University of Moratuwa</td>
-                <td>Example</td>
-                <td>Open</td>
-                <td>
-                  <button type="button" class="btn btn-primary"><i class="far fa-eye"></i></button>
-                  <button type="button" class="btn btn-success"><i class="fas fa-edit"></i></button>
-                  <button type="button" class="btn btn-danger"><i class="far fa-trash-alt"></i></button>
-                </td>
-              </tr>
              
             </tbody>
           </table>
         </div>
-      </div>
-    </div>
-  
-      </div>
-    </div>
-    </div>
+      <!-- </div>
+      </div> -->
+    
+
+    <app-footer></app-footer>

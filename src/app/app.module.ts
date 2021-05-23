@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
-//import { AgmCoreModule } from '@agm/core';
+import { AgmCoreModule } from '@agm/core';
 //import { MDBBootstrapModule } from 'angular-bootstrap-md'; 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -56,7 +56,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
 import { FullCalendarModule } from '@fullcalendar/angular'; // calendar
-import  dayGridPlugin from '@fullcalendar/daygrid'; // plugin
+//import  dayGridPlugin from '@fullcalendar/daygrid'; // plugin
 import interactionPlugin from '@fullcalendar/interaction';
 import { EventPollComponent } from './event-Components/event-poll/event-poll.component';
 import { EventAddComponent } from './event-Components/event-add/event-add.component';
@@ -88,10 +88,10 @@ import { UserListComponent } from 'src/app/event-Components/user-list/user-list.
 
 
 
-FullCalendarModule.registerPlugins([ // register FullCalendar plugins
-  dayGridPlugin,interactionPlugin
+// FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+//   dayGridPlugin,interactionPlugin
   
-]);
+// ]);
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
 
 
@@ -172,9 +172,9 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     BreadcrumbModule,
     SnotifyModule,
     NgxPaginationModule,
-    // AgmCoreModule.forRoot({
-    //   apiKey: 'AIzaSyB_k9WCecdc-7-yKirN0X01WpqN67RdB68'
-    // }),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB_k9WCecdc-7-yKirN0X01WpqN67RdB68'
+    }),
     // MDBBootstrapModule.forRoot(),
     // //FormBuilder
 
