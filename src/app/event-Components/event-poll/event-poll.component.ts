@@ -21,6 +21,7 @@ export class EventPollComponent implements OnInit {
   constructor(private route:ActivatedRoute,private EventService:EventServiceService,private formBuilder:FormBuilder) { 
     this.saveVote=this.formBuilder.group({
       vote: new FormControl,
+      email:new FormControl,
       
     })
 
@@ -44,22 +45,22 @@ export class EventPollComponent implements OnInit {
     var voteChoice: any = new FormData();
     voteChoice.append("event_id", this.eventPoll_id);
     voteChoice.append("isVote", this.saveVote.get('vote').value);
-    voteChoice.append("user_id",2);
-    console.log(this.saveVote.get('vote').value);
+    voteChoice.append("email",this.saveVote.get('email').value);
     
     this.EventService.sendVote(voteChoice).subscribe(
       (response) => //console.log(response),
       Swal.fire({
         title:'Great',
-        text:'You voted',
+        text:response['message'],
         icon:'success'
       }),
       
       (error) => //console.log(error)
       Swal.fire({
         title:'Sorry',
-        text:'It seems you have already voted for this event',
-        icon:'error'
+        text:'It seems you have been already voted voted or not registered.',
+        icon:'error',
+        footer: '<a href="/JoinUs">Join Us</a>'
       }),
     )
   }

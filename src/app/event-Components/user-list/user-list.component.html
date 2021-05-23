@@ -19,7 +19,6 @@
                             <p><b>Venue: </b>{{e.venue}}</p>
                             <p><b>Start at: </b>Start at: {{e.sdate}}</p>
                             <p><b>Finish at: </b>{{e.edate}}</p>
-                            <p><b>Event Recuurence:</b> {{e.recurrence}}</p>
                             <button class="btn btn-outline-info" *ngIf="e.isPoll" data-toggle="tooltip" data-placement="bottom" title="Hit a like for this event..!" routerLink="event-poll/{{e.id}}">Vote</button>
                             
                         </div>

@@ -148,9 +148,8 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     DetailsComponent,
 
     VoteResultComponent,
-    UserListComponent,
+    UserListComponent
 
-    SearchFilterPipe,
     
 
   ],

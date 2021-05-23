@@ -31,7 +31,7 @@ export class EventEditComponent implements OnInit {
       from: ['', [Validators.required]],
       to: ['', [Validators.required]],
       // recurrence: [''],
-      partcipantType: ['', [Validators.required]],
+      partcipantType: ['', [Validators.required]],//disabled: this.isDisabled
       isPoll: ['']
 
     },
@@ -44,13 +44,13 @@ export class EventEditComponent implements OnInit {
     //console.log(this.route.snapshot.params.id);
     this.id=this.route.snapshot.params.id;
     this.getData();
-    // this.selectInput();
   }
 
   getData(){
     this.Eventservice.getEventById(this.id).subscribe(
       (eventDetail:Event)=>this.editEvent(eventDetail)
     );
+    
   }
 
   editEvent(eventDetail:Event){
@@ -58,12 +58,14 @@ export class EventEditComponent implements OnInit {
       title:eventDetail.title,
       description:eventDetail.description,
       venue:eventDetail.venue,
-      from:moment(new Date(eventDetail.sdate)).format('YYYY-MM-DDTHH:mm'),//moment(new Date()).format('YYYY-MM-DDTHH:mm')
+      from:moment(new Date(eventDetail.sdate)).format('YYYY-MM-DDTHH:mm'),
       to:moment(new Date(eventDetail.edate)).format('YYYY-MM-DDTHH:mm'),
       // recurrence:eventDetail.recurrence,
       partcipantType:eventDetail.partcipantType,
-      isPoll:eventDetail.isPoll
+      isPoll:eventDetail.isPoll,
+      
     })
+    
   }
   
 
@@ -97,14 +99,14 @@ export class EventEditComponent implements OnInit {
       
   }
 
-  // selectInput(){
-  //   let selected = this.eventEdit.value.partcipantType;
-  //     if (selected == "Public Users") {
-  //       this.isPollValid = false;
-  //     } else {
-  //       this.isPollValid = true;
-  //     }
-  // }
+  selectInput(){
+    let selected = this.eventEdit.value.partcipantType;
+      if (selected =="ALL USERS") {
+        this.isPollValid = false;
+      } else {
+        this.isPollValid = true;
+      }
+  }
 
 
 }

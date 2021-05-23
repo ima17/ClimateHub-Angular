@@ -149,10 +149,10 @@
           <div class="col-9">
             <div class="form-group row">
               <div class="col-sm-12">
-                <select class="custom-select" name="partcipantType" class="form-control" formControlName="partcipantType" >
-                  <option value="ADMIN">Admins</option>
-                  <option value="USER">Users</option>
-                  <option value="ALL">All Users</option>
+                <select class="custom-select" name="partcipantType" class="form-control" formControlName="partcipantType" (change)="selectInput()">
+                  <!-- <option value="ADMIN">Admins</option> -->
+                  <option value="REGISTERED USERS">REGISTERED USERS</option>
+                  <option value="ALL USERS">ALL USERS</option>
                   
                 </select>
               </div>
