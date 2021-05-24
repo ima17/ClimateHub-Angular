@@ -14,6 +14,26 @@ import { ELearningComponent } from './pages/e-learning/e-learning.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { BlogComponent } from './pages/blog/blog.component';
 import { EventsComponent } from './pages/events/events.component';
+import { StartdiscussionComponent } from './startdiscussion/startdiscussion.component';
+import { AllpostsComponent } from './allposts/allposts.component';
+
+import { RouterModule,Routes } from '@angular/router';
+import { FormsModule }   from '@angular/forms';
+
+import { PostService }   from './allposts/post.service';
+import { StartDiscussionServiceGuardService }   from './startdiscussion/startdiscussion-deactivate.service';
+import { DisplaypostsComponent } from './displayposts/displayposts.component';
+
+
+const appRoutes:Routes=[
+  {
+    path: 'discussion',
+    component: StartdiscussionComponent,
+    canDeactivate:[StartDiscussionServiceGuardService]
+  },
+  {path: 'allposts',component: AllpostsComponent},
+  {path: '',redirectTo:'/startdiscussion',pathMatch: 'full'}
+];
 
 @NgModule({
   declarations: [
@@ -28,13 +48,22 @@ import { EventsComponent } from './pages/events/events.component';
     ELearningComponent,
     NavbarComponent,
     BlogComponent,
-    EventsComponent
+    EventsComponent,
+    StartdiscussionComponent,
+    AllpostsComponent,
+    DisplaypostsComponent
+    
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule, 
+    RouterModule.forRoot(appRoutes)
   ],
-  providers: [],
+  providers: [
+    PostService,
+    StartDiscussionServiceGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

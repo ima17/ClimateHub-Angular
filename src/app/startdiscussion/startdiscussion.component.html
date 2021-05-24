@@ -1,0 +1,97 @@
+<app-navbar></app-navbar>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<form #postsForm="ngForm" (ngSubmit)="savePosts()">
+
+<div class="panel panel-primary">
+
+    <div class="panel-heading">
+        <h3 class="panel-title">Discussion Form</h3>
+    </div>
+
+    <div class="panel-body">
+        <div class="form-group" [class.has-error]="title.invalid && title.touched" [class.has-success]="title.valid">
+            <label for="title" class="control-label">Title</label>
+            <input required id="title" name="title" [(ngModel)]="posts.title" type="text" class="form-control" #title="ngModel">
+            <span class="help-block" *ngIf="title.invalid && title.touched">Title is required</span>
+        </div>
+
+        
+        <div class="form-group" [class.has-error]="discription.invalid && discription.touched" [class.has-success]="discription.valid">
+            <label for="discription" class="control-label">Discription</label>
+            <textarea type="text" required id="discription" name="discription" [(ngModel)]="posts.discription" class="md-textarea form-control" #discription="ngModel" mdbInput ></textarea>
+            <span class="help-block" *ngIf="discription.invalid && discription.touched">Discription is required</span>
+        </div>
+
+        <div class="form-group" [class.has-error]="filetype.invalid && filetype.touched" [class.has-success]="filetype.valid"> 
+            <label for="filetype" class="control-label">File type</label>
+            <select required id="filetype"  name="filetype" [(ngModel)]="posts.filetype" class="form-control" #filetype="ngModel">
+                <option *ngFor="let type of filetypes" [value]="type.id">
+                    {{type.name}}
+                </option>
+            </select> 
+            <span class="help-block" *ngIf="filetype.invalid && filetype.touched">File Type is required</span>
+        </div>
+
+
+
+        <div class="form-group" [class.has-error]="postPath.invalid && postPath.touched" [class.has-success]="postPath.valid">
+            <label for="postPath">Select file</label>
+            <input required id="postPath" name="postPath" [(ngModel)]="posts.postPath"  type="text" class="form-control" #postPath="ngModel">
+            
+        </div>
+        <div>
+            <button type="button" (click)="togglePhotoPreview()" class="btn btn-primary">
+                {{previewPhoto? "Hide ":"Show "}} Preview
+            </button>
+        </div>
+        <div class="form-group">
+            <img [src]="posts.postPath" height="200" width="200" *ngIf="previewPhoto" >
+            <span class="help-block" *ngIf="postPath.invalid && postPath.touched">Image or PDF is required</span>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="form-group" [class.has-error]="viewers.invalid && viewers.touched" [class.has-success]="viewers.valid">
+            <label for="viewers" class="control-label">Viewers</label>  
+            <select required id="viewers"  name="viewers" [(ngModel)]="posts.viewers" class="form-control" #viewers="ngModel">
+                <option *ngFor="let view of viewer" [value]="view.id">
+                    {{view.name}}
+                </option>
+            </select> 
+            <span class="help-block" *ngIf="viewers.invalid && viewers.touched">Audiance Selection is required</span>
+        </div>
+
+
+
+
+
+
+
+        <div class="form-group">
+            <label for="date" class="control-label">Current Date</label>
+            <input required id="date" name="date" [(ngModel)]="posts.date" type="date" class="form-control" #date="ngModel">
+        </div>
+
+    </div>
+
+    
+
+    <div class="panel-footer">
+            <button type="submit" class="btn btn-primary" [disabled]="postsForm.invalid">PUBLISH</button>
+    </div>
+</div>
+</form>
+{{postsForm.value | json}}   
+
+
+
+
