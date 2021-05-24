@@ -29,7 +29,7 @@
     }
   .juggling-container {
       position: relative;
-      margin-top: 30px;
+      margin-top: 100px;
       /*box-shadow: 0 0 10px 1px rgba(0,0,0,.2);*/
   }
 
@@ -145,4 +145,54 @@
   .container-links .link-9:hover,
   .container-links .link-10:hover {
       text-align: left;
+  }
+
+  .heading-1{
+    font-size: 17px;
+    color:#94BD7B;
+    font-weight: bold;
+  }
+
+  .heading-2{
+    font-size: 25px;
+    color:#94BD7B;
+    font-weight: bold;
+  }
+
+  .heading-3{
+    font-weight: bold;
+  }
+
+  .paragraph{
+    text-align: justify;
+  
+  }
+
+  .green-text{
+      color: #94BD7B;
+      font-weight: bold;
+  }
+
+  .subheading{
+    color: #94BD7B;
+    font-weight: bold;
+  }
+
+  ul {
+    list-style: none; /* Remove default bullets */
+  }
+  
+  ul li::before {
+    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color: #94BD7B; /* Change the color */
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 1em; /* Also needed for space (tweak if needed) */
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+  }
+
+  .nMsoEdnoteReference{
+    font-size:9.0p;
+    color:#9C9C94;
+    
   }

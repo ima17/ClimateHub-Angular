@@ -1,0 +1,21 @@
+export class Project {
+    project_title:any;
+    author:any;
+    organisation:any;
+    abstract:any;
+    category:any;
+    energy_strategy:any;
+    bulding_scale:any;
+    climate_zone:any;
+    material:any;
+    parameters:any;
+    type_of_doc:any;
+    mode_of_info:any;
+    topic:any;
+    world_region:any;
+    longitude:any;
+    latitude:any;
+    project_file:any;
+    img_file:any;
+    accessible:any;
+}

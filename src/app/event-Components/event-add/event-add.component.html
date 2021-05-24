@@ -1,0 +1,227 @@
+<app-admin-nav></app-admin-nav>
+<app-breadcrumb></app-breadcrumb>
+<div class="container">
+  <h1 class="main-title">Create Events</h1>
+  <form action="" method="post" name="saveEvent" [formGroup]="eventAdd"  [hidden]="success">
+    <!-- (ngSubmit)="functionOrder()" -->
+    <div class="card" id="card-title">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            Event Title *
+          </div>
+          <div class="col-9">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <input required name="title" placeholder="event title" type="text" class="form-control"
+                  formControlName="title" change="log(title)">
+                <span class="error" *ngIf="eventAdd.get('title').errors?.required && eventAdd.get('title').touched">
+                  Title is required.
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="card-venue">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            Venue *
+          </div>
+          <div class="col-9">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <input required name="venue" placeholder="venue" change="log(description)" type="text" id="venue"
+                  formControlName="venue" class="form-control">
+                <span class="error" *ngIf="eventAdd.get('venue').errors?.required && eventAdd.get('venue').touched">
+                  Venue is required.
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="card-description">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            Description *
+          </div>
+          <div class="col-9">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <textarea required  name="description" id="description" cols="" rows=""
+                  class="form-control" change="log(description)" placeholder="Event Description"
+                  formControlName="description">
+
+                </textarea>
+                <span class="error"
+                  *ngIf="eventAdd.get('description').errors?.required && eventAdd.get('description').touched">
+                  Description is required.
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="card-from">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            From *
+          </div>
+          <div class="col-9">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <input type="datetime-local" dateValidator name="from"  id="timepicker1"
+              class="form-control"  formControlName="from">
+  
+            <span class="error" *ngIf="eventAdd.get('from').errors?.dateLessThan">
+              The date you have entered is Invalid.
+            </span>
+            <span class="error" *ngIf="eventAdd.get('from').errors?.pastDate">
+              The date you have entered is Invalid.
+            </span>
+            <span class="error" *ngIf="eventAdd.get('from').errors?.required && eventAdd.get('from').touched" >
+              Start time is required.
+            </span>
+              </div>
+            </div>
+
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="card-to">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            To *
+          </div>
+          <div class="col-9">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <input 
+              type="datetime-local" 
+              name="to" id="timepicker2" 
+              class="form-control" 
+              
+              required
+              formControlName="to"
+              
+              
+              dateValidator>
+              <span class="error" *ngIf="eventAdd.get('to').errors?.required && eventAdd.get('to').touched" >
+                End Time is required.
+              </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="card-recurrence">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            Event recurrence *
+          </div>
+          <div class="col-9">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <select class="custom-select" name="recurrence"  class="form-control" formControlName="recurrence">
+                  <option value="None">None</option>
+                  <option value="Daily">Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+                <span class="error" *ngIf="eventAdd.get('recurrence').errors?.required && eventAdd.get('recurrence').touched" >
+                  Event recurrence is required.
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="card-userType">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            User Type *
+          </div>
+          <div class="col-9">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <select class="custom-select" name="partcipantType"  class="form-control" formControlName="partcipantType" (change)="selectInput($event)">
+                  <option value="public">Public Users</option>
+                  <option value="private">Private Users</option>
+                  <option value="partners">Partner Organizations</option>
+                  
+                </select>
+                <span class="error" *ngIf="eventAdd.get('partcipantType').errors?.required && eventAdd.get('partcipantType').touched" >
+                  User Type is required.
+                </span>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="card-poll" *ngIf="isPollValid">
+      <div class="card-body">
+        <div class="row" >
+          <div class="col-3">
+            Do you want to create poll for this Event? 
+          </div>
+          <div class="col-9">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <select class="custom-select" name="isPoll"  class="form-control" formControlName="isPoll">
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="card-button">
+      <div class="card-body">
+          <div class="row">
+              <div class="col-3">
+                <!-- <input type="text" name="admin" class="formControl" formControlName="admin_id" value="1" > -->
+              </div>
+              <div class="col-9">
+                
+                <button class="btn btn-primary mr-2" type="submit" [disabled]="!eventAdd.valid" (click)= "functionOrder()" >
+                  Submit
+                </button>
+              </div>
+          </div>
+      </div>
+  </div>
+  </form>
+</div>
+<app-footer></app-footer>

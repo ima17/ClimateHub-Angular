@@ -1,0 +1,10 @@
+
+.breadcrumb-item + .breadcrumb-item::before {
+    content: ">";
+}
+
+.text{
+  margin-right: 10px;
+  font-weight: bold;
+  color: grey;
+}

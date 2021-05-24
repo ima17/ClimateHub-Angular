@@ -1,0 +1,44 @@
+.logo{
+    width: 150px;
+    height: 30px;
+}
+
+.navbar{
+    height: 100px;
+    
+        
+}
+
+.line-vertical {
+    width: 0.01em;
+    height: 100px;
+    float: left;
+    background-color: #e0e0e0;
+    margin: 35px;
+  }
+
+.navbar-brand{
+    margin: 35px;
+}
+
+.nav-item{
+  font-size: 15px !important;
+}
+
+.navbar .navbar-nav > .active > a,
+.navbar .navbar-nav > .active > a:hover,
+.navbar .navbar-nav > .active > a:focus {
+    color: black;
+    background-color: gray;
+    box-shadow: inset 0px 6px 0px #AAA; /* switch to a lighter color for active element */
+}
+
+.container-fluid{
+    margin-bottom: 100px;
+}
+
+
+
+
+
+ 
