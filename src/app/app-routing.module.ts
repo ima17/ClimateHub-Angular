@@ -35,12 +35,10 @@ import { ImprintComponent } from './components/footer/imprint/imprint.component'
 import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
 
 import { EventPollComponent} from 'src/app/event-Components/event-poll/event-poll.component';
-import { EventVoteComponent } from 'src/app/event-Components/event-vote/event-vote.component';
 import { EventAddComponent } from 'src/app/event-Components/event-add/event-add.component';
 import { EventEditComponent} from 'src/app/event-Components/event-edit/event-edit.component';
-import { EventMailComponent } from 'src/app/event-Components/event-mail/event-mail.component';
 import {EventListComponent} from 'src/app/event-Components/event-list/event-list.component';
-
+import {UserListComponent} from 'src/app/event-Components/user-list/user-list.component';
 
 import { AfterLoginService } from './services/after-login.service';
 import { BeforeLoginService } from './services/before-login.service';
@@ -51,6 +49,7 @@ import { ResponseResetComponent } from './components/password/response-reset/res
 import { UserEditingComponent } from './pages/user-editing/user-editing.component';
 import { UpdateUsersComponent } from './pages/update-users/update-users.component';
 import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
+import { VoteResultComponent} from 'src/app/event-Components/vote-result/vote-result.component';
 
 
 const routes: Routes = [
@@ -85,6 +84,11 @@ const routes: Routes = [
   //{path:'admin-event',component:AdminEventComponent},
   {path:'edit-users',component:EditUsersComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
   //{path:'edit-users',component:EditUsersComponent},
+  //{path:'admin',component:AdminNavComponent},
+  //{path:'admin-profile',component:AdminProfileComponent},
+  //{path:'admin-blog',component:AdminBlogComponent},
+  //{path:'admin-event',component:AdminEventComponent},
+  {path:'edit-users',component:EditUsersComponent},
   {path:'upload-projects',component:UploadProjectsComponent},
   {path:'',component:HomeComponent},
   {path:'Projects',component:ProjectsComponent},
@@ -96,6 +100,7 @@ const routes: Routes = [
   {path:'Events',component:EventsComponent},
   {path:'JoinUs',component:JoinUSComponent},
   {path:'ELearning',component:ELearningComponent,canActivate: [AfterLoginService]},
+  //{path:'ELearning',component:ELearningComponent},
   //{path:'ELearning',component:ELearningComponent},
   {path:'geography',component:GeographyComponent},
   {path:'topography',component: TopographyComponent},
@@ -117,24 +122,30 @@ const routes: Routes = [
   //{path:'admin-event',component:AdminEventComponent},
   {path:'add-users',component:EditUsersComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
   //{path:'add-users',component:EditUsersComponent},
-  {path:'upload-projects',component:UploadProjectsComponent,canActivate: [AfterLoginService]},
+  //{path:'upload-projects',component:UploadProjectsComponent,canActivate: [AfterLoginService]},
   //{path:'upload-projects',component:UploadProjectsComponent},
   {path:'login',component:LoginComponent},
+  {path:'upload-projects',component:UploadProjectsComponent},
+  {path:'edit-projects',component:EditProjectsComponent},
+  {path:'project-list',component:ProjectListComponent},
   {path:'imprint',component:ImprintComponent},
   {path:'privacy-policy',component:PrivacyPolicyComponent},
-
-  {path:'event-vote',component:EventVoteComponent},
-  {path:'event-vote/event-poll/:id',component:EventPollComponent},
+  {path:'event-user-list/event-poll/:id',component:EventPollComponent},
   {path:'event-add',component:EventAddComponent},
+  {path:'event-user-list', component: UserListComponent},
   {path:'event-list/event-edit/:id',component:EventEditComponent},
   {path: 'event-list',component:EventListComponent},
+  {path: 'event-list/vote-result/:id', component:VoteResultComponent},
+  {path: 'login',component:LoginComponent},
   
   {path: 'request-password',component:RequestResetComponent},
   {path: 'response-password',component:ResponseResetComponent},
   {path: 'delete-users', component:UserEditingComponent,canActivate: [AfterLoginService]},
   //{path: 'delete-users', component:UserEditingComponent},
   {path:'update-user/:id',component:UpdateUsersComponent},
-  {path:'admin-login', component:AdminLoginComponent}
+  {path:'admin-login', component:AdminLoginComponent},
+  {path: 'user-editing', component:UserEditingComponent},
+  //{path:'update-user/:id',component:UpdateUsersComponent} 
 
 ];
 

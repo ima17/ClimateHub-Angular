@@ -1,4 +1,4 @@
-import { Project } from './../project';
+import { Project } from 'src/app/project';
 import { Injectable } from '@angular/core';
 import {HttpClient, HttpHeaders} from '@angular/common/http';
 
@@ -10,7 +10,7 @@ export class ProjectService {
   constructor(private httpClient:HttpClient) { }
 
   getData(){
-    return this.httpClient.get('http://127.0.0.1:8000/api/projects/');
+    return this.httpClient.get('http://127.0.0.1:8000/api/projectsList/');
   }
 
   getProjectById(id){
@@ -18,7 +18,7 @@ export class ProjectService {
   }
 
   // uploadProject(UploadData: Project){
-  //   return this.httpClient.post('http://127.0.0.1:8000/api/uploadProject', UploadData)
+  //   return this.httpClient.post('http://127.0.0.1:8000/api/uploadProject/', UploadData)
   // }
 
   uploadProject(UploadData){

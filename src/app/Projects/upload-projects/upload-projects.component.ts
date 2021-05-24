@@ -2,6 +2,7 @@ import { ProjectService } from 'src/app/Services/project.service';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Project } from 'src/app/project';
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 
 //import { MouseEvent, MapsAPILoader } from '@agm/core';
 //import { LatLngLiteral } from '@agm/core';
@@ -24,6 +25,7 @@ export class UploadProjectsComponent implements OnInit {
   latitude: any;
   project_file: File;
   img_file: File;
+  UploadData:any;
 
 
   zoom: number = 8;
@@ -69,12 +71,13 @@ export class UploadProjectsComponent implements OnInit {
   get f() {return this.uploadForm.controls;}
 
   uploadProject(){
+    console.log("hi")
     this.submitted = true;
-
-    // stop here if form is invalid
-  //   if (this.uploadForm.invalid) {
-  //     return;
-  // }
+    
+    //stop here if form is invalid
+    if (this.uploadForm.invalid) {
+     // return;
+    }
 
     // console.log(this.uploadForm)
     //let formData:FormData = new FormData();
@@ -95,8 +98,8 @@ export class UploadProjectsComponent implements OnInit {
     formData.append('world_region', this.uploadForm.get('world_region').value);
     formData.append('longitude', this.uploadForm.get('longitude').value);
     formData.append('latitude', this.uploadForm.get('latitude').value);
-    // formData.append('project_file', this.project_file, this.project_file.name);
-    // formData.append('img_file', this.img_file, this.img_file.name);
+    //formData.append('project_file', this.project_file, this.project_file.name);
+    //formData.append('img_file', this.img_file, this.img_file.name);
     formData.append('accessible', this.uploadForm.get('accessible').value);
 
   formData.forEach((data:any)=>{
@@ -105,10 +108,24 @@ export class UploadProjectsComponent implements OnInit {
 
   this.projectService.uploadProject(formData).subscribe((res:any)=>{
     console.log(res)
+
+    Swal.fire({
+      icon: 'success',
+      title: 'Great...',
+      text: 'Project Uploaded Successfully',
+      // footer: '<a href>Why do I have this issue?</a>'
+    }),
+    
+    (error) => //console.log(error)
+    Swal.fire({
+      icon: 'error',
+      title: 'Oops...',
+      text: 'Something Went Wrong!',
+      
+    })
+
   })
-    // display form values on success
-    // alert('SUCCESS!! :)\n\n' + JSON.stringify(this.uploadForm.value, null, 4));
-    // console.log(formData)
+    
 }
 
 onReset() {
@@ -155,26 +172,5 @@ imgFileChange(event) {
   this.img_file=fileList[0];
 }
 
-// fileChange(event) {
-//   let fileList: File = event.target.files;
-//   console.log(fileList)
-//   // if(fileList.length > 0) {
-//   //     let file: File = fileList[0];
-//   //     let formData:FormData = new FormData();
-//   //     formData.append('uploadFile', file, file.name);
-//   //     let headers = new Headers();
-//   //     /** In Angular 5, including the header Content-Type can invalidate your request */
-//   //     headers.append('Content-Type', 'multipart/form-data');
-//   //     headers.append('Accept', 'application/json');
-//   //     let options = new RequestOptions({ headers: headers });
-//   //     this.http.post(`${this.apiEndPoint}`, formData, options)
-//   //         .map(res => res.json())
-//   //         .catch(error => Observable.throw(error))
-//   //         .subscribe(
-//   //             data => console.log('success'),
-//   //             error => console.log(error)
-//   //         )
-//   // }
-// }
 
 }

@@ -1,148 +1,205 @@
 <app-admin-nav></app-admin-nav>
-
+<app-breadcrumb></app-breadcrumb>
 <div class="container">
+  <h1 class="main-title">Update Events</h1>
+  <form action="" method="post" name="editEvent" (ngSubmit)="updateEvent()" [formGroup]="eventEdit">
 
-    <h2 class="mb-3">Update Event</h2>
+    <div class="card" id="card-title">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            Event Title
+          </div>
+          <div class="col-9">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <input required  name="title" placeholder="event title" type="text" class="form-control"
+                 formControlName="title" change="log(title)" >
+                
+              </div>
+            </div>
 
-
-    <form action="" method="post" name="saveEvent" (ngSubmit)="updateEvent()" >
-      <div class="form-group row">
-        <div class="col-sm-6">
-          <input required ngModel name="title" 
-            placeholder="event title" 
-            type="text" 
-            class="form-control"
-            #title="ngModel" 
-            change="log(title)"
-            [(ngModel)]="event.title"
-             >
-          <div class="alert alert-danger" *ngIf="title.touched &&!title.valid">
-            Title is required.
           </div>
         </div>
       </div>
-      <div class="form-group row">
-        <div class="col-sm-6">
-          <input required ngModel 
-            name="venue" 
-            placeholder="venue" 
-            change="log(description)" 
-            type="text" id="venue"
-            #venue="ngModel" 
-            class="form-control"
-            [(ngModel)]="event.venue">
+    </div>
 
-          <div class="alert alert-danger" *ngIf="venue.touched && !venue.valid">
-            Venue is required
+    <div class="card" id="card-venue">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            Venue
+          </div>
+          <div class="col-9">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <input required  name="venue" placeholder="venue" change="log(description)" type="text"
+                  id="venue"  class="form-control" formControlName="venue">
+
+                
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="form-group row">
-        <div class="col-sm-6">
-          <textarea required 
-            maxlength="190" ngModel 
-            name="description" 
-            id="description" 
-            cols="" rows=""
-            class="form-control" 
-            #description="ngModel" 
-            change="log(description)" 
-            placeholder="Event Description"
-            [(ngModel)]="event.description"
-            >
+    <div class="card" id="card-description">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            Description
+          </div>
+          <div class="col-9">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <textarea required   name="description" id="description" cols="" rows=""
+                  class="form-control" change="log(description)" placeholder="Event Description"
+                  formControlName="description">
 
-          </textarea>
-          <div *ngIf="description.touched &&!description.valid">
-            <div class="alert alert-danger" *ngIf="description.errors?.required">Description is required</div>
-            <div class="alert alert-danger" *ngIf="description.errors?.maxlength">maximum 190 characters</div>
+                </textarea>
+                
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
+    </div>
 
-      <div class="form-group row">
-        
-        <div class="col-sm-3">
-          <label for="from">From</label>
-          <br>
-          <input type="datetime-local" 
-            name="from" 
-            id="timepicker1"
-            class="form-control"
-            [(ngModel)]="event.sdate"
-            >
-        </div>
+    <div class="card" id="card-from">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            From
+          </div>
+          <div class="col-9">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <input type="datetime-local" name="from" id="timepicker1" class="form-control"
+                  formControlName="from" dateValidator>
+                  <span class="error" *ngIf="eventEdit.get('from').errors?.dateLessThan">
+                    The date you have entered is Invalid.
+                  </span>
+                  <span class="error" *ngIf="eventEdit.get('from').errors?.pastDate">
+                    The date you have entered is Invalid.
+                  </span>
+                  <span class="error" *ngIf="eventEdit.get('from').errors?.required && eventEdit.get('from').touched" >
+                    Start time is required.
+                  </span>
+              </div>
+            </div>
 
-        <div class="col-sm-3">
-          <label for="to">To</label>
-          <br>
-          <input type="datetime-local" 
-            name="to" 
-            id="timepicker2"
-            class="form-control"
-            [(ngModel)]="event.edate"
-            >
-        </div>
-      </div>
-     
-
-      <div class="form-group row">
-
-        <div class="col-sm-2">
-
-
-          <label class="" for="recurrence">Event Recurrence</label>
-
-        </div>
-        <div class="col-sm-4">
-          <select class="custom-select" name="recurrence"[(ngModel)]="event.recurrence" >
-            <option value="none">None</option>
-            <option value="Daily">Daily</option>
-            <option value="Weekly">Weekly</option>
-            <option value="Monthly">Monthly</option>
-          </select>
+          </div>
         </div>
       </div>
-      <div class="form-group row">
-        <div class="col-sm-2">
-          <label class="" for="partcipantType">Participnat Type</label>
-        </div>
-        <div class="col-sm-4">
-          <select class="custom-select" name="partcipantType" [(ngModel)]="event.partcipantType" >
-            <option value="public">Public</option>
-            <option value="private">Private</option>
-            <option value="admin">Admin</option>
-            <option value="all">All</option>
-          </select>
+    </div>
+
+    <div class="card" id="card-to">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            To
+          </div>
+          <div class="col-9">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <input type="datetime-local" name="to" id="timepicker2" class="form-control"formControlName="to" dateValidator>
+                <span class="error" *ngIf="eventEdit.get('to').errors?.required && eventEdit.get('to').touched" >
+                  End time is required.
+                </span>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="form-group row">
-        <div class="col-sm-3">
-          <label for="">Create Poll for the Event</label>
-        </div>
-        <div class="col-sm-3">
-        <select class="custom-select" name="isPoll"  class="form-control" [(ngModel)]="event.isPoll">
-          <option value="1">Yes</option>
-          <option value="0">No</option>
-        </select>
+    <div class="card" id="card-recurrence">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            Event Recurrence
+          </div>
+          <div class="col-9">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <select class="custom-select" name="recurrence" class="form-control" formControlName="recurrence" >
+                  <option value="None">None</option>
+                  <option value="Daily">Daily</option>
+                  <option value="Weekly">Weekly</option>
+                  <option value="Monthly">Monthly</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
+    </div>
 
-      <div class="form-group row">
-        <div class="btn-toolbar">
-          <button class="btn btn-primary mr-2" type="button">
-            Back
-          </button>
-          <button class="btn btn-primary mr-2" type="submit">
-            Update
-          </button>
-          <button class="btn btn-primary" type="reset">
-            Clear
-          </button>
+    <div class="card" id="card-userType">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            User Type
+          </div>
+          <div class="col-9">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <select class="custom-select" name="partcipantType" class="form-control" formControlName="partcipantType" (change)="selectInput($event)">
+                  <option value="public">Public Users</option>
+                  <option value="private">Private Users</option>
+                  <option value="partners">Partner Organizations</option>
+                  
+                </select>
+              </div>
+            </div>
+
+          </div>
         </div>
-
       </div>
-    </form>
+    </div>
+
+    <div class="card" id="card-poll" *ngIf="isPollValid">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-3">
+            Do you want to create poll for this Event? 
+          </div>
+          <div class="col-9">
+            <div class="form-group row">
+              <div class="col-sm-12">
+                <select class="custom-select" name="isPoll"  class="form-control" formControlName="isPoll">
+                  <option value="1">Yes</option>
+                  <option value="0">No</option>
+                </select>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card" id="card-button">
+      <div class="card-body">
+          <div class="row">
+              <div class="col-3">
+              </div>
+              <div class="col-9">
+                <button class="btn btn-primary mr-2" type="button" routerLink="/event-list">
+                  Back
+                </button>
+                <button class="btn btn-primary mr-2" type="submit">
+                  Update
+                </button>
+              </div>
+          </div>
+      </div>
   </div>
-  
+  </form>
+</div>
+<app-footer></app-footer>
