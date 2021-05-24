@@ -1,12 +1,10 @@
 import { ProjectService } from 'src/app/Services/project.service';
-import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 import { Project } from 'src/app/project';
 import Swal from 'sweetalert2/dist/sweetalert2.all.js';
-
-//import { MouseEvent, MapsAPILoader } from '@agm/core';
-//import { LatLngLiteral } from '@agm/core';
-import { MapsAPILoader } from '@agm/core';
+import {AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask} from '@angular/fire/storage';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-upload-projects',
@@ -15,21 +13,21 @@ import { MapsAPILoader } from '@agm/core';
 })
 export class UploadProjectsComponent implements OnInit {
 
+  // init
   project = new Project();
-
-  uploadForm: FormGroup;
+  uploadForm : FormGroup;
   submitted = false;
   lat = 6.5854;
   lng = 79.9607;
   longitude: any;
   latitude: any;
-  project_file: File;
-  img_file: File;
-  UploadData:any;
 
+  // files
+  project_file: File = null;
+  img_file: File = null;
 
+  // default map values
   zoom: number = 8;
-
   markers: any[] = [
 	  {
 		  lat: 51.723858,
@@ -39,49 +37,77 @@ export class UploadProjectsComponent implements OnInit {
 	  }
   ]
 
-  constructor(private formBuilder: FormBuilder, private projectService:ProjectService) { }
+  numberRegEx = /[-.0-9]+/;
 
+  uploadProgressFile: Observable<number>;
+  uploadProgressImage: Observable<number>;
+  refFile: AngularFireStorageReference;
+  refImage: AngularFireStorageReference;
+  taskFile: AngularFireUploadTask;
+  taskImage: AngularFireUploadTask;
 
+  progressFile : number;
+  progressImage : number;
+
+  constructor(private formBuilder: FormBuilder, private projectService:ProjectService,
+  private storage : AngularFireStorage) { }
 
   ngOnInit() {
     this.uploadForm = this.formBuilder.group({
-      
-      project_title:['', Validators.required],
-      author:['', Validators.required],
-      organisation:['', Validators.required],
-      abstract:['', Validators.required],
-      category:['', Validators.required],
-      energy_strategy:['', Validators.required],
-      bulding_scale:['', Validators.required],
-      climate_zone:['', Validators.required],
-      material:['', Validators.required],
-      parameters:['', Validators.required],
-      type_of_doc:['', Validators.required],
-      mode_of_info:['', Validators.required],
-      topic:['', Validators.required],
-      world_region:['', Validators.required],
-      longitude:['', Validators.required],
-      latitude:['', Validators.required],
-      project_file:['', Validators.required],
-      img_file:['', Validators.required,],
-      accessible:['', Validators.required]
+      project_title: ['', Validators.required],
+      author: ['', Validators.required],
+      organisation: ['', Validators.required],
+      abstract: ['', Validators.required],
+      category: ['', Validators.required],
+      energy_strategy: ['', Validators.required],
+      bulding_scale: ['', Validators.required],
+      climate_zone: ['', Validators.required],
+      material: ['', Validators.required],
+      parameters: ['', Validators.required],
+      type_of_doc: ['', Validators.required],
+      mode_of_info: ['', Validators.required],
+      topic: ['', Validators.required],
+      world_region: ['', Validators.required],
+      longitude: ['', Validators.required, Validators.pattern(this.numberRegEx)],
+      latitude: ['', Validators.required, Validators.pattern(this.numberRegEx)],
+      accessible: ['', Validators.required]
     });
   }
 
-  get f() {return this.uploadForm.controls;}
+  // get form controls
+  get form() { return this.uploadForm.controls; }
 
-  uploadProject(){
-    console.log("hi")
-    this.submitted = true;
-    
-    //stop here if form is invalid
-    if (this.uploadForm.invalid) {
-     // return;
-    }
+  uploadProject() {
 
-    // console.log(this.uploadForm)
-    //let formData:FormData = new FormData();
-    var formData: any = new FormData();
+      this.submitted = true;
+      //stop here if form is invalid
+      if (this.uploadForm.invalid) {
+        return;
+      }
+
+      // if project file not found
+      if(this.project_file == null || !this.project_file.name) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Project File Required...',
+            text: 'Please upload project file to proceed!',
+
+          })
+          return;
+      }
+
+      // if image file not found
+      if(this.img_file == null || !this.img_file.name) {
+          Swal.fire({
+            icon: 'warning',
+            title: 'Image File Required...',
+            text: 'Please upload image file to proceed!',
+
+          })
+          return;
+      }
+
+    let formData : any = new FormData();
     formData.append('project_title', this.uploadForm.get('project_title').value);
     formData.append('author', this.uploadForm.get('author').value);
     formData.append('organisation', this.uploadForm.get('organisation').value);
@@ -98,79 +124,94 @@ export class UploadProjectsComponent implements OnInit {
     formData.append('world_region', this.uploadForm.get('world_region').value);
     formData.append('longitude', this.uploadForm.get('longitude').value);
     formData.append('latitude', this.uploadForm.get('latitude').value);
-    //formData.append('project_file', this.project_file, this.project_file.name);
-    //formData.append('img_file', this.img_file, this.img_file.name);
+    const id = Math.random().toString(36).substring(2);
+    const projectFileName = `${this.project_file.name}_${id}_version_${1}`;
+    const projectImageName = `${this.img_file.name}_${id}_version_${1}`;
+    formData.append('project_file',projectFileName);
+    formData.append('img_file',projectImageName);
     formData.append('accessible', this.uploadForm.get('accessible').value);
 
-  formData.forEach((data:any)=>{
-    console.log(data)
-  })
+    //this.storage.
+      this.projectService.uploadProject(formData)
+        .subscribe({
+          next : apiResponse => {
 
-  this.projectService.uploadProject(formData).subscribe((res:any)=>{
-    console.log(res)
+            // upload file
+            this.refFile = this.storage.ref(`files/${projectFileName}`);
+            this.taskFile = this.refFile.put(this.project_file);
+            this.uploadProgressFile = this.taskFile.percentageChanges();
+            this.uploadProgressFile.subscribe(
+              {
+                next : res => this.progressFile = res,
+                error : err => {},
+                complete : () => {
+                  // upload image
+                  this.refImage = this.storage.ref(`images/${projectImageName}`);
+                  this.taskImage = this.refImage.put(this.img_file);
+                  this.uploadProgressImage = this.taskImage.percentageChanges();
+                  this.uploadProgressImage.subscribe(
+                    {
+                      next : res => this.progressImage = res,
+                      error : err => {},
+                      complete : () => {
+                        Swal.fire({
+                          icon: 'success',
+                          title: 'Success',
+                          text: 'Project Uploaded Successfully!',
+                        }).close(()=> {
+                          this.onReset();
+                        });
+                      }
+                    }
+                  );
+                }
+              }
+            );
+          },
+          error : err => {
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Something Went Wrong!',
 
-    Swal.fire({
-      icon: 'success',
-      title: 'Great...',
-      text: 'Project Uploaded Successfully',
-      // footer: '<a href>Why do I have this issue?</a>'
-    }),
-    
-    (error) => //console.log(error)
-    Swal.fire({
-      icon: 'error',
-      title: 'Oops...',
-      text: 'Something Went Wrong!',
-      
-    })
+            })
+            this.onReset();
+          },
+          complete : () => {
+          }
+        });
+  }
 
-  })
-    
-}
+  onReset() {
+    this.submitted = false;
+    this.uploadForm.reset();
+    this.img_file = null;
+    this.project_file = null;
+    this.progressImage = 0;
+    this.progressFile = 0;
+  }
 
-onReset() {
-  this.submitted = false;
-  this.uploadForm.reset();
-}
+  mapClicked($event: any) {
+    this.markers.push({
+      lat: $event.coords.lat,
+      lng: $event.coords.lng,
+      draggable: true
+    });
+  }
 
-clickedMarker(label: string, index: number) {
-  console.log(`clicked the marker: ${label || index}`)
-}
+  markerDragEnd($event: google.maps.MouseEvent | any){
+    this.latitude=$event.coords.lat;
+    this.longitude=$event.coords.lng;
+  }
 
-mapClicked($event: any) {
-  this.markers.push({
-    lat: $event.coords.lat,
-    lng: $event.coords.lng,
-    draggable: true
-  });
-}
+  projectFileChange(event) {
+    let fileList: File = event.target.files;
+    this.project_file = fileList[0];
+  }
 
-markerDragEnd($event: google.maps.MouseEvent | any){
-  // console.log($event)
-  console.log($event.coords.lng,$event.coords.lat)
-  this.latitude=$event.coords.lat;
-  this.longitude=$event.coords.lng;
-}
-
-onMouseOut(aa, $event){
-
-}
-
-onMouseOver(ss, sdsd){
-
-}
-
-projectFileChange(event) {
-  let fileList: File = event.target.files;
-  console.log(fileList)
-  this.project_file=fileList[0];
-}
-
-imgFileChange(event) {
-  let fileList: File = event.target.files;
-  console.log(fileList)
-  this.img_file=fileList[0];
-}
-
+  imgFileChange(event) {
+    let fileList: File = event.target.files;
+    this.img_file = fileList[0];
+  }
 
 }

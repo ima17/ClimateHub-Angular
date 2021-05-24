@@ -4,7 +4,7 @@ import { NgModule } from '@angular/core';
 import {FormsModule,ReactiveFormsModule} from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AgmCoreModule } from '@agm/core';
-//import { MDBBootstrapModule } from 'angular-bootstrap-md'; 
+//import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { HttpClientModule } from '@angular/common/http';
 
 
@@ -46,7 +46,7 @@ import { ImprintComponent } from './components/footer/imprint/imprint.component'
 import { PrivacyPolicyComponent } from './components/footer/privacy-policy/privacy-policy.component';
 
 //import { AfterLoginService } from './services/after-login.service';
-//import { BeforeLoginService } from './services/before-login.service'; 
+//import { BeforeLoginService } from './services/before-login.service';
 
 import { AdminNavComponent } from './admin-nav/admin-nav.component';
 import { LayoutModule } from '@angular/cdk/layout';
@@ -86,13 +86,24 @@ import { VoteResultComponent } from './event-Components/vote-result/vote-result.
 import * as $ from 'jquery';
 import { UserListComponent } from 'src/app/event-Components/user-list/user-list.component';
 
-
-
 // FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 //   dayGridPlugin,interactionPlugin
-  
+
 // ]);
 import { SearchFilterPipe } from './pipes/search-filter.pipe';
+
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireStorageModule } from '@angular/fire/storage';
+
+const config = {
+  apiKey: "AIzaSyAk3u3U-GTAmlkyGZ5y2vrkmupz-GPMWqg",
+  authDomain: "climatehub-bf76e.firebaseapp.com",
+  projectId: "climatehub-bf76e",
+  storageBucket: "climatehub-bf76e.appspot.com",
+  messagingSenderId: "640228737677",
+  appId: "1:640228737677:web:7fb841c3f21ad0a89958c4",
+  measurementId: "G-PRB85S6Q72"
+};
 
 
 @NgModule({
@@ -146,20 +157,16 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     UserEditingComponent,
     UpdateUsersComponent,
     DetailsComponent,
-
     VoteResultComponent,
     UserListComponent,
-
     SearchFilterPipe,
-    
-
   ],
-  
+
   imports:[
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    FormsModule, 
+    FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
     LayoutModule,
@@ -177,7 +184,8 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     }),
     // MDBBootstrapModule.forRoot(),
     // //FormBuilder
-
+    AngularFireModule.initializeApp(config),
+    AngularFireStorageModule // storage
   ],
 
   providers: [JarwisService, TokenService, AuthService, AfterLoginService, BeforeLoginService,{ provide: 'SnotifyToastConfig', useValue: ToastDefaults},
