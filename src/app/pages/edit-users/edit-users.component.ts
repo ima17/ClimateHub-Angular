@@ -4,6 +4,7 @@ import { AuthService } from 'src/app/services/auth.service';
 import { JarwisService } from 'src/app/services/jarwis.service';
 import { TokenService } from 'src/app/services/token.service';
 import { DataService } from 'src/app/services/data.service';
+import { SnotifyService } from 'ng-snotify';
 
 @Component({
   selector: 'app-edit-users',
@@ -44,22 +45,24 @@ export class EditUsersComponent implements OnInit {
     private Token: TokenService,
     private router: Router,
     private Auth: AuthService,
-    private dataService:DataService
+    private dataService:DataService,
+    private Notify:SnotifyService
   ) { }
 
   onSubmit(){
     this.form.user_type="USER";
     this.Jarwis.registeruser(this.form).subscribe(
        data => this.handleResponse(data),
-       error => this.handleError(error)
+       error => this.handleError(error),
      ); 
       
 
-  }
+  } 
 
   handleResponse(data){
     this.Token.handle(data.access_token);
     this.Auth.changeAuthStatus(true);
+    this.Notify.success('Successfully added the user!')
     this.router.navigateByUrl('/admin-profile');
   }
 
@@ -74,14 +77,17 @@ export class EditUsersComponent implements OnInit {
   getjoinUsData(){
     this.dataService.getData2().subscribe(res => {
       this.joinUs = res;
+      // this.Notify.success('Done!')
+      // this.router.navigateByUrl('/admin-profile');
     })
   }
 
   DeleteData2(id){
     this.dataService.clearData(id).subscribe(res => {
       this.getjoinUsData();
+      this.Notify.success('Successfully Deleted the data!')
     })
     
-  }
+  } 
 
 }

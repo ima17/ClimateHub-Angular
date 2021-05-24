@@ -91,6 +91,8 @@ import { UserEditingComponent } from './pages/user-editing/user-editing.componen
 import { UpdateUsersComponent } from './pages/update-users/update-users.component';
 import {BreadcrumbModule} from 'angular-crumbs';
 import { DetailsComponent } from './pages/details/details.component';
+import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
+
 
 
 @NgModule({
@@ -146,6 +148,8 @@ import { DetailsComponent } from './pages/details/details.component';
     UserEditingComponent,
     UpdateUsersComponent,
     DetailsComponent,
+    AdminLoginComponent,
+
     
   ],
   

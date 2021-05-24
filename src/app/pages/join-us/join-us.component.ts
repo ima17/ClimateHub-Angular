@@ -23,6 +23,6 @@ export class JoinUSComponent implements OnInit {
       this.Notify.success('Done!')
       this.router.navigateByUrl('#');
     })
-  }
+  } 
 
 } 
