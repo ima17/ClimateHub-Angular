@@ -158,9 +158,8 @@ export class UploadProjectsComponent implements OnInit {
                           icon: 'success',
                           title: 'Success',
                           text: 'Project Uploaded Successfully!',
-                        }).close(()=> {
-                          this.onReset();
                         });
+                        this.onReset();
                       }
                     }
                   );
