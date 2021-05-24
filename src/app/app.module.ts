@@ -55,7 +55,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { FullCalendarModule } from '@fullcalendar/angular'; // calendar
+//import { FullCalendarModule } from '@fullcalendar/angular'; // calendar
 //import  dayGridPlugin from '@fullcalendar/daygrid'; // plugin
 import interactionPlugin from '@fullcalendar/interaction';
 import { EventPollComponent } from './event-Components/event-poll/event-poll.component';
@@ -172,7 +172,7 @@ import { SearchFilterPipe } from './pipes/search-filter.pipe';
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    FullCalendarModule,
+    //FullCalendarModule,
     BreadcrumbModule,
     SnotifyModule,
     NgxPaginationModule,

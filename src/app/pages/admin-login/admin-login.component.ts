@@ -38,7 +38,7 @@ export class AdminLoginComponent implements OnInit {
   handleResponse(data) {
     this.Token.handle(data.access_token);
     this.Auth.changeAuthStatus(true);
-    this.router.navigateByUrl('/admin');
+    this.router.navigateByUrl('/admin-profile');
   }
 
   handleError(error) {

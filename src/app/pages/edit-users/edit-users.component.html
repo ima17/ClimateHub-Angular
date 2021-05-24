@@ -1,4 +1,4 @@
-<app-admin-nav></app-admin-nav>
+<!-- <app-admin-nav></app-admin-nav>
 
 <div class="container">
   <hr>
@@ -95,13 +95,7 @@
                       </div>
                     </div>
           
-                    <!-- <div class="form-group row">
-                      <div class="col-sm-10">
-                        <input type="hidden" name="usertype" class="form-control" id="inputUsertype3" [(ngModel)]="form.usertype" value="USER"
-                          required>
-                          
-                      </div>
-                    </div>  -->
+                   
           
                     
             
@@ -120,81 +114,351 @@
           </div>
       </div>
   </div>
-</div> 
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-sm-10">
-      <table class="table table-striped">
-        <thead>
-          <tr>
-            <th scope="col">#</th>
-            <th scope="col">Name</th>
-            <th scope="col">Institution</th>
-            <th scope="col">Profession</th>
-            <th scope="col">Email</th>
-            <th scope="col">Mobile</th>
-            <th scope="col">Message</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let join of joinUs">
-            <th scope="row">{{join.id}}</th>
-            <td>{{join.name}}</td>
-            <td>{{join.institute}}</td>
-            <td>{{join.profession}}</td>
-            <td>{{join.email}}</td>
-            <td>{{join.mobile}}</td>
-            <td>{{join.message}}</td>
-            <td>
-                <button class="btn btn-danger btn-sm" (click)="DeleteData2(join.id)" >Delete</button>
-                
-            </td>
-            
-        </tr> 
-        </tbody>
-      </table>
-    </div>
-  </div>
-</div> -->
+</div>  -->
 
+
+
+
+    
+
+
+
+<app-admin-nav></app-admin-nav>
+
+
+<div class="container">
+  <div class="row">
+      <div class="col mt-5 mb-5">
+          <div class="col-md-15 mx-auto">
+            <div class="mt-4 col-8 offset-2">
+              <div class="card">
+                <div class="card-header">Add Users</div>
+                <div class="card-body">
+                  <form #registerForm=ngForm (ngSubmit)="onSubmit()">
+          
+                   
+                    
+                    <!-- <div class="form-group row">
+                      <label for="inputName3" class="col-sm-2 col-form-label">Name</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="name" class="form-control" id="inputName3" placeholder="Name" [(ngModel)]="form.name" required>
+                        <div class="alert alert-danger" [hidden]="!error.name">
+                          {{error.name}}
+                        </div>
+                      </div>
+                    </div>  -->
+
+                    <div class="card" id="card-title">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-3">
+                            Name
+                          </div>
+                          <div class="col-9">
+                            <div class="form-group row">
+                              <div class="col-sm-12">
+                                <input type="text" name="name" class="form-control" id="inputName3" placeholder="Name" [(ngModel)]="form.name" required>
+                        <div class="alert alert-danger" [hidden]="!error.name">
+                          {{error.name}}
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+                    <div class="card" id="card-title">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-3">
+                            User name
+                          </div>
+                          <div class="col-9">
+                            <div class="form-group row">
+                              <div class="col-sm-12">
+                                <input type="text" name="username" class="form-control" id="userName3" placeholder="User name" [(ngModel)]="form.username" required>
+                        <div class="alert alert-danger" [hidden]="!error.username">
+                          {{error.username}}
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+
+
+
+                    <!-- <div class="form-group row">
+                      <label for="userName3" class="col-sm-2 col-form-label">User name</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="username" class="form-control" id="userName3" placeholder="User name" [(ngModel)]="form.username" required>
+                        <div class="alert alert-danger" [hidden]="!error.username">
+                          {{error.username}}
+                        </div>
+                      </div>
+                    </div>-->
+
+                    <div class="card" id="card-title">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-3">
+                            Institution / Organisation
+                          </div>
+                          <div class="col-9">
+                            <div class="form-group row">
+                              <div class="col-sm-12">
+                                <input type="text" name="institute" class="form-control" id="inputInstitute3" placeholder="Academic institute" [(ngModel)]="form.institute" required>
+                        <div class="alert alert-danger" [hidden]="!error.institute">
+                          {{error.institute}}
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!-- <div class="form-group row">
+                      <label for="inputInstitute3" class="col-sm-2 col-form-label">Institution / Organisation</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="institute" class="form-control" id="inputInstitute3" placeholder="Academic institute" [(ngModel)]="form.institute" required>
+                        <div class="alert alert-danger" [hidden]="!error.institute">
+                          {{error.institute}}
+                        </div>
+                      </div>
+                    </div> -->
+
+                    <div class="card" id="card-title">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-3">
+                            Profession
+                          </div>
+                          <div class="col-9">
+                            <div class="form-group row">
+                              <div class="col-sm-12">
+                                <input type="text" name="profession" class="form-control" id="inputProfession3" placeholder="Profession" [(ngModel)]="form.profession" required>
+                        <div class="alert alert-danger" [hidden]="!error.profession">
+                          {{error.profession}}
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+          
+                    <!-- <div class="form-group row">
+                      <label for="inputProfession3" class="col-sm-2 col-form-label">Profession</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="profession" class="form-control" id="inputProfession3" placeholder="Profession" [(ngModel)]="form.profession" required>
+                        <div class="alert alert-danger" [hidden]="!error.profession">
+                          {{error.profession}}
+                        </div>
+                      </div>
+                    </div> -->
+
+                    <div class="card" id="card-title">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-3">
+                            Email address
+                          </div>
+                          <div class="col-9">
+                            <div class="form-group row">
+                              <div class="col-sm-12">
+                                <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email" [(ngModel)]="form.email" required>
+                        <div class="alert alert-danger" [hidden]="!error.email">
+                          {{error.email}}
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+          
+                    <!-- <div class="form-group row">
+                      <label for="inputEmail3" class="col-sm-2 col-form-label">Email address</label>
+                      <div class="col-sm-10">
+                        <input type="email" name="email" class="form-control" id="inputEmail3" placeholder="Email" [(ngModel)]="form.email" required>
+                        <div class="alert alert-danger" [hidden]="!error.email">
+                          {{error.email}}
+                        </div>
+                      </div>
+                    </div> -->
+
+                    <div class="card" id="card-title">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-3">
+                            Mobile
+                          </div>
+                          <div class="col-9">
+                            <div class="form-group row">
+                              <div class="col-sm-12">
+                                <input type="text" name="mobile" class="form-control" id="inputMobile3" placeholder="Phone number" [(ngModel)]="form.mobile"
+                          required>
+                          <div class="alert alert-danger" [hidden]="!error.mobile">
+                            {{error.mobile}}
+                          </div> 
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+          
+            
+                    <!-- <div class="form-group row">
+                      <label for="inputMobile3" class="col-sm-2 col-form-label">Mobile</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="mobile" class="form-control" id="inputMobile3" placeholder="Phone number" [(ngModel)]="form.mobile"
+                          required>
+                          <div class="alert alert-danger" [hidden]="!error.mobile">
+                            {{error.mobile}}
+                          </div>  
+                      </div>
+                    </div>  -->
+
+                    <div class="card" id="card-title">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-3">
+                            Password
+                          </div>
+                          <div class="col-9">
+                            <div class="form-group row">
+                              <div class="col-sm-12">
+                                <input type="password" name="password" class="form-control" id="inputPasswordConfirmation3" placeholder="Password"
+                          [(ngModel)]="form.password" required>
+                          <div class="alert alert-danger" [hidden]="!error.password">
+                            {{error.password}}
+                          </div> 
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+          
+                    <!-- <div class="form-group row">
+                      <label for="inputPasswordConfirmation3" class="col-sm-2 col-form-label">Password</label>
+                      <div class="col-sm-10">
+                        <input type="password" name="password" class="form-control" id="inputPasswordConfirmation3" placeholder="Password"
+                          [(ngModel)]="form.password" required>
+                          <div class="alert alert-danger" [hidden]="!error.password">
+                            {{error.password}}
+                          </div>  
+                      </div>
+                    </div>  -->
+
+                    <div class="card" id="card-title">
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-3">
+                            Confirm Password
+                          </div>
+                          <div class="col-9">
+                            <div class="form-group row">
+                              <div class="col-sm-12">
+                                <input type="password" name="password_confirmation" class="form-control" id="inputPassword3" placeholder="Confirm Password" [(ngModel)]="form.password_confirmation"
+                          required>
+                           
+                        </div>
+                        </div>
+                        </div>
+                        </div>
+                      </div>
+                    </div>
+            
+                    <!-- <div class="form-group row">
+                      <label for="inputPassword3" class="col-sm-2 col-form-label">Confirm Password</label>
+                      <div class="col-sm-10">
+                        <input type="password" name="password_confirmation" class="form-control" id="inputPassword3" placeholder="Confirm Password" [(ngModel)]="form.password_confirmation"
+                          required>
+                          
+                      </div>
+                    </div> -->
+          
+                    <!-- <div class="form-group row">
+                      <div class="col-sm-10">
+                        <input type="hidden" name="usertype" class="form-control" id="inputUsertype3" [(ngModel)]="form.usertype" value="USER"
+                          required>
+                          
+                      </div>
+                    </div>  -->
+          
+                    <div class="card" id="card-button">
+                      <div class="card-body">
+                          <div class="row">
+                              <div class="col-3">
+                                <!-- <input type="text" name="admin" class="formControl" formControlName="admin_id" value="1" > -->
+                              </div>
+                              <div class="col-9">
+                                <button type="submit" class="btn btn-primary" >Add User</button>
+                                </div>
+                                </div>
+                                </div>
+                                </div>
+                                
+            
+                    <!-- <div class="form-group row">
+                      <div class="col-sm-10 offset-2">
+            
+                        <button type="submit" class="btn btn-primary" >Add User</button>
+            
+                      </div>
+                    </div> -->
+                  </form>
+                </div>
+              </div>
+            </div>
+          
+          </div>
+      </div>
+  </div>
+</div>
 
 <div class="container ">
-    <hr>
-    <div class="row ">
-        <div class="col-sm-12 mt-5 mb-5 ">
-            <div class="col-sm-12 mx-auto">
-                <table class="table table-striped lg-12 sm-12">
-                    <thead>
-                      <tr>
-                        <th scope="col">#</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Institution</th>
-                        <th scope="col">Profession</th>
-                        <th scope="col">Email</th>
-                        <th scope="col">Mobile</th>
-                        <th scope="col">Message</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                        <tr *ngFor="let join of joinUs">
-                            <th scope="row">{{join.id}}</th>
-                            <td>{{join.name}}</td>
-                            <td>{{join.institute}}</td>
-                            <td>{{join.profession}}</td>
-                            <td>{{join.email}}</td>
-                            <td>{{join.mobile}}</td>
-                            <td>{{join.message}}</td>
-                            <td>
-                                <button class="btn btn-danger btn-sm" (click)="DeleteData2(join.id)" >Delete</button>
-                                
-                            </td>
-                            
-                        </tr> 
-                    </tbody>
-                  </table>
-                
-            </div>
-        </div>
-    </div>
-</div>
+  <div class="row ">
+      <div class="col-sm-12 mt-5 mb-5 ">
+          <div class="col-sm-12 mx-auto">
+              <table class="table table-striped lg-12 sm-12">
+                  <thead>
+                    <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Institution</th>
+                      <th scope="col">Profession</th>
+                      <th scope="col">Email</th>
+                      <th scope="col">Mobile</th>
+                      <th scope="col">Message</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <tr *ngFor="let join of joinUs">
+                          <th scope="row">{{join.id}}</th>
+                          <td>{{join.name}}</td>
+                          <td>{{join.institute}}</td>
+                          <td>{{join.profession}}</td>
+                          <td>{{join.email}}</td>
+                          <td>{{join.mobile}}</td>
+                          <td>{{join.message}}</td>
+                          <td>
+                              <button class="btn btn-danger btn-sm" (click)="DeleteData2(join.id)" >Delete</button>
+                              
+                          </td>
+                          
+                      </tr> 
+                  </tbody>
+                </table>
+              
+          </div>
+      </div>
+  </div>
+  </div>
+
 

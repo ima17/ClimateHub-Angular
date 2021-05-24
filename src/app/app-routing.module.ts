@@ -74,7 +74,7 @@ const routes: Routes = [
   {path:'envelope',component:EnvelopeComponent,data: { breadcrumb: 'Envelope'}},
   {path:'zoning',component:ZoningComponent,data: { breadcrumb: 'Zoning'}},
   {path:'details',component:DetailsComponent,data: { breadcrumb: 'Details'}},
-  {path:'admin',component:AdminNavComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
+  //{path:'admin',component:AdminNavComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
   //{path:'admin',component:AdminNavComponent,},
   {path:'admin-profile',component:AdminProfileComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
   //{path:'admin-profile',component:AdminProfileComponent},
@@ -112,7 +112,7 @@ const routes: Routes = [
   {path:'ventilation',component:VentilationComponent},
   {path:'envelope',component:EnvelopeComponent},
   {path:'zoning',component:ZoningComponent},
-  {path:'admin',component:AdminNavComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
+  //{path:'admin',component:AdminNavComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
   //{path:'admin',component:AdminNavComponent},
   {path:'admin-profile',component:AdminProfileComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
   //{path:'admin-profile',component:AdminProfileComponent},
@@ -143,8 +143,8 @@ const routes: Routes = [
   {path: 'delete-users', component:UserEditingComponent,canActivate: [AfterLoginService]},
   //{path: 'delete-users', component:UserEditingComponent},
   {path:'update-user/:id',component:UpdateUsersComponent},
-  {path:'admin-login', component:AdminLoginComponent},
-  {path: 'user-editing', component:UserEditingComponent},
+  {path:'admin', component:AdminLoginComponent},
+  {path: 'user-deleting', component:UserEditingComponent},
   //{path:'update-user/:id',component:UpdateUsersComponent} 
 
 ];

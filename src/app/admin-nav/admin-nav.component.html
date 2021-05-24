@@ -18,7 +18,7 @@
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdown">
             <a class="dropdown-item" routerLink="/add-users">Add users</a>
-            <a class="dropdown-item" routerLink="/user-editing">Delete Users</a>
+            <a class="dropdown-item" routerLink="/user-deleting">Delete Users</a>
 
 
           </div>
@@ -50,6 +50,10 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/admin-blog">Blog</a>
         </li>
+
+        <li class="nav-item">
+        <a class="nav-link"  routerLink="" (click)="logout($event)" >Logout</a>
+      </li>
 
       </ul>
     </div>
@@ -111,9 +115,9 @@
         <a class="nav-link" routerLink="/admin-blog">Blog</a>
       </li>
 
-      <li class="nav-item">
+      < li class="nav-item">
         <a class="nav-link"  routerLink="" (click)="logout($event)" >Logout</a>
-      </li> 
+      </li>
 
     </ul>
   </div>

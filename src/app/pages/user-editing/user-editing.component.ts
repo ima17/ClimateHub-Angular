@@ -24,7 +24,7 @@ export class UserEditingComponent implements OnInit {
   deleteData(id){
     this.dataService.deleteData(id).subscribe(res => {
       this.getUsersData()
-      this.Notify.success('Successfully Deleted the details!')
+      this.Notify.success('Successfully Deleted the user!')
 
     })
   }
