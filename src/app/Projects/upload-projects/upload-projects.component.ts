@@ -5,6 +5,7 @@ import { Project } from 'src/app/project';
 import Swal from 'sweetalert2/dist/sweetalert2.all.js';
 import {AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask} from '@angular/fire/storage';
 import { Observable } from 'rxjs';
+import {finalize} from 'rxjs/operators';
 
 @Component({
   selector: 'app-upload-projects',
@@ -81,9 +82,9 @@ export class UploadProjectsComponent implements OnInit {
 
       this.submitted = true;
       //stop here if form is invalid
-      if (this.uploadForm.invalid) {
-        return;
-      }
+      // if (this.uploadForm.invalid) {
+      //   return;
+      // }
 
       // if project file not found
       if(this.project_file == null || !this.project_file.name) {
@@ -127,58 +128,82 @@ export class UploadProjectsComponent implements OnInit {
     const id = Math.random().toString(36).substring(2);
     const projectFileName = `${this.project_file.name}_${id}_version_${1}`;
     const projectImageName = `${this.img_file.name}_${id}_version_${1}`;
-    formData.append('project_file',projectFileName);
-    formData.append('img_file',projectImageName);
     formData.append('accessible', this.uploadForm.get('accessible').value);
 
-    //this.storage.
-      this.projectService.uploadProject(formData)
-        .subscribe({
-          next : apiResponse => {
+    // upload file
+    this.refFile = this.storage.ref(`files/${projectFileName}`);
+    this.taskFile = this.refFile.put(this.project_file);
+    this.uploadProgressFile = this.taskFile.percentageChanges();
+    this.uploadProgressFile.subscribe(
+      {
+        next : res => this.progressFile = res,
+        error : err => {
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Project file upload failed!',
+          })
+          this.onReset();
+        },
+        complete : () => {
+          // upload image
+          this.refImage = this.storage.ref(`images/${projectImageName}`);
+          this.taskImage = this.refImage.put(this.img_file);
+          this.uploadProgressImage = this.taskImage.percentageChanges();
+          this.uploadProgressImage.subscribe(
+            {
+              next : res => this.progressImage = res,
+              error : err => {
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Project image upload failed!',
+                })
+                this.onReset();
+              },
+              complete : () => {
+                this.taskFile.snapshotChanges().pipe(
+                  finalize(() => {
+                    this.refFile.getDownloadURL().subscribe(fileUrl => {
+                      formData.append('project_file',fileUrl);
+                      this.taskImage.snapshotChanges().pipe(
+                        finalize(() => {
+                          this.refImage.getDownloadURL().subscribe(imageUrl => {
+                            formData.append('img_file',imageUrl);
+                            this.projectService.uploadProject(formData)
+                              .subscribe({
+                                next : apiResponse => {
+                                },
+                                error : err => {
+                                  Swal.fire({
+                                    icon: 'error',
+                                    title: 'Oops...',
+                                    text: 'Something Went Wrong!',
 
-            // upload file
-            this.refFile = this.storage.ref(`files/${projectFileName}`);
-            this.taskFile = this.refFile.put(this.project_file);
-            this.uploadProgressFile = this.taskFile.percentageChanges();
-            this.uploadProgressFile.subscribe(
-              {
-                next : res => this.progressFile = res,
-                error : err => {},
-                complete : () => {
-                  // upload image
-                  this.refImage = this.storage.ref(`images/${projectImageName}`);
-                  this.taskImage = this.refImage.put(this.img_file);
-                  this.uploadProgressImage = this.taskImage.percentageChanges();
-                  this.uploadProgressImage.subscribe(
-                    {
-                      next : res => this.progressImage = res,
-                      error : err => {},
-                      complete : () => {
-                        Swal.fire({
-                          icon: 'success',
-                          title: 'Success',
-                          text: 'Project Uploaded Successfully!',
-                        });
-                        this.onReset();
-                      }
-                    }
-                  );
-                }
+                                  })
+                                  this.onReset();
+                                },
+                                complete : () => {
+                                  Swal.fire({
+                                    icon: 'success',
+                                    title: 'Success',
+                                    text: 'Project Uploaded Successfully!',
+                                  });
+                                  this.onReset();
+                                }
+                              });
+                          });
+                        })
+                      ).subscribe();
+                    });
+                  })
+                ).subscribe();
               }
-            );
-          },
-          error : err => {
-            Swal.fire({
-              icon: 'error',
-              title: 'Oops...',
-              text: 'Something Went Wrong!',
-
-            })
-            this.onReset();
-          },
-          complete : () => {
-          }
-        });
+            }
+          );
+        }
+      }
+    );
   }
 
   onReset() {

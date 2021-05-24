@@ -11,12 +11,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./additives.component.scss']
 })
 export class AdditivesComponent implements OnInit {
+
   publicAdditives:any;
   privateAdditives:any;
   public loggedIn :boolean;
-
-
-
 
   constructor(
     private dataService:ProjectDataService,
@@ -29,7 +27,7 @@ export class AdditivesComponent implements OnInit {
     this.getPublicAdditivesData();
     this.getPrivateAdditivesData();
     this.Auth.authStatus.subscribe(value => this.loggedIn = value);
-    
+
   }
 
   getPublicAdditivesData(){
@@ -51,6 +49,4 @@ export class AdditivesComponent implements OnInit {
     this.router.navigateByUrl('/additives');
 }
 
-
-  
 }
