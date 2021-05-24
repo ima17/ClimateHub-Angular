@@ -3,16 +3,18 @@
 <app-breadcrumb></app-breadcrumb>
 
 <div class="container">
+
     <div class="row row-1">
         <div class="col-sm-6">
             <h1 class="main-title">Additives</h1>
-            
+
         </div>
         <div class="col-sm-6">
             <button type="button" class="btn btn-outline-info float-right w-25 " >SHOW ALL</button>
             <button type="button" class="btn btn-outline-info float-right w-25 dropdown-toggle" style="margin-right: 10px;">FILTER</button>
         </div>
     </div>
+
     <div class="row">
         <div class="col">
             <div class="card border border-info rounded">
@@ -20,11 +22,13 @@
                     <p>Here you can find auxiliaries, like simulation programs, websites and literature helping you create your climate responsive project. Enter a search term, filter the documents to find your topic of interest or simply browse through the additives!</p>
                     <p>Do you need access to a password protected document? No problem, contact us <a routerLink="/JoinUs">Here</a></p>
                 </div>
-            </div>        
+            </div>
         </div>
     </div>
+
     <div class="card border border-info rounded">
         <div class="card-body  shadow  " >
+
             <div class="row card-group  mx-auto">
                 <div class="col-lg-4 sm-12"  *ngFor="let pro of publicAdditives">
                     <div class="card border rounded shadow  mx-auto" style="width: 20rem;">
@@ -32,16 +36,17 @@
                         <div class="card-body">
                             <h5 class="card-title">{{pro.project_title}}</h5>
                             <h5 class="card-title">© {{pro.author}}</h5>
-                            <p class="card-text"> {{pro.abstract}}</p>    
+                            <p class="card-text"> {{pro.abstract}}</p>
                         </div>
                         <div class="card-footer text-muted">
-                            <a href="/details" class="btn btn-outline-info">Details
+                            <a href="/details/{{pro.id}}/{{pro.version_id}}" class="btn btn-outline-info">Details
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                   </svg></a>
                         </div>
                     </div>
                 </div>
+
                 <div class="col-lg-4 sm-12"  *ngFor="let pro of privateAdditives">
                     <div class="card border rounded shadow  mx-auto" style="width: 20rem;">
                         <img *ngIf=loggedIn class="card-img-top border rounded shadow" src="{{pro.img_file}}" alt="Card image cap">
@@ -49,24 +54,26 @@
                         <div class="card-body">
                             <h5 class="card-title">{{pro.project_title}}</h5>
                             <h5 class="card-title">© {{pro.author}}</h5>
-                            <p class="card-text"> {{pro.abstract}}</p>    
+                            <p class="card-text"> {{pro.abstract}}</p>
                         </div>
                         <div class="card-footer text-muted">
                             <a  *ngIf=!loggedIn href="/login" class="btn btn-outline-info">Details<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                 </svg>
                             </a>
-                            <a  *ngIf=loggedIn href="/details" class="btn btn-outline-info">Details<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                            <a  *ngIf=loggedIn href="/details/{{pro.id}}/{{pro.version_id}}" class="btn btn-outline-info">Details<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                 </svg>
                             </a>
                         </div>
                     </div>
                 </div>
+
             </div>
-            
+
         </div>
-    </div>     
+    </div>
+
 </div>
 
 <app-footer></app-footer>

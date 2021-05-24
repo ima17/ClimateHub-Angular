@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ProjectDataService } from 'src/app/Services/project-data.service';
+import { ActivatedRoute } from '@angular/router';
+import {ProjectService} from '../../Services/project.service';
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
+import {Project} from '../../project';
+import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-details',
@@ -7,27 +11,36 @@ import { ProjectDataService } from 'src/app/Services/project-data.service';
   styleUrls: ['./details.component.scss']
 })
 export class DetailsComponent implements OnInit {
-  publicprojects:any;
-  privateprojects:any;
 
-  constructor(private dataService:ProjectDataService) { }
+  data : Project = new Project();
+  pdfUrl : any;
 
+  constructor(private route : ActivatedRoute, private service : ProjectService,
+  private sanitizer : DomSanitizer) { }
 
   ngOnInit(): void {
-    this.getPublicProjectsData();
-    this.getPrivateProjectsData();
+    const id = this.route.snapshot.paramMap.get('id');
+    const version_id = this.route.snapshot.paramMap.get('version_id');
+
+    this.service.getProjectById(id).subscribe(
+      {
+        next : (value : Project) => {
+          this.data = value;
+          this. getSafeUrl(this.data.project_file);
+        },
+        error : () => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Something went wrong!',
+          });
+        }
+      }
+    );
   }
 
-  getPublicProjectsData(){
-    this.dataService.getPublicProjectData().subscribe(res =>{
-      this.publicprojects=res;
-    });
-  };
-
-  getPrivateProjectsData(){
-    this.dataService.getPrivateProjectData().subscribe(res =>{
-      this.privateprojects=res;
-    });
-  };
+  getSafeUrl(url){
+    this.pdfUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
+  }
 
 }

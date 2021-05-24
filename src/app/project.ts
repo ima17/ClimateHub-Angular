@@ -1,4 +1,6 @@
 export class Project {
+    id : number;
+    version_id : number;
     project_title: string;
     author: string;
     organisation: string;
@@ -18,4 +20,7 @@ export class Project {
     project_file: string;
     img_file: string;
     accessible: string;
+    admin_id: number;
+    created_at:string;
+    updated_at:string;
 }

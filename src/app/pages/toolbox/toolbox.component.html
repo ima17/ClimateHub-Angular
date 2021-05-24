@@ -1,12 +1,13 @@
 <app-navbar></app-navbar>
 <app-map-image></app-map-image>
 <app-breadcrumb ></app-breadcrumb>
+
 <div class="container">
     <div class="row row-1">
         <div class="col-sm-6">
             <h1 class="main-title">Toolbox</h1>
-            
-            
+
+
         </div>
         <div class="col-sm-6">
             <button type="button" class="btn btn-outline-info float-right w-25 " >SHOW ALL</button>
@@ -33,7 +34,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{pro.project_title}}</h5>
                             <h5 class="card-title">© {{pro.author}}</h5>
-                            <p class="card-text"> {{pro.abstract}}</p>      
+                            <p class="card-text"> {{pro.abstract}}</p>
                         </div>
                         <div class="card-footer text-muted">
                             <a href="/details" class="btn btn-outline-info">Details
@@ -50,7 +51,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{pro.project_title}}</h5>
                             <h5 class="card-title">© {{pro.author}}</h5>
-                            <p class="card-text"> {{pro.abstract}}</p>   
+                            <p class="card-text"> {{pro.abstract}}</p>
                         </div>
                         <div class="card-footer text-muted">
                             <a  *ngIf=!loggedIn href="/login" class="btn btn-outline-info">Details<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
@@ -65,10 +66,10 @@
                     </div>
                 </div>
             </div>
-            
+
         </div>
     </div>
-    
+
 </div>
 
 

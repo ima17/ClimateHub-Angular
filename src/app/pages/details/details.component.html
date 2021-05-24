@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-lg-7 sm-12 " id="section1">
             <div class="container " id="pdf-viewer">
-                <div class="row mx-auto"><iframe class="border mx-auto shadow-sm" src="https://static.vanillr.io/media/5331/project/1/pdf/8db55736ac7f3771e6829b88c61b68b9.pdf" height="850" width="600"></iframe></div>
+                <div class="row mx-auto"><iframe class="border mx-auto shadow-sm" [src]="pdfUrl" height="850" width="600"></iframe></div>
                 <hr class="mx-auto" id="ruler">
                 <div class="row mx-auto" id="info">
                     <div class="col-1"></div>
@@ -12,30 +12,30 @@
                         <div class="card">
                             <div class="card-body shadow" style="height: 12rem;">
                                 <h2>Project Details</h2>
-                                <p>Created at:  02.10.2020</p>
-                                <p>Updated at:  21.03.2021</p>
+                                <p>Created at:  {{data.created_at?.split("T")[0]}}</p>
+                                <p>Updated at:  {{data.updated_at?.split("T")[0]}}</p>
                             </div>
-                          </div>  
+                          </div>
                     </div>
                     <div class="col-5">
                         <div class="card">
                             <div class="card-body shadow border-bg-success" style="height: 12rem;">
                                 <h2>Author</h2>
-                                <p>Name:  Ilka Drixelius</p>
-                                <p>Organisation:  FH Münster, Hüfferstraße 27, 48149 Münster</p>
+                                <p>Name:  {{data.author}}</p>
+                                <p>Organisation:  {{data.organisation}}</p>
                             </div>
                           </div>
                     </div>
                     <div class="col-1"></div>
                 </div>
-                
+
             </div>
         </div>
         <div class="col-lg-5 sm-12 bg-light shadow-sm">
             <div class="card shadow-sm mx-auto" style="width: 25rem;">
                 <ul class="list-group list-group-flush">
                   <li class="list-group-item">Brief description</li>
-                  <li class="list-group-item">An energetically optimized building structure in a cubical form that is built into a slope.</li>
+                  <li class="list-group-item">{{data.abstract}}</li>
                 </ul>
             </div>
 
@@ -45,15 +45,15 @@
                   <li class="list-group-item">
                     <div class="row">
                         <div class="col-5">Project ID:</div>
-                        <div class="col-7">1</div>
+                        <div class="col-7">{{data.id}}</div>
                         <div class="col-5">Autor:</div>
-                        <div class="col-7">Ilka Drixelius</div>
+                        <div class="col-7">{{data.author}}</div>
                         <div class="col-5">Organisation:</div>
-                        <div class="col-7">FH Münster, Hüfferstraße 27, 57159 Münster</div>
+                        <div class="col-7">{{data.organisation}}</div>
                         <div class="col-5">Created Date:</div>
-                        <div class="col-7">02.10.2020</div>
+                        <div class="col-7">{{data.created_at?.split("T")[0]}}</div>
                         <div class="col-5">Updated Date:</div>
-                        <div class="col-7">21.03.2021</div>
+                        <div class="col-7">{{data.updated_at?.split("T")[0]}}</div>
                     </div>
                   </li>
                 </ul>
@@ -65,23 +65,23 @@
                   <li class="list-group-item">
                     <div class="row">
                         <div class="col-5">BUILDING SCALE:</div>
-                        <div class="col-7">Individual Building Scale</div>
+                        <div class="col-7">{{data.bulding_scale}}</div>
                         <div class="col-5">ENERGY STRATEGY:</div>
-                        <div class="col-7">Passive</div>
+                        <div class="col-7">{{data.energy_strategy}}</div>
                         <div class="col-5">CLIMATE ZONE:</div>
-                        <div class="col-7">Temperate</div>
+                        <div class="col-7">{{data.climate_zone}}</div>
                         <div class="col-5">WORLD REGION:</div>
-                        <div class="col-7">Europe</div>
+                        <div class="col-7">{{data.world_region}}</div>
                         <div class="col-5">PARAMETERS:</div>
-                        <div class="col-7">Thermal Mass, Plan Form, Sectional Form, Site Topography</div>
+                        <div class="col-7">{{data.parameters}}</div>
                         <div class="col-5">MATERIAL:</div>
-                        <div class="col-7">Steel, Wood, Concrete, Glass</div>
+                        <div class="col-7">{{data.material}}</div>
                         <div class="col-5">TYPE OF DOCUMENT:</div>
-                        <div class="col-7">Short Project Description</div>
+                        <div class="col-7">{{data.type_of_doc}}</div>
                         <div class="col-5">MODE OF INFORMATION:</div>
-                        <div class="col-7">Contemporary Examples</div>
+                        <div class="col-7">{{data.mode_of_info}}</div>
                         <div class="col-5">ACCESS:</div>
-                        <div class="col-7">Show Open Access Only</div>
+                        <div class="col-7">{{data.accessible == 1 ? "Open Access" : "Private Protected Access"}}</div>
                     </div>
                   </li>
                 </ul>

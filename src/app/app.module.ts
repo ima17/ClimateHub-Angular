@@ -86,6 +86,9 @@ import { VoteResultComponent } from './event-Components/vote-result/vote-result.
 import * as $ from 'jquery';
 import { UserListComponent } from 'src/app/event-Components/user-list/user-list.component';
 
+import {
+  SafeResourceUrl} from '@angular/platform-browser';
+
 // FullCalendarModule.registerPlugins([ // register FullCalendar plugins
 //   dayGridPlugin,interactionPlugin
 

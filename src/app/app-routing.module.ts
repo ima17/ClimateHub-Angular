@@ -72,7 +72,7 @@ const routes: Routes = [
   {path:'ventilation',component:VentilationComponent,data: { breadcrumb: 'Ventilation'}},
   {path:'envelope',component:EnvelopeComponent,data: { breadcrumb: 'Envelope'}},
   {path:'zoning',component:ZoningComponent,data: { breadcrumb: 'Zoning'}},
-  {path:'details',component:DetailsComponent,data: { breadcrumb: 'Details'}},
+  {path:'details/:id/:version_id',component:DetailsComponent},
   {path:'admin',component:AdminNavComponent},
   {path:'admin-profile',component:AdminProfileComponent},
   {path:'admin-blog',component:AdminBlogComponent},
@@ -82,7 +82,7 @@ const routes: Routes = [
   {path:'',component:HomeComponent},
   {path:'Projects',component:ProjectsComponent},
   {path:'Additives',component:AdditivesComponent},
-  {path:'Editorial',component:EditorialComponent}, 
+  {path:'Editorial',component:EditorialComponent},
   {path:'Network',component:NetworkComponent},
   {path:'Toolbox',component:ToolboxComponent},
   {path:'Blog',component:BlogComponent},
@@ -120,11 +120,11 @@ const routes: Routes = [
   {path: 'event-list',component:EventListComponent},
   {path: 'event-list/vote-result/:id', component:VoteResultComponent},
   {path: 'login',component:LoginComponent},
-  
+
   {path: 'request-password',component:RequestResetComponent},
   {path: 'response-password',component:ResponseResetComponent},
   {path: 'user-editing', component:UserEditingComponent},
-  {path:'update-user/:id',component:UpdateUsersComponent} 
+  {path:'update-user/:id',component:UpdateUsersComponent}
 
 ];
 

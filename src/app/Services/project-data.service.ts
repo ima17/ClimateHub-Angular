@@ -19,11 +19,11 @@ export class ProjectDataService {
   getPrivateProjectData(){
     return this.httpClient.get('http://127.0.0.1:8000/api/privateProjects');
   }
-  
+
   getLatestPublicProjectData(){
     return this.httpClient.get('http://127.0.0.1:8000/api/latestProjects');
   }
-  
+
   getPublicToolBoxData(){
     return this.httpClient.get('http://127.0.0.1:8000/api/publicToolbox');
   }
@@ -39,10 +39,6 @@ export class ProjectDataService {
   getPrivateAdditivesData(){
     return this.httpClient.get('http://127.0.0.1:8000/api/privateAdditives');
   }
-  
-
-
-
 
 }
 
