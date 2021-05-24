@@ -28,8 +28,8 @@ import swal from 'sweetalert2/dist/sweetalert2.js';
 
   id:any;
   data:any;
-  
 
+  test : string = "Amesh";
 
   zoom: number = 8;
 
@@ -42,9 +42,9 @@ import swal from 'sweetalert2/dist/sweetalert2.js';
 	  }
   ]
 
-  constructor(private route:ActivatedRoute, private formBuilder: FormBuilder, private projectService:ProjectService) { 
+  constructor(private route:ActivatedRoute, private formBuilder: FormBuilder, private projectService:ProjectService) {
     this.editProject = this.formBuilder.group({
-      
+
       project_title:['', Validators.required],
       author:['', Validators.required],
       organisation:['', Validators.required],
@@ -116,9 +116,9 @@ import swal from 'sweetalert2/dist/sweetalert2.js';
         icon: 'error',
         title: 'Oops...',
         text: 'Something Went Wrong!',
-        
+
       })
-      
+
     })
   }
 

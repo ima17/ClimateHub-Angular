@@ -8,7 +8,7 @@
 
       <div class="form-group col-md-4">
         <label for="exampleFormControlInput1">Project Title:</label>
-        <input  type="text" formControlName="project_title" class="form-control" id="exampleFormControlInput1"  placeholder="Add project title" >
+        <input [ngModel]="test"  type="text" formControlName="project_title" class="form-control" id="exampleFormControlInput1"  placeholder="Add project title">
         <div *ngIf="submitted && f.project_title.touched && f.project_title.errors" class="invalid-feedback">
           <div *ngIf="f.project_title.errors.required">Project Title is required</div>
         </div>
@@ -39,9 +39,9 @@
           <div *ngIf="f.abstract.errors.required">Project Title is required</div>
       </div>
     </div>
-  
+
     <div class="form-row">
-      
+
       <div class="form-group col-md-6">
         <label for="exampleFormControlSelect1">Category:</label>
         <select  formControlName="category" class="form-control" id="exampleFormControlSelect1">
@@ -72,7 +72,7 @@
     </div>
 
     <div class="form-row">
-      
+
       <div class="form-group col-md-6">
         <label for="exampleFormControlSelect1">Cimate Zone:</label>
           <select  formControlName="climate_zone" class="form-control" id="exampleFormControlSelect1" >
@@ -120,7 +120,7 @@
                 </a>
             </agm-info-window>
         </agm-marker>
-      </agm-map>               
+      </agm-map>
     </div>
 
     <div class="form-row">
@@ -286,7 +286,7 @@
 
   <div class="form-group">
       <div class="col-sm-10 offset-2">
-        <button class="btn btn-lg btn-primary" type="button" routerLink="/project-list">Back</button> 
+        <button class="btn btn-lg btn-primary" type="button" routerLink="/project-list">Back</button>
         <button type="submit" class="btn btn-lg btn-primary" (click)="updateProject()">Update</button>
       </div>
   </div>
@@ -294,4 +294,3 @@
 </form>
 </div>
 <app-footer></app-footer>
-  
