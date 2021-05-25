@@ -29,14 +29,14 @@ export class UploadProjectsComponent implements OnInit {
 
   // default map values
   zoom: number = 8;
-  markers: any[] = [
-	  {
-		  lat: 51.723858,
-		  lng: 7.895982,
-		  label: 'C',
-		  draggable: true
-	  }
-  ]
+  // markers: any[] = [
+	//   {
+	// 	  lat: 51.723858,
+	// 	  lng: 7.895982,
+	// 	  label: 'C',
+	// 	  draggable: true
+	//   }
+  // ]
 
   numberRegEx = /[-.0-9]+/;
 
@@ -215,13 +215,13 @@ export class UploadProjectsComponent implements OnInit {
     this.progressFile = 0;
   }
 
-  mapClicked($event: any) {
-    this.markers.push({
-      lat: $event.coords.lat,
-      lng: $event.coords.lng,
-      draggable: true
-    });
-  }
+  // mapClicked($event: any) {
+  //   this.markers.push({
+  //     lat: $event.coords.lat,
+  //     lng: $event.coords.lng,
+  //     draggable: true
+  //   });
+  // }
 
   markerDragEnd($event: google.maps.MouseEvent | any){
     this.latitude=$event.coords.lat;

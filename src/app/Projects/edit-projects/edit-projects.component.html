@@ -247,6 +247,9 @@
       <div class="form-group col-md-6">
         <label>Project File:</label>
           <input type="file" (change)="projectFileChange($event)" placeholder="Upload file" accept=".pdf" >
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{progressFile}}%"></div>
+        </div>
           <div *ngIf="f.project_file.touched && f.project_file.invalid" class="invalid-feedback">
             <div *ngIf="f.project_file.errors.required">Project file is required</div>
           </div>
@@ -255,6 +258,9 @@
       <div class="form-group col-md-6">
         <label>Project View Image:</label>
           <input type="file" (change)="imgFileChange($event)" placeholder="Upload file" accept=".jpg, .png, .jpeg" >
+        <div class="progress">
+          <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuemin="0" aria-valuemax="100" style="width: {{progressImage}}%"></div>
+        </div>
           <div *ngIf="f.img_file.touched && f.img_file.invalid" class="invalid-feedback">
             <div *ngIf="f.img_file.errors.required">Project view image is required</div>
           </div>
@@ -264,7 +270,7 @@
 
       <div class="form-group">
         <label>Access:</label>
-        <select [(ngModel)]="data.accessible" formControlName="energy_strategy" class="form-control" id="exampleFormControlSelect20">
+        <select formControlName="energy_strategy" class="form-control" id="exampleFormControlSelect20">
           <option value="open">Open Access</option>
           <option value="private">Private Protected</option>
         </select>
