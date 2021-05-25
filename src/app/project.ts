@@ -19,7 +19,7 @@ export class Project {
     latitude: string;
     project_file: string;
     img_file: string;
-    accessible: string;
+    accessible: any;
     admin_id: number;
     created_at:string;
     updated_at:string;

@@ -3,8 +3,9 @@ import { FormBuilder, FormGroup, Validators, ReactiveFormsModule, FormsModule } 
 import { Component, OnInit } from '@angular/core';
 import { Project } from 'src/app/project';
 import { ActivatedRoute } from '@angular/router';
-import { MapsAPILoader } from '@agm/core';
-import swal from 'sweetalert2/dist/sweetalert2.js';
+import Swal from 'sweetalert2/dist/sweetalert2.all.js';
+import {Observable} from 'rxjs';
+import {AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask} from '@angular/fire/storage';
 
 
 @Component({
@@ -14,154 +15,121 @@ import swal from 'sweetalert2/dist/sweetalert2.js';
   })
   export class EditProjectsComponent implements OnInit {
 
-  project = new Project();
-
-  editProject: FormGroup;
+  // init data
+  data : Project = new Project();
+  form : FormGroup;
   submitted = false;
   lat = 6.5854;
   lng = 79.9607;
   longitude: any;
   latitude: any;
-  project_file: File;
-  img_file: File;
-  UploadData:any;
 
-  id:any;
-  data:any;
+  // files
+  project_file: File = null;
+  img_file: File = null;
 
-  test : string = "Amesh";
-
+  // default map values
   zoom: number = 8;
-
   markers: any[] = [
-	  {
-		  lat: 51.723858,
-		  lng: 7.895982,
-		  label: 'C',
-		  draggable: true
-	  }
+    {
+      lat: 51.723858,
+      lng: 7.895982,
+      label: 'C',
+      draggable: true
+    }
   ]
 
-  constructor(private route:ActivatedRoute, private formBuilder: FormBuilder, private projectService:ProjectService) {
-    this.editProject = this.formBuilder.group({
+  numberRegEx = /[-.0-9]+/;
 
-      project_title:['', Validators.required],
-      author:['', Validators.required],
-      organisation:['', Validators.required],
-      abstract:['', Validators.required],
-      category:['', Validators.required],
-      energy_strategy:['', Validators.required],
-      bulding_scale:['', Validators.required],
-      climate_zone:['', Validators.required],
-      material:['', Validators.required],
-      parameters:['', Validators.required],
-      type_of_doc:['', Validators.required],
-      mode_of_info:['', Validators.required],
-      topic:['', Validators.required],
-      world_region:['', Validators.required],
-      longitude:['', Validators.required],
-      latitude:['', Validators.required],
-      project_file:['', Validators.required],
-      img_file:['', Validators.required,],
-      accessible:['', Validators.required]
+  uploadProgressFile: Observable<number>;
+  uploadProgressImage: Observable<number>;
+  refFile: AngularFireStorageReference;
+  refImage: AngularFireStorageReference;
+  taskFile: AngularFireUploadTask;
+  taskImage: AngularFireUploadTask;
+  isChangeFile : boolean = false;
+  isChangeImage : boolean = false;
+
+  progressFile : number;
+  progressImage : number;
+
+  constructor(private formBuilder: FormBuilder, private route : ActivatedRoute,
+              private service : ProjectService,private storage : AngularFireStorage) {
+
+  }
+
+  ngOnInit(): void {
+    const id = this.route.snapshot.paramMap.get('id');
+    const version_id = this.route.snapshot.paramMap.get('version_id');
+    this.service.getProjectById(id).subscribe(
+      {
+        next : (value : Project) => {
+          this.data = value;
+        },
+        error : () => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: 'Something went wrong!',
+          });
+        }
+      }
+    );
+
+    // set validators
+    this.form = this.formBuilder.group({
+      project_title: ['', Validators.required],
+      author: ['', Validators.required],
+      organisation: ['', Validators.required],
+      abstract: ['', Validators.required],
+      category: ['', Validators.required],
+      energy_strategy: ['', Validators.required],
+      bulding_scale: ['', Validators.required],
+      climate_zone: ['', Validators.required],
+      material: ['', Validators.required],
+      parameters: ['', Validators.required],
+      type_of_doc: ['', Validators.required],
+      mode_of_info: ['', Validators.required],
+      topic: ['', Validators.required],
+      world_region: ['', Validators.required],
+      longitude: ['', Validators.required, Validators.pattern(this.numberRegEx)],
+      latitude: ['', Validators.required, Validators.pattern(this.numberRegEx)],
+      accessible: ['', Validators.required]
     });
   }
 
-  get f() {return this.editProject.controls;}
-
-  ngOnInit(): void {
-    //console.log(this.route.snapshot.params.id);
-    this.id = this.route.snapshot.params.id;
-    this.getData();
-  }
-
-  getData(){
-    this.projectService.getProjectById(this.id).subscribe(res =>{
-      //console.log(res);
-      this.data = res;
-      this.project = this.data;
-    })
-  }
+  // get form controls
+  get f() { return this.form.controls; }
 
   updateProject(){
 
-    this.project.project_title=this.editProject.value.project_title;
-    this.project.author=this.editProject.value.author;
-    this.project.organisation=this.editProject.value.organisation;
-    this.project.abstract=this.editProject.value.abstract;
-    this.project.category=this.editProject.value.category;
-    this.project.energy_strategy=this.editProject.value.energy_strategy;
-    this.project.bulding_scale=this.editProject.value.bulding_scale;
-    this.project.climate_zone=this.editProject.value.climate_zone;
-    this.project.material=this.editProject.value.material;
-    this.project.parameters=this.editProject.value.parameters;
-    this.project.type_of_doc=this.editProject.value.type_of_doc;
-    this.project.mode_of_info=this.editProject.value.mode_of_info;
-    this.project.topic=this.editProject.value.topic;
-    this.project.world_region=this.editProject.value.world_region;
-    this.project.longitude=this.editProject.value.longitude;
-    this.project.latitude=this.editProject.value.latitude;
-    this.project.img_file=this.editProject.value.img_file;
-    this.project.accessible=this.editProject.value.accessible;
-
-    this.projectService.updateProject(this.id, this.project).subscribe(res =>{
-      swal.fire({
-        title:'',
-        text:'Project Updateed Successfully',
-        icon:'success'
-      });
-    }),
-    (error=>{
-      swal.fire({
-        icon: 'error',
-        title: 'Oops...',
-        text: 'Something Went Wrong!',
-
-      })
-
-    })
   }
 
+  onReset() {
+    this.submitted = false;
+    this.form.reset();
+    this.img_file = null;
+    this.project_file = null;
+    this.progressImage = 0;
+    this.progressFile = 0;
+    this.isChangeFile = false;
+    this.isChangeFile = false;
+  }
 
-clickedMarker(label: string, index: number) {
-  console.log(`clicked the marker: ${label || index}`)
-}
+  markerDragEnd($event: google.maps.MouseEvent | any){
+    this.latitude = $event.coords.lat;
+    this.longitude = $event.coords.lng;
+  }
 
-mapClicked($event: any) {
-  this.markers.push({
-    lat: $event.coords.lat,
-    lng: $event.coords.lng,
-    draggable: true
-  });
-}
+  projectFileChange(event) {
+    let fileList: File = event.target.files;
+    this.project_file=fileList[0];
+  }
 
-markerDragEnd($event: google.maps.MouseEvent | any){
-  // console.log($event)
-  console.log($event.coords.lng,$event.coords.lat)
-  this.latitude=$event.coords.lat;
-  this.longitude=$event.coords.lng;
-}
-
-onMouseOut(aa, $event){
-
-}
-
-onMouseOver(ss, sdsd){
-
-}
-
-projectFileChange(event) {
-  let fileList: File = event.target.files;
-  console.log(fileList)
-  this.project_file=fileList[0];
-}
-
-imgFileChange(event) {
-  let fileList: File = event.target.files;
-  console.log(fileList)
-  this.img_file=fileList[0];
-}
-
+  imgFileChange(event) {
+    let fileList: File = event.target.files;
+    this.img_file=fileList[0];
+  }
 
 }
 
