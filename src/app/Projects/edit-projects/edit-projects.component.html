@@ -8,7 +8,7 @@
 
       <div class="form-group col-md-4">
         <label for="exampleFormControlInput1">Project Title:</label>
-        <input [ngModel]="test"  type="text" formControlName="project_title" class="form-control" id="exampleFormControlInput1"  placeholder="Add project title">
+        <input [(ngModel)]="project_title"  type="text" formControlName="project_title" class="form-control" id="exampleFormControlInput1"  placeholder="Add project title">
         <div *ngIf="submitted && f.project_title.touched && f.project_title.errors" class="invalid-feedback">
           <div *ngIf="f.project_title.errors.required">Project Title is required</div>
         </div>
@@ -16,7 +16,7 @@
 
       <div class="form-group col-md-4">
         <label for="exampleFormControlInput1">Author Name:</label>
-        <input  type="text" formControlName="author" class="form-control" id="exampleFormControlInput1"  placeholder="Add author name" >
+        <input [(ngModel)]="author"  type="text" formControlName="author" class="form-control" id="exampleFormControlInput1"  placeholder="Add author name" >
         <div *ngIf="submitted && f.author.touched && f.author.errors" class="invalid-feedback">
             <div *ngIf="f.author.errors.required">Author Name is required</div>
         </div>
@@ -24,7 +24,7 @@
 
       <div class="form-group col-md-4">
         <label for="exampleFormControlInput1">Organisation:</label>
-        <input  type="text" formControlName="organisation" class="form-control" id="exampleFormControlInput1"  placeholder="Add your organisation" >
+        <input [(ngModel)]="organisation"  type="text" formControlName="organisation" class="form-control" id="exampleFormControlInput1"  placeholder="Add your organisation" >
         <div *ngIf="submitted && f.organisation.touched && f.organisation.errors" class="invalid-feedback">
             <div *ngIf="f.organisation.errors.required">Organisation is required</div>
         </div>
@@ -34,7 +34,7 @@
 
     <div class="form-group">
       <label for="exampleFormControlInput1">Abstract:</label>
-      <textarea  formControlName="abstract" class="form-control" id="exampleFormControlInput1"  placeholder="Add a short description about your project..." rows ="5" ></textarea>
+      <textarea [(ngModel)]="abstract"  formControlName="abstract" class="form-control" id="exampleFormControlInput1"  placeholder="Add a short description about your project..." rows ="5" ></textarea>
       <div *ngIf="submitted && f.abstract.touched && f.abstract.errors" class="invalid-feedback">
           <div *ngIf="f.abstract.errors.required">Project Title is required</div>
       </div>
@@ -44,7 +44,7 @@
 
       <div class="form-group col-md-6">
         <label for="exampleFormControlSelect1">Category:</label>
-        <select  formControlName="category" class="form-control" id="exampleFormControlSelect1">
+        <select [(ngModel)]="category"  formControlName="category" class="form-control" id="exampleFormControlSelect1">
           <option>Examples</option>
           <option>Toolbox</option>
           <option>Additives</option>
@@ -56,7 +56,7 @@
 
       <div class="form-group col-md-6">
         <label for="exampleFormControlSelect1">Type of Document:</label>
-          <select  formControlName="type_of_doc" class="form-control" id="exampleFormControlSelect1">
+          <select [(ngModel)]="type_of_doc"  formControlName="type_of_doc" class="form-control" id="exampleFormControlSelect1">
             <option value="spd">Short Project Description</option>
             <option value="ssp">Side Share Presentation</option>
             <option value="fpp">Full Presentation Panels</option>
@@ -75,7 +75,7 @@
 
       <div class="form-group col-md-6">
         <label for="exampleFormControlSelect1">Cimate Zone:</label>
-          <select  formControlName="climate_zone" class="form-control" id="exampleFormControlSelect1" >
+          <select [(ngModel)]="climate_zone"  formControlName="climate_zone" class="form-control" id="exampleFormControlSelect1" >
             <option value="tropical">Tropical</option>
             <option value="arid">Arid</option>
             <option value="temperate">Temperate</option>
@@ -89,7 +89,7 @@
 
       <div class="form-group col-md-6">
         <label for="exampleFormControlSelect1">World Region:</label>
-          <select  formControlName="world_region" class="form-control" id="exampleFormControlSelect1" >
+          <select [(ngModel)]="world_region"  formControlName="world_region" class="form-control" id="exampleFormControlSelect1" >
             <option value="nasia">North Asia</option>
             <option value="casia">Central Asia</option>
             <option value="sasia">South Asia</option>
@@ -147,7 +147,7 @@
 
   <div class="form-group col-md-6">
     <label for="exampleFormControlSelect1">Parameter:</label>
-    <select  formControlName="parameters" class="form-control" id="exampleFormControlSelect1" >
+    <select [(ngModel)]="parameters"  formControlName="parameters" class="form-control" id="exampleFormControlSelect1" >
         <option value="ven">Ventilation</option>
         <option value="shade">Shadeing</option>
         <option value="mass">Thermal Mass</option>
@@ -167,7 +167,7 @@
 
   <div class="form-group col-md-6">
     <label for="exampleFormControlSelect1">Material:</label>
-    <select  formControlName="material" class="form-control" id="exampleFormControlSelect1" >
+    <select [(ngModel)]="material"  formControlName="material" class="form-control" id="exampleFormControlSelect1" >
         <option value="ven">Ventilation</option>
         <option value="wood">Wood</option>
         <option value="bam">Bamboo</option>
@@ -191,11 +191,11 @@
   <div class="form-group">
     <label for="exampleFormControlSelect1">Energy Strategy:</label>
     <div>
-        <input  name="energy_strategy" formControlName="energy_strategy" value="Active" type="radio" id="Active">
+        <input [(ngModel)]="energy_strategy"   name="energy_strategy" formControlName="energy_strategy" value="Active" type="radio" id="Active">
         <label for="Active">Active</label>
     </div>
     <div>
-      <input  name="energy_strategy" formControlName="energy_strategy" value="Passive" type="radio" id="Passive">
+      <input [(ngModel)]="test"  name="energy_strategy" formControlName="energy_strategy" value="Passive" type="radio" id="Passive">
       <label for="Passive">Passive</label>
     </div>
     <div *ngIf="submitted && f.energy_strategy.touched && f.energy_strategy.invalid" class="invalid-feedback">
@@ -207,7 +207,7 @@
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlSelect1">Building Scale:</label>
-    <select  formControlName="bulding_scale" class="form-control" id="exampleFormControlSelect1" >
+    <select [(ngModel)]="bulding_scale"  formControlName="bulding_scale" class="form-control" id="exampleFormControlSelect1" >
         <option>Urban Scale</option>
         <option>Individual Bulding Scale</option>
     </select>
@@ -218,7 +218,7 @@
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlSelect1">Mode of Information:</label>
-    <select  formControlName="mode_of_info" class="form-control" id="exampleFormControlSelect1" >
+    <select [(ngModel)]="mode_of_info"  formControlName="mode_of_info" class="form-control" id="exampleFormControlSelect1" >
         <option value="contemp">Contempary Examples</option>
         <option value="traditional">Traditional Examples</option>
         <option value="tute">Tutorial Link</option>
@@ -234,7 +234,7 @@
 
   <div class="form-group col-md-4">
     <label for="exampleFormControlSelect1">Topic:</label>
-    <select  formControlName="topic" class="form-control" id="exampleFormControlSelect1">
+    <select [(ngModel)]="topic"  formControlName="topic" class="form-control" id="exampleFormControlSelect1">
         <option value="flowana">Flow Analysis</option>
         <option value="sunco">Sun Course</option>
         <option value="tempprof">Temperature Profile</option>
@@ -253,7 +253,7 @@
 
   <div class="form-group col-md-6">
     <label for="exampleFormControlSelect1">Project File:</label>
-      <input  type="file" (change)="projectFileChange($event)" placeholder="Upload file" accept=".pdf" >
+      <input [(ngModel)]="project_file"  type="file" (change)="projectFileChange($event)" placeholder="Upload file" accept=".pdf" >
       <div *ngIf="f.project_file.touched && f.project_file.invalid" class="invalid-feedback">
         <div *ngIf="f.project_file.errors.required">Project file is required</div>
       </div>
@@ -261,7 +261,7 @@
 
   <div class="form-group col-md-6">
     <label for="exampleFormControlSelect1">Project View Image:</label>
-      <input  type="file" (change)="imgFileChange($event)" placeholder="Upload file" accept=".jpg, .png, .jpeg" >
+      <input [(ngModel)]="img_file"  type="file" (change)="imgFileChange($event)" placeholder="Upload file" accept=".jpg, .png, .jpeg" >
       <div *ngIf="f.img_file.touched && f.img_file.invalid" class="invalid-feedback">
         <div *ngIf="f.img_file.errors.required">Project view image is required</div>
       </div>
@@ -272,11 +272,11 @@
   <div class="form-group">
     <label for="exampleFormControlSelect1">Access:</label>
         <div>
-          <input name="accessible" formControlName="accessible" value="open" type="radio" id="open">
+          <input [(ngModel)]="accessible"  name="accessible" formControlName="accessible" value="open" type="radio" id="open">
           <label for="open"> Open Access </label>
       </div>
       <div>
-        <input name="accessible" formControlName="accessible" value="private" type="radio" id="private">
+        <input [(ngModel)]="accessible"  name="accessible" formControlName="accessible" value="private" type="radio" id="private">
         <label for="private"> Private Protected </label>
       </div>
       <div *ngIf="submitted && f.accessible.touched && f.accessible.invalid" class="invalid-feedback">

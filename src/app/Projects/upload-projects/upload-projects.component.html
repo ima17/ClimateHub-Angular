@@ -258,14 +258,16 @@
       <label for="exampleFormControlSelect1">Project File:</label>
         <input  type="file" (change)="projectFileChange($event)" placeholder="Upload file" accept=".pdf">
       <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="{{progressFile}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progressFile}}%"></div>
+        <!-- <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="{{progressFile}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progressFile}}%"></div> -->
+        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': progress + '%'}"></div>
       </div>
     </div>
     <div class="form-group col-md-6">
       <label for="exampleFormControlSelect1">Project View Image:</label>
         <input  type="file" (change)="imgFileChange($event)" placeholder="Upload file" accept=".jpg, .png, .jpeg">
       <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{progressImage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progressImage}}%"></div>
+        <!-- <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{progressImage}}" aria-valuemin="0" aria-valuemax="100" style="width: {{progressImage}}%;"></div> -->
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="{{progress}}" aria-valuemin="0" aria-valuemax="100" [ngStyle]="{'width': progress + '%'}"></div>
       </div>
     </div>
   </div>
