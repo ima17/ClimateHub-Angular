@@ -264,12 +264,10 @@
 
       <div class="form-group">
         <label>Access:</label>
-
-        <select [(ngModel)]="data.accessible" formControlName="energy_strategy" class="form-control" >
+        <select [(ngModel)]="data.accessible" formControlName="energy_strategy" class="form-control" id="exampleFormControlSelect20">
           <option value="open">Open Access</option>
           <option value="private">Private Protected</option>
         </select>
-
           <div *ngIf="submitted && f.accessible.touched && f.accessible.invalid" class="invalid-feedback">
             <div *ngIf="f.accessible.errors.required">Access method is required</div>
           </div>
