@@ -64,6 +64,7 @@ import {AngularFireStorage, AngularFireStorageReference, AngularFireUploadTask} 
     this.service.getProjectById(id).subscribe(
       {
         next : (value : Project) => {
+          value.accessible = value.accessible == 1 ? "open" : "private";
           this.data = value;
         },
         error : () => {

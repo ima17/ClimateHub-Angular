@@ -57,7 +57,7 @@
 
           <div class="form-group col-md-6">
             <label for="exampleFormControlSelect5">Type of Document:</label>
-              <select formControlName="type_of_doc" class="form-control" id="exampleFormControlSelect5">
+              <select [(ngModel)]="data.type_of_doc" formControlName="type_of_doc" class="form-control" id="exampleFormControlSelect5">
                 <option value="spd">Short Project Description</option>
                 <option value="ssp">Side Share Presentation</option>
                 <option value="fpp">Full Presentation Panels</option>
@@ -76,7 +76,7 @@
 
           <div class="form-group col-md-6">
             <label for="exampleFormControlSelect6">Cimate Zone:</label>
-              <select formControlName="climate_zone" class="form-control" id="exampleFormControlSelect6" >
+              <select [(ngModel)]="data.climate_zone" formControlName="climate_zone" class="form-control" id="exampleFormControlSelect6" >
                 <option value="tropical">Tropical</option>
                 <option value="arid">Arid</option>
                 <option value="temperate">Temperate</option>
@@ -90,7 +90,7 @@
 
           <div class="form-group col-md-6">
             <label for="exampleFormControlSelect7">World Region:</label>
-              <select formControlName="world_region" class="form-control" id="exampleFormControlSelect7" >
+              <select [(ngModel)]="data.world_region" formControlName="world_region" class="form-control" id="exampleFormControlSelect7" >
                 <option value="nasia">North Asia</option>
                 <option value="casia">Central Asia</option>
                 <option value="sasia">South Asia</option>
@@ -145,7 +145,7 @@
 
         <div class="form-group col-md-6">
           <label for="exampleFormControlSelect10">Parameter:</label>
-          <select   formControlName="parameters" class="form-control" id="exampleFormControlSelect10" >
+          <select [(ngModel)]="data.parameters"  formControlName="parameters" class="form-control" id="exampleFormControlSelect10" >
               <option value="ven">Ventilation</option>
               <option value="shade">Shadeing</option>
               <option value="mass">Thermal Mass</option>
@@ -165,7 +165,7 @@
 
         <div class="form-group col-md-6">
           <label for="exampleFormControlSelect11">Material:</label>
-          <select   formControlName="material" class="form-control" id="exampleFormControlSelect11" >
+          <select  [(ngModel)]="data.material" formControlName="material" class="form-control" id="exampleFormControlSelect11" >
               <option value="ven">Ventilation</option>
               <option value="wood">Wood</option>
               <option value="bam">Bamboo</option>
@@ -187,14 +187,10 @@
 
       <div class="form-group">
         <label>Energy Strategy:</label>
-        <div>
-            <input   name="energy_strategy" formControlName="energy_strategy" value="Active" type="radio" id="Active">
-            <label for="Active">Active</label>
-        </div>
-        <div>
-          <input  name="energy_strategy" formControlName="energy_strategy" value="Passive" type="radio" id="Passive">
-          <label for="Passive">Passive</label>
-        </div>
+        <select [(ngModel)]="data.energy_strategy"  formControlName="energy_strategy" class="form-control" >
+          <option value="Active">Active</option>
+          <option value="Passive">Passive</option>
+        </select>
         <div *ngIf="submitted && f.energy_strategy.touched && f.energy_strategy.invalid" class="invalid-feedback">
           <div *ngIf="f.energy_strategy.errors.required">Energy Strategy is required</div>
         </div>
@@ -203,10 +199,10 @@
     <div class="form-row">
 
       <div class="form-group col-md-4">
-        <label for="exampleFormControlSelect12">Building Scale:</label>
-        <select   formControlName="bulding_scale" class="form-control" id="exampleFormControlSelect12" >
-            <option>Urban Scale</option>
-            <option>Individual Bulding Scale</option>
+        <label  for="exampleFormControlSelect12">Building Scale:</label>
+        <select [(ngModel)]="data.bulding_scale"   formControlName="bulding_scale" class="form-control" id="exampleFormControlSelect12" >
+            <option value="Urban Scale">Urban Scale</option>
+            <option value="Individual Bulding Scale">Individual Bulding Scale</option>
         </select>
         <div *ngIf="submitted && f.bulding_scale.errors" class="invalid-feedback">
           <div *ngIf="f.bulding_scale.errors.required">Building Scale is required</div>
@@ -215,7 +211,7 @@
 
       <div class="form-group col-md-4">
         <label for="exampleFormControlSelect13">Mode of Information:</label>
-        <select  formControlName="mode_of_info" class="form-control" id="exampleFormControlSelect13" >
+        <select [(ngModel)]="data.mode_of_info" formControlName="mode_of_info" class="form-control" id="exampleFormControlSelect13" >
             <option value="contemp">Contempary Examples</option>
             <option value="traditional">Traditional Examples</option>
             <option value="tute">Tutorial Link</option>
@@ -231,7 +227,7 @@
 
       <div class="form-group col-md-4">
         <label for="exampleFormControlSelect14">Topic:</label>
-        <select  formControlName="topic" class="form-control" id="exampleFormControlSelect14">
+        <select [(ngModel)]="data.topic" formControlName="topic" class="form-control" id="exampleFormControlSelect14">
             <option value="flowana">Flow Analysis</option>
             <option value="sunco">Sun Course</option>
             <option value="tempprof">Temperature Profile</option>
@@ -268,14 +264,12 @@
 
       <div class="form-group">
         <label>Access:</label>
-            <div>
-              <input name="accessible" formControlName="accessible" value="open" type="radio" id="open">
-              <label for="open"> Open Access </label>
-          </div>
-          <div>
-            <input name="accessible" formControlName="accessible" value="private" type="radio" id="private">
-            <label for="private"> Private Protected </label>
-          </div>
+
+        <select [(ngModel)]="data.accessible" formControlName="energy_strategy" class="form-control" >
+          <option value="open">Open Access</option>
+          <option value="private">Private Protected</option>
+        </select>
+
           <div *ngIf="submitted && f.accessible.touched && f.accessible.invalid" class="invalid-feedback">
             <div *ngIf="f.accessible.errors.required">Access method is required</div>
           </div>
