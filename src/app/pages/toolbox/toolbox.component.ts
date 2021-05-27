@@ -13,6 +13,8 @@ export class ToolboxComponent implements OnInit {
   publicToolbox:any;
   privateToolbox:any;
   public loggedIn :boolean;
+  public searchFilter: any = '';
+  query = '';
 
 
   constructor(

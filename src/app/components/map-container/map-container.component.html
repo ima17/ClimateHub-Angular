@@ -2,21 +2,25 @@
     <agm-map [zoom]='zoom'>
         <agm-marker (markerClick)="clickedMarker(infowindow)" *ngFor="let pro of publicprojects" latitude="{{pro.latitude}}" longitude="{{pro.longitude}}">
           <agm-info-window #infowindow >
+            <div style="font-size: small;">
                 <strong>{{pro.project_title}}</strong>
                 <br><br>
-                {{pro.abstract}}
+                {{pro.abstract|truncate:[80, '...']}}
                 <br><br>
                 <a href="/details">View Project</a>
+              </div>
           </agm-info-window>
         </agm-marker>
         <agm-marker (markerClick)="clickedMarker(infowindow)" *ngFor="let pro of privateprojects" latitude="{{pro.latitude}}" longitude="{{pro.longitude}}">
-          <agm-info-window #infowindow >
+          <agm-info-window #infowindow style="width: 100px;" >
+          <div style="font-size: small;">
                 <strong>{{pro.project_title}}</strong>
                 <br><br>
-                {{pro.abstract}}
+                {{pro.abstract|truncate:[80, '...']}}
                 <br><br>
                 <a  *ngIf=loggedIn href="/details">View Project</a>
                 <a  *ngIf=!loggedIn href="/login">View Project</a>
+          </div>
           </agm-info-window>
         </agm-marker>
       </agm-map>

@@ -16,6 +16,7 @@ export class DetailsComponent implements OnInit {
   ngOnInit(): void {
     this.getPublicProjectsData();
     this.getPrivateProjectsData();
+    this.dataService.sharedParam.subscribe(param=>console.log(param));
   }
 
   getPublicProjectsData(){
@@ -29,5 +30,7 @@ export class DetailsComponent implements OnInit {
       this.privateprojects=res;
     });
   };
+
+  
 
 }

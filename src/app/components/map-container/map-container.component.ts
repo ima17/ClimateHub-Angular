@@ -18,7 +18,8 @@ export class MapContainerComponent implements OnInit {
   zoom=1;
   previous;
   public loggedIn :boolean;
-
+ 
+  
   clickedMarker(infowindow) {
     if (this.previous) {
         this.previous.close();

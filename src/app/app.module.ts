@@ -88,6 +88,15 @@ import { DetailsComponent } from './pages/details/details.component';
 import { VoteResultComponent } from './event-Components/vote-result/vote-result.component';
 import * as $ from 'jquery';
 import { UserListComponent } from 'src/app/event-Components/user-list/user-list.component';
+import { FilterPipe } from './pipes/filter.pipe';
+import { TruncatePipe } from './pipes/truncate.pipe';
+
+import {MatCardModule} from '@angular/material/card';
+import { DetailsMapContainerComponent } from './pages/details/details-map-container/details-map-container.component';
+import { SearchFilterPipe } from './pipes/search-filter.pipe';
+import {MatCheckboxModule} from '@angular/material/checkbox';
+import {MatExpansionModule} from '@angular/material/expansion';
+
 
 
 
@@ -149,12 +158,12 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     UserEditingComponent,
     UpdateUsersComponent,
     DetailsComponent,
- 
-   
-    
-
     VoteResultComponent,
     UserListComponent,
+    FilterPipe,
+    TruncatePipe,
+    DetailsMapContainerComponent,
+    SearchFilterPipe
 
     
     
@@ -177,6 +186,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     FullCalendarModule,
     BreadcrumbModule,
     SnotifyModule,
+    MatCardModule,
+    MatCheckboxModule,
+    MatExpansionModule,
     NgxPaginationModule,
     AgmCoreModule.forRoot({
     apiKey: 'AIzaSyB_k9WCecdc-7-yKirN0X01WpqN67RdB68'

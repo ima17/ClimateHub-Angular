@@ -14,6 +14,8 @@ export class AdditivesComponent implements OnInit {
   publicAdditives:any;
   privateAdditives:any;
   public loggedIn :boolean;
+  public searchFilter: any = '';
+  query = '';
 
 
 

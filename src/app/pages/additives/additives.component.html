@@ -5,58 +5,57 @@
 <div class="container">
     <div class="row row-1">
         <div class="col-sm-6">
-            <h1 class="main-title">Additives</h1>
+            <h1 class="main-title">ADDITIVES</h1>
             
         </div>
         <div class="col-sm-6">
-            <button type="button" class="btn btn-outline-info float-right w-25 " >SHOW ALL</button>
-            <button type="button" class="btn btn-outline-info float-right w-25 dropdown-toggle" style="margin-right: 10px;">FILTER</button>
+            <button type="button" class="btn btn-outline-success float-right h-75 w-25 " ><h5>SHOW ALL</h5></button>
+            <button type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-outline-success float-right h-75 w-25" style="margin-right: 10px;"><h5>FILTER</h5></button>
         </div>
     </div>
     <div class="row">
         <div class="col">
-            <div class="card border border-info rounded">
-                <div class="card-body  shadow  " >
-                    <p>Here you can find auxiliaries, like simulation programs, websites and literature helping you create your climate responsive project. Enter a search term, filter the documents to find your topic of interest or simply browse through the additives!</p>
-                    <p>Do you need access to a password protected document? No problem, contact us <a routerLink="/JoinUs">Here</a></p>
-                </div>
-            </div>        
+            <mat-card class="border" style="margin-bottom: 25px; " ><h5 style="text-align: center;">Here you can find auxiliaries, like simulation programs, websites and literature helping you create your climate responsive project. Enter a search term, filter the documents to find your topic of interest or simply browse through the additives!</h5>
+                <h5 style="text-align: center;">Do you need access to a password protected document? No problem, contact us <a routerLink="/JoinUs">Here</a></h5>
+            </mat-card>
         </div>
     </div>
-    <div class="card border border-info rounded">
-        <div class="card-body  shadow  " >
+    <mat-card class="border" style="padding-top: 40px;">
+        <div class="form-group">
+            <input type="text" class="form-control mb-4 border shadow-sm rounded" style="font-size: small; margin-left: 20px; width:96.5%; " placeholder="Start typing to filter additives" [(ngModel)]="searchFilter" id="listSearch">
+        </div>
             <div class="row card-group  mx-auto">
-                <div class="col-lg-4 sm-12"  *ngFor="let pro of publicAdditives">
-                    <div class="card border rounded shadow  mx-auto" style="width: 20rem;">
-                        <img class="card-img-top border rounded shadow" src="{{pro.img_file}}" alt="Card image cap">
+                <div class="col-lg-4 sm-12"  *ngFor="let pro of publicAdditives| searchFilter: searchFilter">
+                    <div class="card border rounded shadow  mx-auto" style="width: 20rem; height: 30rem;">
+                        <img class="card-img-top border rounded shadow" src="{{pro.img_file}}" alt="{{pro.project_title}} image">
                         <div class="card-body">
                             <h5 class="card-title">{{pro.project_title}}</h5>
-                            <h5 class="card-title">© {{pro.author}}</h5>
-                            <p class="card-text"> {{pro.abstract}}</p>    
+                            <h5 class="card-title" style="color:#94BD7B;">© {{pro.author}}</h5>
+                            <p class="card-text" style="font-size:small;"> {{pro.abstract| truncate:[120, '...']}}.</p>    
                         </div>
                         <div class="card-footer text-muted">
-                            <a href="/details" class="btn btn-outline-info">Details
+                            <a href="/details" class="btn btn-outline-success">Details
                                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                     <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                   </svg></a>
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-4 sm-12"  *ngFor="let pro of privateAdditives">
-                    <div class="card border rounded shadow  mx-auto" style="width: 20rem;">
-                        <img *ngIf=loggedIn class="card-img-top border rounded shadow" src="{{pro.img_file}}" alt="Card image cap">
-                        <img *ngIf=!loggedIn class="card-img-top border rounded shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAclBMVEUboeL///8opuTD5Pdnt+gAneHp9vxOsObP6/kAnOE1quX3/P5+xOyTy+4An+KGy+5vw+3b8Pri8/vx+v223fSs1vJBreXW7flkuukAmOC33vSw2fNbtOeLye1Ks+d3xezL5faY0vGp2/Odz++g1fJbuuoJkScNAAAD10lEQVR4nO3ca2OaMBQGYAgNVz0IVNR6mdT6///i6giibUlocSOHvc/HlQ95d2ICScBxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0iGjsJvw95Ii4DHZBGQtngjkpKmdbL8yKpMhDb7s/SDl2kx5K0q+jn7itxA9TZzoZKZ7dprtK44n0Vdqvvsr3Lps7E8hIzktHvosXwT6i3GWagK6br5n/GmntawO6bjFjXUV5/hCwCL3w4z9xriId8jaJv6rEJrrYiPQ2pr/jW0UK20o9H6itlaRyW1z/lokR2zhItLyG8M4f5gVydu0Y+8K0iLRu5vmk2nzOQJv0+nemo41oiuR3BKBF8zM9suynbQnPXRWiQ9NPFxyLGDVTfRp1X7Noytx9jb3iZhjR9sBmMDrwK6JM1TShbTvFamJ841dEUg8Ue33TpeqnObuxhg51cQpT74tyde/GrZuSeuh9NfU+WdVFnHO7O5WnuuHG0tCu/q9YsqthPUhmpfHKuL55ff4HjXqs5/p+tMcA0v9Kqwivb2VUtcP47zfqoVTf6/HrUr9YrglP5hFSjbpcE87NNeSeEDVEQnuhl7aQ0FbopS3uCSdfw6U5oZzzvC9VzxZb86ELyfTZQiX0ArN6aTzktRssxaxeYEp8s3oVw98LPis1kqrsy8MXWkn+5jBZNBVfny3pI+XQVSnWnb0w8Ur7I0b6sxcmvvUn3kRoTqGV2T5rLM0ZDOxeOG13RQewerdUFuYAZhYnpIW5+T2k9k79NHSYqa3GztGp2TMcyt69RPr5zcy9Hs/N46DhU0Vta2tCZ/ughPrjGyMSQ+5Ib1m7l6ieepEQCZFwREj4vyTs8fjBOGHyJjabSKSGlHwThuqWOtodJ5rw+q4axdr1KrYJb16OoVh3IdeEd+2OXieY8HT7TKRd8OCa8G63lJ4mmPDujNska3j35B5VE0zo376XQLolHa4JXa/dHiRdCfkmdKtIVTHaa1fl+CZ0V8GfC2PDyjHjhG56KaJx8R8JR4OESIiE40NCV70TLKecsIrLsozTCSf0swvTVjHnhP0g4Wimn3D6u9xy8icVaP6ghCdrE54fcqzNLew9u0ddn577nmzsHN2k6WalH5u/AqJdI+zN1pH0Qs4eELCyuITvk75+67OPld0HvSkYegCz6PyqlCWoHDZjJGd7Dwgr8jxkysgXVv8Ia1T+/IiiF1jeRZXocPxJVy3C8xef5rMTOeflMf9OyiQ/LtesPrlLJMrgqb9dEFv/wtNn9B1jNxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7PEbmUI86KlFAnoAAAAASUVORK5CYII=" alt="Card image cap">
+                <div class="col-lg-4 sm-12"  *ngFor="let pro of privateAdditives| searchFilter: searchFilter">
+                    <div class="card border rounded shadow  mx-auto" style="width: 20rem; height: 30rem;">
+                        <img *ngIf=loggedIn class="card-img-top border rounded shadow" src="{{pro.img_file}}" alt="{{pro.project_title}} image">
+                        <img *ngIf=!loggedIn class="card-img-top border rounded shadow" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAclBMVEUboeL///8opuTD5Pdnt+gAneHp9vxOsObP6/kAnOE1quX3/P5+xOyTy+4An+KGy+5vw+3b8Pri8/vx+v223fSs1vJBreXW7flkuukAmOC33vSw2fNbtOeLye1Ks+d3xezL5faY0vGp2/Odz++g1fJbuuoJkScNAAAD10lEQVR4nO3ca2OaMBQGYAgNVz0IVNR6mdT6///i6giibUlocSOHvc/HlQ95d2ICScBxAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB0iGjsJvw95Ii4DHZBGQtngjkpKmdbL8yKpMhDb7s/SDl2kx5K0q+jn7itxA9TZzoZKZ7dprtK44n0Vdqvvsr3Lps7E8hIzktHvosXwT6i3GWagK6br5n/GmntawO6bjFjXUV5/hCwCL3w4z9xriId8jaJv6rEJrrYiPQ2pr/jW0UK20o9H6itlaRyW1z/lokR2zhItLyG8M4f5gVydu0Y+8K0iLRu5vmk2nzOQJv0+nemo41oiuR3BKBF8zM9suynbQnPXRWiQ9NPFxyLGDVTfRp1X7Noytx9jb3iZhjR9sBmMDrwK6JM1TShbTvFamJ841dEUg8Ue33TpeqnObuxhg51cQpT74tyde/GrZuSeuh9NfU+WdVFnHO7O5WnuuHG0tCu/q9YsqthPUhmpfHKuL55ff4HjXqs5/p+tMcA0v9Kqwivb2VUtcP47zfqoVTf6/HrUr9YrglP5hFSjbpcE87NNeSeEDVEQnuhl7aQ0FbopS3uCSdfw6U5oZzzvC9VzxZb86ELyfTZQiX0ArN6aTzktRssxaxeYEp8s3oVw98LPis1kqrsy8MXWkn+5jBZNBVfny3pI+XQVSnWnb0w8Ur7I0b6sxcmvvUn3kRoTqGV2T5rLM0ZDOxeOG13RQewerdUFuYAZhYnpIW5+T2k9k79NHSYqa3GztGp2TMcyt69RPr5zcy9Hs/N46DhU0Vta2tCZ/ughPrjGyMSQ+5Ib1m7l6ieepEQCZFwREj4vyTs8fjBOGHyJjabSKSGlHwThuqWOtodJ5rw+q4axdr1KrYJb16OoVh3IdeEd+2OXieY8HT7TKRd8OCa8G63lJ4mmPDujNska3j35B5VE0zo376XQLolHa4JXa/dHiRdCfkmdKtIVTHaa1fl+CZ0V8GfC2PDyjHjhG56KaJx8R8JR4OESIiE40NCV70TLKecsIrLsozTCSf0swvTVjHnhP0g4Wimn3D6u9xy8icVaP6ghCdrE54fcqzNLew9u0ddn577nmzsHN2k6WalH5u/AqJdI+zN1pH0Qs4eELCyuITvk75+67OPld0HvSkYegCz6PyqlCWoHDZjJGd7Dwgr8jxkysgXVv8Ia1T+/IiiF1jeRZXocPxJVy3C8xef5rMTOeflMf9OyiQ/LtesPrlLJMrgqb9dEFv/wtNn9B1jNxYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA7PEbmUI86KlFAnoAAAAASUVORK5CYII=" alt="{{pro.project_title}} image">
                         <div class="card-body">
                             <h5 class="card-title">{{pro.project_title}}</h5>
-                            <h5 class="card-title">© {{pro.author}}</h5>
-                            <p class="card-text"> {{pro.abstract}}</p>    
+                            <h5 class="card-title" style="color:#94BD7B;">© {{pro.author}}</h5>
+                            <p class="card-text" style="font-size:small;"> {{pro.abstract| truncate:[120, '...']}}.</p>    
                         </div>
                         <div class="card-footer text-muted">
-                            <a  *ngIf=!loggedIn href="/login" class="btn btn-outline-info">Details<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                            <a  *ngIf=!loggedIn href="/login" class="btn btn-outline-success" style="font-size: small;">Details<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                 </svg>
                             </a>
-                            <a  *ngIf=loggedIn href="/details" class="btn btn-outline-info">Details<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
+                            <a  *ngIf=loggedIn href="/details" class="btn btn-outline-success" style="font-size: small;">Details<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-chevron-right" viewBox="0 0 16 16">
                                 <path fill-rule="evenodd" d="M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z"/>
                                 </svg>
                             </a>
@@ -64,9 +63,340 @@
                     </div>
                 </div>
             </div>
-            
-        </div>
-    </div>     
+        </mat-card>        
 </div>
+<!-- Exapansion Panel starts Here -->
+<div class="modal fade sm-12 " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content " style="width: auto;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mx-auto">Type of document</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="checkbox" /> Short Project Description<br> 
+                            <input type="checkbox" /> Side Share Presentation<br>
+                            <input type="checkbox" /> Full Presentation Panels<br>
+                            <input type="checkbox" /> Research Paper<br>
+                            <input type="checkbox" /> Student Research <br>
+                            <input type="checkbox" /> Short Fact Sheet  <br>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mx-auto"> Climate zone</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="checkbox" /> Tropical<br> 
+                            <input type="checkbox" /> Arid<br>
+                            <input type="checkbox" /> Temperate<br>
+                            <input type="checkbox" /> Cold<br>
+                            <input type="checkbox" /> Polar <br>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mx-auto"> World-region</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="checkbox" /> North Asia<br> 
+                            <input type="checkbox" /> Central Asia<br>
+                            <input type="checkbox" /> South Asia<br>
+                            <input type="checkbox" /> Australia / New Zealand<br>
+                            <input type="checkbox" /> Arabia <br>
+                            <input type="checkbox" /> Europe <br>
+                            <input type="checkbox" /> Africa<br>
+                            <input type="checkbox" /> North America<br>
+                            <input type="checkbox" /> South America <br>
+                            <input type="checkbox" /> North / South Pole <br>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mx-auto"> Parameter</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="checkbox" /> Ventilation<br> 
+                            <input type="checkbox" /> Shadeing<br>
+                            <input type="checkbox" /> Thermal Mass<br>
+                            <input type="checkbox" /> Building Envelope<br>
+                            <input type="checkbox" /> Bullding Volume <br>
+                            <input type="checkbox" /> Plan Form<br> 
+                            <input type="checkbox" /> Sectional Form<br>
+                            <input type="checkbox" /> Culture<br>
+                            <input type="checkbox" /> Vegetation<br>
+                            <input type="checkbox" /> Utilities <br>
+                            <input type="checkbox" /> Site Topography <br>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mx-auto">  Material</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="checkbox" /> Ventilation<br> 
+                            <input type="checkbox" /> Wood<br>
+                            <input type="checkbox" />Bamboo<br>
+                            <input type="checkbox" /> Clay<br>
+                            <input type="checkbox" /> Brick <br>
+                            <input type="checkbox" /> Stone <br>
+                            <input type="checkbox" /> Steel<br>
+                            <input type="checkbox" /> Glass<br>
+                            <input type="checkbox" /> Concrete <br>
+                            <input type="checkbox" />Fabric <br>
+                            <input type="checkbox" />Recycled<br>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mx-auto">  Building Scale</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="checkbox" /> Urban Buildin Scale<br> 
+                            <input type="checkbox" /> Individual Building Scale<br>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mx-auto">   Mode of info</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="checkbox" /> Contempary Examples<br> 
+                            <input type="checkbox" /> Traditional Examples<br>
+                            <input type="checkbox" />Tutorial Link<br>
+                            <input type="checkbox" /> Fact Sheet<br>
+                            <input type="checkbox" /> Presentation <br>
+                            <input type="checkbox" /> Research Paper <br>
+                            <input type="checkbox" /> Student Projects<br>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mx-auto">  Topic</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="checkbox" /> Flow Analysis<br> 
+                            <input type="checkbox" /> Sun Course<br>
+                            <input type="checkbox" /> Temperature Profile<br>
+                            <input type="checkbox" /> Climate Information<br>
+                            <input type="checkbox" /> BIM <br>
+                            <input type="checkbox" /> Facility Management<br> 
+                        </div>
+                      </div>
+                </div>
+            </div>
+            
+          <div class="row">
+              <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mx-auto"> Energy Strategy</h5>
+                    </div>
+                    <div class="card-body">
+                        <input type="checkbox" /> Active<br> 
+                        <input type="checkbox" /> Passive<br>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-sm-6"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div> <div class="modal fade sm-12 " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+    <div class="modal-dialog" role="document">
+      <div class="modal-content " style="width: auto;">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mx-auto">Type of document</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="checkbox" /> Short Project Description<br> 
+                            <input type="checkbox" /> Side Share Presentation<br>
+                            <input type="checkbox" /> Full Presentation Panels<br>
+                            <input type="checkbox" /> Research Paper<br>
+                            <input type="checkbox" /> Student Research <br>
+                            <input type="checkbox" /> Short Fact Sheet  <br>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mx-auto"> Climate zone</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="checkbox" /> Tropical<br> 
+                            <input type="checkbox" /> Arid<br>
+                            <input type="checkbox" /> Temperate<br>
+                            <input type="checkbox" /> Cold<br>
+                            <input type="checkbox" /> Polar <br>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mx-auto"> World-region</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="checkbox" /> North Asia<br> 
+                            <input type="checkbox" /> Central Asia<br>
+                            <input type="checkbox" /> South Asia<br>
+                            <input type="checkbox" /> Australia / New Zealand<br>
+                            <input type="checkbox" /> Arabia <br>
+                            <input type="checkbox" /> Europe <br>
+                            <input type="checkbox" /> Africa<br>
+                            <input type="checkbox" /> North America<br>
+                            <input type="checkbox" /> South America <br>
+                            <input type="checkbox" /> North / South Pole <br>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mx-auto"> Parameter</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="checkbox" /> Ventilation<br> 
+                            <input type="checkbox" /> Shadeing<br>
+                            <input type="checkbox" /> Thermal Mass<br>
+                            <input type="checkbox" /> Building Envelope<br>
+                            <input type="checkbox" /> Bullding Volume <br>
+                            <input type="checkbox" /> Plan Form<br> 
+                            <input type="checkbox" /> Sectional Form<br>
+                            <input type="checkbox" /> Culture<br>
+                            <input type="checkbox" /> Vegetation<br>
+                            <input type="checkbox" /> Utilities <br>
+                            <input type="checkbox" /> Site Topography <br>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mx-auto">  Material</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="checkbox" /> Ventilation<br> 
+                            <input type="checkbox" /> Wood<br>
+                            <input type="checkbox" />Bamboo<br>
+                            <input type="checkbox" /> Clay<br>
+                            <input type="checkbox" /> Brick <br>
+                            <input type="checkbox" /> Stone <br>
+                            <input type="checkbox" /> Steel<br>
+                            <input type="checkbox" /> Glass<br>
+                            <input type="checkbox" /> Concrete <br>
+                            <input type="checkbox" />Fabric <br>
+                            <input type="checkbox" />Recycled<br>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mx-auto">  Building Scale</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="checkbox" /> Urban Buildin Scale<br> 
+                            <input type="checkbox" /> Individual Building Scale<br>
+                        </div>
+                      </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mx-auto">   Mode of info</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="checkbox" /> Contempary Examples<br> 
+                            <input type="checkbox" /> Traditional Examples<br>
+                            <input type="checkbox" />Tutorial Link<br>
+                            <input type="checkbox" /> Fact Sheet<br>
+                            <input type="checkbox" /> Presentation <br>
+                            <input type="checkbox" /> Research Paper <br>
+                            <input type="checkbox" /> Student Projects<br>
+                        </div>
+                      </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h5 class="mx-auto">  Topic</h5>
+                        </div>
+                        <div class="card-body">
+                            <input type="checkbox" /> Flow Analysis<br> 
+                            <input type="checkbox" /> Sun Course<br>
+                            <input type="checkbox" /> Temperature Profile<br>
+                            <input type="checkbox" /> Climate Information<br>
+                            <input type="checkbox" /> BIM <br>
+                            <input type="checkbox" /> Facility Management<br> 
+                        </div>
+                      </div>
+                </div>
+            </div>
+            
+          <div class="row">
+              <div class="col-sm-6">
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mx-auto"> Energy Strategy</h5>
+                    </div>
+                    <div class="card-body">
+                        <input type="checkbox" /> Active<br> 
+                        <input type="checkbox" /> Passive<br>
+                    </div>
+                  </div>
+              </div>
+              <div class="col-sm-6"></div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div> 
+  <!-- Exapansion Panel Ends Here -->
 
 <app-footer></app-footer>
