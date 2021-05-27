@@ -5,11 +5,11 @@ import { JarwisService } from 'src/app/services/jarwis.service';
 import { TokenService } from 'src/app/services/token.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  selector: 'app-admin-login',
+  templateUrl: './admin-login.component.html',
+  styleUrls: ['./admin-login.component.scss']
 })
-export class LoginComponent implements OnInit {
+export class AdminLoginComponent implements OnInit {
 
   public form={
     email:null,
@@ -25,6 +25,7 @@ export class LoginComponent implements OnInit {
     private Auth: AuthService
   ) { }
 
+
   onSubmit() {
     this.Jarwis.login(this.form).subscribe(
        data => this.handleResponse(data),
@@ -37,13 +38,12 @@ export class LoginComponent implements OnInit {
   handleResponse(data) {
     this.Token.handle(data.access_token);
     this.Auth.changeAuthStatus(true);
-    this.router.navigateByUrl('#');
+    this.router.navigateByUrl('/admin-profile');
   }
 
   handleError(error) {
     this.error = error.error.error;
   }
-
 
   ngOnInit(): void {
   }

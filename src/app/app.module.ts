@@ -56,8 +56,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatIconModule } from '@angular/material/icon';
 import { MatListModule } from '@angular/material/list';
-import { FullCalendarModule } from '@fullcalendar/angular'; // calendar
-import  dayGridPlugin from '@fullcalendar/daygrid'; // plugin
+//import { FullCalendarModule } from '@fullcalendar/angular'; // calendar
+//import  dayGridPlugin from '@fullcalendar/daygrid'; // plugin
 import interactionPlugin from '@fullcalendar/interaction';
 import { EventPollComponent } from './event-Components/event-poll/event-poll.component';
 import { EventAddComponent } from './event-Components/event-add/event-add.component';
@@ -84,6 +84,7 @@ import {BreadcrumbModule} from 'angular-crumbs';
 import { NgxPaginationModule} from 'ngx-pagination';
 import { DetailsComponent } from './pages/details/details.component';
 
+import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
 
 import { VoteResultComponent } from './event-Components/vote-result/vote-result.component';
 import * as $ from 'jquery';
@@ -100,10 +101,12 @@ import {MatExpansionModule} from '@angular/material/expansion';
 
 
 
-FullCalendarModule.registerPlugins([ // register FullCalendar plugins
-  dayGridPlugin,interactionPlugin
+// FullCalendarModule.registerPlugins([ // register FullCalendar plugins
+//   dayGridPlugin,interactionPlugin
   
-]);
+//]);
+
+// ]);
 
 
 
@@ -158,6 +161,9 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     UserEditingComponent,
     UpdateUsersComponent,
     DetailsComponent,
+    AdminLoginComponent,
+
+
     VoteResultComponent,
     UserListComponent,
     FilterPipe,
@@ -183,7 +189,7 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatSidenavModule,
     MatIconModule,
     MatListModule,
-    FullCalendarModule,
+    //FullCalendarModule,
     BreadcrumbModule,
     SnotifyModule,
     MatCardModule,
@@ -191,8 +197,8 @@ FullCalendarModule.registerPlugins([ // register FullCalendar plugins
     MatExpansionModule,
     NgxPaginationModule,
     AgmCoreModule.forRoot({
-    apiKey: 'AIzaSyB_k9WCecdc-7-yKirN0X01WpqN67RdB68'
-     }),
+      apiKey: 'AIzaSyB_k9WCecdc-7-yKirN0X01WpqN67RdB68'
+    }),
     // MDBBootstrapModule.forRoot(),
     // //FormBuilder
 

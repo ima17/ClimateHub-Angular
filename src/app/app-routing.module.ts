@@ -48,6 +48,7 @@ import { RequestResetComponent } from './components/password/request-reset/reque
 import { ResponseResetComponent } from './components/password/response-reset/response-reset.component';
 import { UserEditingComponent } from './pages/user-editing/user-editing.component';
 import { UpdateUsersComponent } from './pages/update-users/update-users.component';
+import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
 import { VoteResultComponent} from 'src/app/event-Components/vote-result/vote-result.component';
 
 
@@ -73,11 +74,21 @@ const routes: Routes = [
   {path:'envelope',component:EnvelopeComponent,data: { breadcrumb: 'Envelope'}},
   {path:'zoning',component:ZoningComponent,data: { breadcrumb: 'Zoning'}},
   {path:'details',component:DetailsComponent,data: { breadcrumb: 'Details'}},
-  {path:'admin',component:AdminNavComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
+  //{path:'admin',component:AdminNavComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
+  //{path:'admin',component:AdminNavComponent,},
   {path:'admin-profile',component:AdminProfileComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
+  //{path:'admin-profile',component:AdminProfileComponent},
   {path:'admin-blog',component:AdminBlogComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
+  //{path:'admin-blog',component:AdminBlogComponent},
   {path:'admin-event',component:AdminEventComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
+  //{path:'admin-event',component:AdminEventComponent},
   {path:'edit-users',component:EditUsersComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
+  //{path:'edit-users',component:EditUsersComponent},
+  //{path:'admin',component:AdminNavComponent},
+  //{path:'admin-profile',component:AdminProfileComponent},
+  //{path:'admin-blog',component:AdminBlogComponent},
+  //{path:'admin-event',component:AdminEventComponent},
+  {path:'edit-users',component:EditUsersComponent},
   {path:'upload-projects',component:UploadProjectsComponent},
   {path:'',component:HomeComponent},
   {path:'Projects',component:ProjectsComponent},
@@ -89,6 +100,8 @@ const routes: Routes = [
   {path:'Events',component:EventsComponent},
   {path:'JoinUs',component:JoinUSComponent},
   {path:'ELearning',component:ELearningComponent,canActivate: [AfterLoginService]},
+  //{path:'ELearning',component:ELearningComponent},
+  //{path:'ELearning',component:ELearningComponent},
   {path:'geography',component:GeographyComponent},
   {path:'topography',component: TopographyComponent},
   {path:'ecology',component:EcologyComponent},
@@ -99,13 +112,22 @@ const routes: Routes = [
   {path:'ventilation',component:VentilationComponent},
   {path:'envelope',component:EnvelopeComponent},
   {path:'zoning',component:ZoningComponent},
-  {path:'admin',component:AdminNavComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
+  //{path:'admin',component:AdminNavComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
+  //{path:'admin',component:AdminNavComponent},
   {path:'admin-profile',component:AdminProfileComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
+  //{path:'admin-profile',component:AdminProfileComponent},
   {path:'admin-blog',component:AdminBlogComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
+  //{path:'admin-blog',component:AdminBlogComponent},
   {path:'admin-event',component:AdminEventComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
+  //{path:'admin-event',component:AdminEventComponent},
   {path:'add-users',component:EditUsersComponent,canActivate: [AfterLoginService], data: { role: ['ADMIN']} },
-  {path:'upload-projects',component:UploadProjectsComponent,canActivate: [AfterLoginService]},
+  //{path:'add-users',component:EditUsersComponent},
+  //{path:'upload-projects',component:UploadProjectsComponent,canActivate: [AfterLoginService]},
+  //{path:'upload-projects',component:UploadProjectsComponent},
   {path:'login',component:LoginComponent},
+  {path:'upload-projects',component:UploadProjectsComponent},
+  {path:'edit-projects',component:EditProjectsComponent},
+  {path:'project-list',component:ProjectListComponent},
   {path:'imprint',component:ImprintComponent},
   {path:'privacy-policy',component:PrivacyPolicyComponent},
   {path:'event-user-list/event-poll/:id',component:EventPollComponent},
@@ -118,8 +140,12 @@ const routes: Routes = [
   
   {path: 'request-password',component:RequestResetComponent},
   {path: 'response-password',component:ResponseResetComponent},
-  {path: 'user-editing', component:UserEditingComponent,canActivate: [AfterLoginService]},
-  {path:'update-user/:id',component:UpdateUsersComponent} 
+  {path: 'delete-users', component:UserEditingComponent,canActivate: [AfterLoginService]},
+  //{path: 'delete-users', component:UserEditingComponent},
+  {path:'update-user/:id',component:UpdateUsersComponent},
+  {path:'admin', component:AdminLoginComponent},
+  {path: 'user-deleting', component:UserEditingComponent},
+  //{path:'update-user/:id',component:UpdateUsersComponent} 
 
 ];
 
