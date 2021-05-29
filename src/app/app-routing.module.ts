@@ -145,6 +145,7 @@ const routes: Routes = [
   {path:'update-user/:id',component:UpdateUsersComponent},
   {path:'admin', component:AdminLoginComponent},
   {path: 'user-deleting', component:UserEditingComponent},
+  //{path: 'user-deleting', component:UserEditingComponent},
   //{path:'update-user/:id',component:UpdateUsersComponent} 
 
 ];
